@@ -10,3 +10,6 @@ git config global user.name "RickyL-2000"
 git config --global user.name "RickyL-2000"
 git config --global user.email 15305813731@163.com
 git add .
+git status
+git add .
+git status
