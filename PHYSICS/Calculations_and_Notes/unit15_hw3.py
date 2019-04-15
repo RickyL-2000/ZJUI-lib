@@ -2,7 +2,7 @@ import numpy as np
 
 m = 18
 R = 0.7
-w = 33*2*np.pi 
+w = 33
 t = 9.8
 
 mi = 0.5*m*R*R

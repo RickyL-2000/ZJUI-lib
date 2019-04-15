@@ -17,11 +17,11 @@ F = deltap/t
 print(F)
 
 #Q4
-p2 = m*(-11.8-18.8)
-print(p2)
+I2 = m*(-11.8-18.8)
+print(I2)
 
-t = abs(p2)/F
+t = abs(I2)/F
 print(t)
 
-Ek = 0.5*p2*p2/m - 0.5*m*18.8*18.8
+Ek = 0.5*m*11.8*11.8 - 0.5*m*18.8*18.8
 print(Ek)
