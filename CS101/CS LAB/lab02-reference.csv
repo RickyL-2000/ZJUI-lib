@@ -1,0 +1,16 @@
+Material,E,G,nu,rho
+Aluminum Alloys,1.02E+07,3.90E+06,0.33,0.098
+Beryllium Copper,1.80E+07,7.00E+06,0.29,0.3
+Carbon Steel,2.90E+07,1.15E+07,0.29,0.28
+Cast Iron,1.45E+07,6.00E+06,0.21,0.26
+Inconel,3.10E+07,1.15E+07,0.29,0.31
+Magnesium,6.50E+06,2.40E+06,0.35,0.07
+Molybdenum,4.80E+07,1.71E+07,0.31,0.37
+Monel Metal,2.60E+07,9.50E+06,0.32,0.32
+Nickel Silver,1.85E+07,7.00E+06,0.32,0.32
+Nickel Steel,2.90E+07,1.10E+07,0.29,0.28
+Nylon,1.50E+06,6.00E+05,-,0.04
+Phosphor Bronze,1.61E+07,6.00E+06,0.35,0.3
+Stainless Steel,2.76E+07,1.06E+07,0.31,0.28
+Titanium,1.65E+07,6.50E+06,-,0.16
+http://www.engineersedge.com/manufacturing_spec/average_properties_structural_materials.htm,,,,

@@ -1,0 +1,16 @@
+Value,Unit,Value,Unit
+1,angstrom,1E-10,m
+1,nanometer,0.000000001,m
+1,micrometer,0.000001,m
+1,centimeter,0.01,m
+1,kilometer,1000,m
+1,parsec,3.0857E+16,m
+1,inch,2.54E-02,m
+1,foot,3.05E-01,m
+1,mile,1.61E+03,m
+,,,
+500,m,3.11E-01,mile
+,,,
+,,,
+,3.141592654,,
+,1.22515E-16,,

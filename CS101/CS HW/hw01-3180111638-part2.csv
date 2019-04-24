@@ -1,0 +1,17 @@
+Material,¦Ñ?¦Ñ / kg/m?3??kg/m3,c?p??cp / kJ/kg?K?kJ/kg?K,¦Ì?¦Ì / N?s/m?2??N?s/m2,k?k / W/m?K?W/m?K,alpha
+Air,1.1614,1.007,1.85E-05,0.00934,
+Ammonia,0.6894,2.158,1.02E-05,0.0247,
+Carbon Dioxide,1.773,0.851,1.49E-05,0.0152,
+Hydrogen,0.08078,14.31,8.96E-06,0.067,
+Nitrogen,1.1233,1.041,1.78E-05,0.00958,
+Oxygen,1.284,0.92,2.07E-05,0.00925,
+,,,,,
+,,,,,
+Material,rho,cp,,k,alpha
+Hydrogen,0.08078,14.31,0.00000896,0.067,0.057960393
+,"VLOOKUP(A11,A2:E7,2,0)","VLOOKUP(A11,A2:E7,3,0)","VLOOKUP(A11,A2:E7,4,0)","VLOOKUP(A11,A2:E7,5,0)",
+,,,,,
+,,,,,
+Material,rho,mu,v,L,Re
+Oxygen,1.284,0.00002072,1.00E-03,5.00E-02,3.10E+00
+,"VLOOKUP(A16,A2:E7,2,0)","VLOOKUP(A16,A2:E7,4,0)",B16*D16*E16/C16,,

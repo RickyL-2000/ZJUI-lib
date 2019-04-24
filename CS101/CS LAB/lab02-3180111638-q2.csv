@@ -1,0 +1,7 @@
+Per Unit,Ice cream,Chip,Bread,,,,,,,,Criteria to maximize
+Profit(RMB),0.108,0.36,0.37,,,Total of what you used,,Total of what you have,,,
+,,,,,Total Capital,1068,less than,1800,,,What we have 
+Capital needed (RMB),3,1,1,,Total Storage,19990,less than,20000,,,
+Storage needed (cm^3),15,50,55,,,,,,,,What we want to solve
+,,,,,,,,Total Profit,,,
+Order (Quantity),250,250,68,,,,,142.16,,,
