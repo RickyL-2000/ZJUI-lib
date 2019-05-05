@@ -30,9 +30,9 @@ x = -D*cos(w*1.3)
 print('x =', x)
 
 # Q8
-# v(t) = D sin(wt)
-# a(t) = D cos(wt)
-a = D*cos(w*1.3)
+# v(t) = D*w sin(wt)
+# a(t) = D*w*w cos(wt)
+a = D*w*w*cos(w*1.3)
 F = m*a
 print('F =', F)
 
