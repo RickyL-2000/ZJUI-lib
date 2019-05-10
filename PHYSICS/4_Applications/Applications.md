@@ -73,3 +73,51 @@ A point mass m, attached to a massless string.
 
 As being discussed before:
 > $$ \omega = \sqrt{\frac{Mg R_{CM}}{I}} = \sqrt{\frac{MgL}{ML^2}} = \sqrt{\frac{g}{L}}
+
+## Harmonic Waves
+
+> $$ y(x,t) = A\cos(\omega t - kx) $$
+> where $\phi = kx$.
+
+Definition of Wavelength
+> $$ \cos(kx) = \cos[k(x+\lambda)] = \cos(kx + 2\pi) $$
+> So
+> $$ k\lambda = 2\pi $$
+
+***General Equation***
+> $$ y(x,t) = A\cos(kx - \omega t) $$
+> Period of Oscillation
+> $$ P = \frac{2\pi}{\omega} $$
+> Wave Number
+> $$ k = \frac{2\pi}{\lambda} $$
+> Speed of Wave
+> $$ v_{wave} = \frac{\lambda}{P} = \frac{\omega}{k} = f\lambda $$
+> $$ v_{average} = \frac{4A}{P} $$
+
+### Dynamic
+
+For a tiny element in a string:
+> $$ \Sigma F_x = T(\cos(\theta_1) - \cos(\theta_2)) = 0 $$
+> $$ \Sigma F_y = T(\sin(\theta_2) - \sin(\theta_1)) \approx T(\theta_2 - \theta_1) = Td\theta $$
+> Therfore
+> $$ \Sigma F_y = Td\theta = dma_y = \mu dx a_y $$
+> Because $\mu = \frac{dm}{dx}$, the mass density of string.
+> Therefore
+> $$ T\frac{d\theta}{dx} = \mu a_y $$
+> Also:
+> $$ \theta \approx \tan(\theta) = \frac{dy}{dx} $$
+> $$ F_{Net} = T\frac{d^2y}{dx^2} = \mu a_y = \mu \frac{d^2y}{dt^2} $$
+> **Therefore**
+> $$ \frac{d^2y}{dx^2} = \frac{\mu}{T}\frac{d^2y}{dt^2} $$
+> **Finally** (Go back to Unit26 pre *"The Wave Equation"* and read twice!!!)
+> $$ -k^2y = -\frac{\mu}{T}\omega^2y $$
+> That is
+> $$ \sqrt{\frac{T}{\mu}} = \frac{\omega}{k} $$
+> **Therefore**
+> $$ v_{wave} = \frac{\lambda}{P} = \frac{\omega}{k} = \sqrt{\frac{T}{\mu}} $$
+> $$ v_{wave} = \sqrt{\frac{T}{\mu}} $$
+
+## **Wave Equation**
+
+> $$ \frac{d^2y}{dx^2} = \frac{1}{v^2}\frac{d^2y}{dt^2} $$
+> Where $v$ (the speed of the wave) depends only on the properties of the Wave's Medium($T$, and$\mu$.)
