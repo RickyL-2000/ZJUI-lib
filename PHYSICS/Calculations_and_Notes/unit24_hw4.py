@@ -7,6 +7,7 @@ g = 9.81
 w = (g/L)**0.5
 T = 2*pi/w
 print('T =', T)
+print('w =', w)
 
 Fx = m*g*sin(theta)
 print('Fx =', Fx)

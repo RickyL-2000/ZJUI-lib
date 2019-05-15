@@ -29,11 +29,11 @@ mu2 = mu/2
 print('mu2 =', mu2)
 
 T2 = T*2
-v2 = (T/mu)**0.5
+v2 = (T2/mu2)**0.5
 t2 = 2*L/v2
 print('t2 =', t2)
 
 # Q8
 # v = lam/P = lam*f
 lam2 = v2/f
-print('lam =', lam)
+print('lam2 =', lam2)

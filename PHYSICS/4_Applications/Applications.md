@@ -121,3 +121,42 @@ For a tiny element in a string:
 
 > $$ \frac{d^2y}{dx^2} = \frac{1}{v^2}\frac{d^2y}{dt^2} $$
 > Where $v$ (the speed of the wave) depends only on the properties of the Wave's Medium($T$, and$\mu$.)
+
+## Waves and Superposition
+
+> Because $v = \frac{\omega}{k}$,
+> $$ y(x,t) = A \cos(kx - \omega t) = A\cos[k(x - vt)] $$
+> Therefore
+> $$ y(x,t) = f(x - vt) $$
+> Which is the solution to the wave equation.
+> $$ \frac{d^2y}{dx^2} = \frac{1}{v^2}\frac{d^2y}{dt^2} $$
+
+By differentiating this solution respect to x or t and plug them into the wave equation, we have
+> $$ f'' = \frac{1}{v^2}v^2f''\ \ \ \ \checkmark $$
+
+**Notice** this function $$ y(x,t) = f(x - vt) $$ can represented for waves with **any shape** (not only harmonic).
+
+## Superposition
+
+Observations
+
+1. The sum of the waves appear to stand still (**standing waves**)
+2. THe waves do not interact.
+
+### **Standing waves**
+
+> $$ y(x,t) = A\cos(kx-\omega t) + A\cos(kx + \omega t) \\ = 2A\cos(kx)\cos(\omega t) $$
+> therefore
+> $$ y(x,t) = 2A\cos(kx)\cos(\omega t) $$
+
+#### Example: Turning a Guitar
+
+> Because
+> $$ \lambda_{fundamental} = 2L $$
+> $$ v_{wave} = \lambda f $$
+> $$ T = \mu v^2_{wave} $$
+> Because T is almost the same.
+
+***Therefore**
+> $$ f_i = \frac{v_i}{\lambda} = \frac{1}{\lambda}\sqrt{\frac{T}{\mu_i}} $$
+> **smaller $f_i$, larger $\mu_i$**.
