@@ -21,7 +21,7 @@ The angular momentum can be added as a system
 
 > $$ L_{Total} = I_{Total} \omega $$
 
-Pay attention to the direction of the angular momentum.
+*Pay attention to the direction of the angular momentum* !
 
 ### 2. Solid Objects
 
@@ -43,7 +43,7 @@ Because there is no external torque, the total angular momentum is conserved.
 
 ### 4. Point Particle Moving in a Straight Line
 
-### 5. Jumping on a Merry-go-Round Example
+### 5. Jumping on a stationary Merry-go-Round Example
 
 > $$ \vec{L_{initial}} = \vec{L_{final}} $$
 > $$ m_{you} v_0 R = I_{Total} \omega = (I_{merry-go-round} + I_{you}) \omega $$

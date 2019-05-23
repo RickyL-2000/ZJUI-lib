@@ -30,6 +30,16 @@ print(alpha)
 T = m*g - m*alpha*L/4
 print(T)
 
+################ Q3 trial ########################
+
+# Because the net acceleration points down? 
+# T*0.75 - mg*0.5 = (m*L*L/12 + m*(L/4)**2)*alpha
+T2 = ((m*L*L/12 + m*(L/4)**2)*alpha + m*g*0.5)/0.75
+print('T2 =', T2)
+
+### emmmmmmm it's stil wrong....
+
+##################################################
 #Q4
 # angular kinetic mg*L/4 = 0.5*I*w*w
 w = (m*g*L/2/I)**0.5

@@ -117,6 +117,10 @@ For a tiny element in a string:
 > $$ v_{wave} = \frac{\lambda}{P} = \frac{\omega}{k} = \sqrt{\frac{T}{\mu}} $$
 > $$ v_{wave} = \sqrt{\frac{T}{\mu}} $$
 
+### **POWER**
+
+> $$ P = \frac{1}{2}\mu v \omega^2 A^2 $$
+
 ## **Wave Equation**
 
 > $$ \frac{d^2y}{dx^2} = \frac{1}{v^2}\frac{d^2y}{dt^2} $$
