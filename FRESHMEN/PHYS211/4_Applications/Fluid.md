@@ -34,6 +34,8 @@ Our **Assumptions: Fluids are Ideal**
 > $$ \Delta K  = \frac{1}{2}m_2v^2_2 - \frac{1}{2}m_1v^2_1 $$
 > $$ W_1 = F_1d_1 = (P_1A_1)d_1 $$
 > $$ W_2 = -F_2d_2 = -(P_2A_2)d_2 $$
+Combine:
+> $$ \frac{1}{2}m_2v^2_2 - \frac{1}{2}m_1v^2_1 = (P_1A_1)d_1 - (P_2A_2)d_2 $$
 Therefore:
 > $$ P_2 + \frac{1}{2}\rho v^2_2 = P_1 + \frac{1}{2}\rho v^2_1 $$
 
