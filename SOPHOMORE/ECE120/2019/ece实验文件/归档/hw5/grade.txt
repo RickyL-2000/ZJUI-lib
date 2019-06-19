@@ -1,0 +1,8 @@
+committed code: yes
+r786 | tengjun.18@INTL | 2019-03-24 18:57:25 +0800 (日, 24 3月 2019) | 1 line
+submitted before deadline: -0
+code compiles: yes
+calculation of c is correct: +4
+calculation of f is correct(not using logical operators): +6
+output's format is correct: +4
+total grade: 14

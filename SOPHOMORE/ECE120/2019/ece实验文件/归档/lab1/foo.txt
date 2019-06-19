@@ -1,0 +1,9 @@
+This is a text file.
+
+There's really nothing interesting in here, but there is a secret password
+encrypted into the last line of the file, which you must delete.
+
+Just kidding.  It's just some junk.
+
+
+

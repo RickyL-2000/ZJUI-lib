@@ -1,0 +1,5 @@
+f screen
+f lab6
+r pc PSCR
+c
+d 5000 57b6

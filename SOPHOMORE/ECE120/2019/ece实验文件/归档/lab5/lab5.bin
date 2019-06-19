@@ -1,0 +1,27 @@
+;LC program which use Euclid's algorithm to calculate the GCD of A and B 
+;first, compare A and B, if A < B, swap the value of A and B, if A>=B, keep the value
+;second,calculate C = A%B, and then set A=B, B=C, C=A. When C =0, the current B is 
+;GCD, and store the GCD int0 x3102
+;in my program, I combine the swap part in gcd.c with the loop part in gcd.c 
+;Table of used registers
+; Register | Meaning 
+; R0(000)  | A
+; R1(001)  | B
+; R2(010)  | C
+; R3(011)  | -B
+0011 0000 0000 0000; specifies where the program will be stored (x3000)
+0010 000 011111111;   (x3000) R0<- M[x3100], load A from x3100
+0010 001 011111111;   (x3001) R1<- M[x3101], load B from x3101
+0001 010 000 1 00000; (x3002) R2<- R0, set C=A
+1001 011 001 1 11111; (x3003) R3<- NOT(R1),calculate not B;
+0001 011 011 1 00001; (x3004) R3<- R3+1,calculate -B
+0001 010 010 0 00 011;(x3005) R2<- R2+R3,C=C-B (for swap part,compare A with B,for loop part, calculate A%B)
+0000 011 111111110;   (x3006) BRzp x3003, 
+0001 010 010 0 00 001;(x3007) R2<- R2+R1,set C=C+B,(for swap part, C=A, for loop part, C now is equal to A%B)
+0000 010 000000011;   (x3008) BRz x300C,if C=0, end the loop and go to x300C
+0001 000 001 1 00000; (x3009) R0<- R1, set A=B
+0001 001 010 1 00000; (x300A) R1<- R2, set B=C
+0000 111 111110110;   (x300B) BRnzp, go to x3002 for next loop
+0001 010 001 1 00000; (x300C) R2<- R1, store GCD in R2
+0011 010 011110100;   (x300D) M[x3102]<- R2, store GCD in x3102
+1111 0000 0010 0101;  (x300E) TRAP x25,halt
