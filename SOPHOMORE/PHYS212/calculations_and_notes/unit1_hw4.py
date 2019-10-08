@@ -3,7 +3,7 @@ Q2 = -3.1e-6
 q = -3.8e-6
 a = 0.21 # cm
 b = 0.20 # cm
-k = 9*10^9
+k = 9e9
 
 # Q1
 F2_x = k*Q2*q/(a*a+b*b) * a / (a*a+b*b)**0.5
@@ -14,7 +14,7 @@ F2_y = k*Q2*q/(a*a+b*b) * b / (a*a+b*b)**0.5
 print(F2_y)
 
 # Q3
-F1 = k*Q1*q/a/a
+F1 = -k*Q1*q/a/a
 F_net_x = F2_x + F1
 print(F_net_x)
 
