@@ -139,7 +139,7 @@ df1_1.to_csv(base_dir + "/data/ivp1_runge_kutta_3rd.csv", index=False)
 df1_2.to_csv(base_dir + "/data/ivp1_runge_kutta_4th.csv", index=False)
 
 # %%
-a2 = -100.0
+a2 = -50.0
 b2 = 1.0
 h2 = (0.01, 0.005, 0.001)
 df2_1 = analyse(f2, runge_kutta_3rd, a2, b2, 0, 1, h=h2)
