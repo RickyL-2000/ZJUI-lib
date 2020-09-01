@@ -223,7 +223,7 @@ df1_4.to_csv(base_dir + "/data/ivp1_euler_improved.csv", index=False)
 
 # %%
 # 确定 f2 的区间
-a2 = -100.0
+a2 = -50.0
 b2 = 1.0
 h2 = (0.01, 0.005, 0.001)
 df2_1 = analyse(f2, euler_explicit, a2, b2, 0, 1, h=h2)
