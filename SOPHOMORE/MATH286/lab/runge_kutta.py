@@ -20,7 +20,7 @@ def equal(a, b):
     return abs(a - b) < 0.0000001
 
 # %%
-def analyse(f, method, a, b, t0, y0, h=(0.01, 0.005, 0.001)):
+def analyse_step_len(f, method, a, b, t0, y0, h=(0.01, 0.005, 0.001)):
     df = pd.DataFrame()
     space = h[0]
     df['t'] = np.linspace(a, b, round((b - a) / space) + 1)
@@ -133,8 +133,8 @@ def runge_kutta_4th(f, a, b, t0, y0, h,
 a1 = -3.0
 b1 = 1.0
 h1 = (0.01, 0.005, 0.001)
-df1_1 = analyse(f1, runge_kutta_3rd, a1, b1, 0, 1, h=h1)
-df1_2 = analyse(f1, runge_kutta_4th, a1, b1, 0, 1, h=h1)
+df1_1 = analyse_step_len(f1, runge_kutta_3rd, a1, b1, 0, 1, h=h1)
+df1_2 = analyse_step_len(f1, runge_kutta_4th, a1, b1, 0, 1, h=h1)
 
 # %%
 df1_1.to_csv(base_dir + "/data/ivp1_runge_kutta_3rd.csv", index=False)
@@ -144,8 +144,8 @@ df1_2.to_csv(base_dir + "/data/ivp1_runge_kutta_4th.csv", index=False)
 a2 = -50.0
 b2 = 1.0
 h2 = (0.01, 0.005, 0.001)
-df2_1 = analyse(f2, runge_kutta_3rd, a2, b2, 0, 1, h=h2)
-df2_2 = analyse(f2, runge_kutta_4th, a2, b2, 0, 1, h=h2)
+df2_1 = analyse_step_len(f2, runge_kutta_3rd, a2, b2, 0, 1, h=h2)
+df2_2 = analyse_step_len(f2, runge_kutta_4th, a2, b2, 0, 1, h=h2)
 
 # %%
 df2_1.to_csv(base_dir + "/data/ivp2_runge_kutta_3rd.csv", index=False)

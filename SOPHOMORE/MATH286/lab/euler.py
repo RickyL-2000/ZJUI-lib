@@ -15,7 +15,7 @@ def f2(t, y):
     return y*y*y + t*y*y + t*t*y + t*t*t
 
 # %%
-def analyse(f, method, a, b, t0, y0, h=(0.01, 0.005, 0.001)):
+def analyse_step_len(f, method, a, b, t0, y0, h=(0.01, 0.005, 0.001)):
     """
     The main process to analyse a set of results with different step lengths
     :param f: the f function of the IVP
@@ -210,10 +210,10 @@ if __name__ == '__main__':
 a1 = -3.0
 b1 = 1.0
 h1 = (0.01, 0.005, 0.001)
-df1_1 = analyse(f1, euler_explicit, a1, b1, 0, 1, h=h1)
-df1_2 = analyse(f1, euler_implicit, a1, b1, 0, 1, h=h1)
-df1_3 = analyse(f1, euler_trapezium, a1, b1, 0, 1, h=h1)
-df1_4 = analyse(f1, euler_improved, a1, b1, 0, 1, h=h1)
+df1_1 = analyse_step_len(f1, euler_explicit, a1, b1, 0, 1, h=h1)
+df1_2 = analyse_step_len(f1, euler_implicit, a1, b1, 0, 1, h=h1)
+df1_3 = analyse_step_len(f1, euler_trapezium, a1, b1, 0, 1, h=h1)
+df1_4 = analyse_step_len(f1, euler_improved, a1, b1, 0, 1, h=h1)
 
 # %%
 df1_1.to_csv(base_dir + "/data/ivp1_euler_explicit.csv", index=False)
@@ -226,10 +226,10 @@ df1_4.to_csv(base_dir + "/data/ivp1_euler_improved.csv", index=False)
 a2 = -50.0
 b2 = 1.0
 h2 = (0.01, 0.005, 0.001)
-df2_1 = analyse(f2, euler_explicit, a2, b2, 0, 1, h=h2)
-df2_2 = analyse(f2, euler_implicit, a2, b2, 0, 1, h=h2)
-df2_3 = analyse(f2, euler_trapezium, a2, b2, 0, 1, h=h2)
-df2_4 = analyse(f2, euler_improved, a2, b2, 0, 1, h=h2)
+df2_1 = analyse_step_len(f2, euler_explicit, a2, b2, 0, 1, h=h2)
+df2_2 = analyse_step_len(f2, euler_implicit, a2, b2, 0, 1, h=h2)
+df2_3 = analyse_step_len(f2, euler_trapezium, a2, b2, 0, 1, h=h2)
+df2_4 = analyse_step_len(f2, euler_improved, a2, b2, 0, 1, h=h2)
 
 # %%
 df2_1.to_csv(base_dir + "/data/ivp2_euler_explicit.csv", index=False)
