@@ -37,7 +37,7 @@ def analyse(f, method, a, b, t0, y0, h=(0.01, 0.005, 0.001)):
     return df
 
 # %%
-def euler_explicit(f, a, b, t0, y0, h):
+def euler_explicit(f, a, b, t0, y0, h) -> Tuple[List, List]:
     """
     Explicit Euler Method
     :param f: the f function
@@ -65,7 +65,7 @@ def euler_explicit(f, a, b, t0, y0, h):
 
     ti, yi = t0, y0
     # while ti+h <= b:
-    for _ in range(round((b - ti)/h)):
+    for _ in range(round((b - t0)/h)):
         y_ = yi + h * f(ti, yi)
         t_list.append(ti+h), y_list.append(y_)
         ti, yi = ti+h, y_
@@ -73,7 +73,7 @@ def euler_explicit(f, a, b, t0, y0, h):
     return t_list, y_list
 
 # %%
-def euler_implicit(f, a, b, t0, y0, h, threshold=1e-4, epochs=100):
+def euler_implicit(f, a, b, t0, y0, h, threshold=1e-4, epochs=100) -> Tuple[List, List]:
     """
     Implicit (backward) Euler Method
     :param f: the f function
@@ -109,7 +109,7 @@ def euler_implicit(f, a, b, t0, y0, h, threshold=1e-4, epochs=100):
     t_list.append(t0), y_list.append(y0)
 
     ti, yi = t0, y0
-    for _ in range(round((b - ti) / h)):
+    for _ in range(round((b - t0) / h)):
         y_ = yi + h * f(ti, yi)
         epoch = 0
         while True:
@@ -124,7 +124,7 @@ def euler_implicit(f, a, b, t0, y0, h, threshold=1e-4, epochs=100):
     return t_list, y_list
 
 # %%
-def euler_trapezium(f, a, b, t0, y0, h, threshold=1e-4, epochs=50):
+def euler_trapezium(f, a, b, t0, y0, h, threshold=1e-4, epochs=50) -> Tuple[List, List]:
     """
     Implicit (backward) Euler Method
     :param f: the f function
@@ -160,7 +160,7 @@ def euler_trapezium(f, a, b, t0, y0, h, threshold=1e-4, epochs=50):
     t_list.append(t0), y_list.append(y0)
 
     ti, yi = t0, y0
-    for _ in range(round((b - ti) / h)):
+    for _ in range(round((b - t0) / h)):
         y_ = yi + h * f(ti, yi)
         epoch = 0
         while True:
@@ -175,7 +175,7 @@ def euler_trapezium(f, a, b, t0, y0, h, threshold=1e-4, epochs=50):
     return t_list, y_list
 
 # %%
-def euler_improved(f, a, b, t0, y0, h):
+def euler_improved(f, a, b, t0, y0, h) -> Tuple[List, List]:
     assert a <= t0 <= b
     t_list, y_list = [], []
     ti, yi = t0, y0
@@ -192,7 +192,7 @@ def euler_improved(f, a, b, t0, y0, h):
     t_list.append(t0), y_list.append(y0)
 
     ti, yi = t0, y0
-    for _ in range(round((b - ti)/h)):
+    for _ in range(round((b - t0)/h)):
         y_ = yi + h * f(ti, yi)
         y_ = yi + 0.5 * h * (f(ti, yi) + f(ti+h, y_))
         t_list.append(ti+h), y_list.append(y_)

@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import os
+from typing import List, Tuple
 
 base_dir = os.getcwd() + "/SOPHOMORE/MATH286/lab"
 # base_dir = os.getcwd()
@@ -30,7 +31,7 @@ def analyse(f, method, a, b, t0, y0, h=(0.01, 0.005, 0.001)):
     return df
 
 # %%
-def runge_kutta_3rd(f, a, b, t0, y0, h, alpha=(1/6, 2/3, 1/6), beta=(1/2, 1/2, 1.0, -1.0, 2.0)):
+def runge_kutta_3rd(f, a, b, t0, y0, h, alpha=(1/6, 2/3, 1/6), beta=(1/2, 1/2, 1.0, -1.0, 2.0)) -> Tuple[List, List]:
     """
     3-order-Runge Kutta method
     :param f: the f function
@@ -69,7 +70,7 @@ def runge_kutta_3rd(f, a, b, t0, y0, h, alpha=(1/6, 2/3, 1/6), beta=(1/2, 1/2, 1
     t_list.append(t0), y_list.append(y0)
 
     ti, yi = t0, y0
-    for _ in range(round((b - ti)/h)):
+    for _ in range(round((b - t0)/h)):
         k1 = h * f(ti, yi)
         k2 = h * f(ti + beta[0] * h, yi + beta[1] * k1)
         k3 = h * f(ti + beta[2] * h, yi + beta[3] * k1 + beta[4] * k2)
@@ -81,7 +82,8 @@ def runge_kutta_3rd(f, a, b, t0, y0, h, alpha=(1/6, 2/3, 1/6), beta=(1/2, 1/2, 1
     return t_list, y_list
 
 # %%
-def runge_kutta_4th(f, a, b, t0, y0, h, alpha=(1/6, 1/3, 1/3, 1/6), beta=(1/2, 1/2, 1/2, 0, 1/2, 1, 0, 0, 1)):
+def runge_kutta_4th(f, a, b, t0, y0, h,
+                    alpha=(1/6, 1/3, 1/3, 1/6), beta=(1/2, 1/2, 1/2, 0, 1/2, 1, 0, 0, 1)) -> Tuple[List, List]:
     """
         4-order-Runge Kutta method
         :param f: the f function
@@ -114,7 +116,7 @@ def runge_kutta_4th(f, a, b, t0, y0, h, alpha=(1/6, 1/3, 1/3, 1/6), beta=(1/2, 1
     t_list.append(t0), y_list.append(y0)
 
     ti, yi = t0, y0
-    for _ in range(round((b - ti) / h)):
+    for _ in range(round((b - t0) / h)):
         k1 = h * f(ti, yi)
         k2 = h * f(ti + beta[0] * h, yi + beta[1] * k1)
         k3 = h * f(ti + beta[2] * h, yi + beta[3] * k1 + beta[4] * k2)
