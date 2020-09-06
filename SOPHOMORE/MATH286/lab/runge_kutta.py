@@ -31,7 +31,7 @@ def analyse_step_len(f, method, a, b, t0, y0, h=(0.01, 0.005, 0.001)):
     return df
 
 # %%
-def runge_kutta_3rd(f, a, b, t0, y0, h, alpha=(1/6, 2/3, 1/6), beta=(1/2, 1/2, 1.0, -1.0, 2.0)) -> Tuple[List, List]:
+def runge_kutta_3rd(f, a, b, t0, y0, h, **params) -> Tuple[List, List]:
     """
     3-order-Runge Kutta method
     :param f: the f function
@@ -40,11 +40,22 @@ def runge_kutta_3rd(f, a, b, t0, y0, h, alpha=(1/6, 2/3, 1/6), beta=(1/2, 1/2, 1
     :param t0: initial t
     :param y0: initial y
     :param h: step length
-    :param alpha: the first set of parameters
-    :param beta: the second set of parameters
+    :param params: params to be determined, should contain 'alpha' and 'beta' tuples
+                   default: kwargs['alpha'] = (1/6, 2/3, 1/6)
+                            kwargs['beta'] = (1/2, 1/2, 1.0, -1.0, 2.0)
     :return: list of numerical results of t and y
     """
     assert a <= t0 <= b
+
+    if 'alpha' in params:
+        alpha = params['alpha']
+    else:
+        alpha = (1/6, 2/3, 1/6)
+    if 'beta' in params:
+        beta = params['beta']
+    else:
+        beta = (1/2, 1/2, 1.0, -1.0, 2.0)
+
     assert equal(sum(alpha), 1.0)
     assert equal(beta[0] * alpha[1] + beta[2] * alpha[2], 0.5)
     assert equal(beta[2], beta[3] + beta[4])
@@ -82,8 +93,7 @@ def runge_kutta_3rd(f, a, b, t0, y0, h, alpha=(1/6, 2/3, 1/6), beta=(1/2, 1/2, 1
     return t_list, y_list
 
 # %%
-def runge_kutta_4th(f, a, b, t0, y0, h,
-                    alpha=(1/6, 1/3, 1/3, 1/6), beta=(1/2, 1/2, 1/2, 0, 1/2, 1, 0, 0, 1)) -> Tuple[List, List]:
+def runge_kutta_4th(f, a, b, t0, y0, h, **params) -> Tuple[List, List]:
     """
         4-order-Runge Kutta method
         :param f: the f function
@@ -92,11 +102,22 @@ def runge_kutta_4th(f, a, b, t0, y0, h,
         :param t0: initial t
         :param y0: initial y
         :param h: step length
-        :param alpha: the first set of parameters
-        :param beta: the second set of parameters
+        :param params: params to be determined, should contain 'alpha' and 'beta' tuples
+                       default: kwargs['alpha'] = (1/6, 1/3, 1/3, 1/6)
+                                kwargs['beta'] = (1/2, 1/2, 1/2, 0, 1/2, 1, 0, 0, 1)
         :return: list of numerical results of t and y
     """
     # NOTE: The check of the parameters are too sophisticated so just skip it
+
+    if 'alpha' in params:
+        alpha = params['alpha']
+    else:
+        alpha = (1/6, 1/3, 1/3, 1/6)
+    if 'beta' in params:
+        beta = params['beta']
+    else:
+        beta = (1/2, 1/2, 1/2, 0, 1/2, 1, 0, 0, 1)
+
     t_list, y_list = [], []
     ti, yi = t0, y0
     t_temp, y_temp = [], []
@@ -130,6 +151,15 @@ def runge_kutta_4th(f, a, b, t0, y0, h,
 
 
 # %%
+if __name__ == "__main__":
+    a, b = -3, 1
+    params = {
+        'alpha': (1 / 6, 2 / 3, 1 / 6),
+        'beta': (1 / 2, 1 / 2, 1.0, -1.0, 2.0)
+    }
+    t, y = runge_kutta_3rd(f1, a, b, 0, 1, 0.001, **params)
+
+# %%
 a1 = -3.0
 b1 = 1.0
 h1 = (0.01, 0.005, 0.001)
@@ -150,3 +180,12 @@ df2_2 = analyse_step_len(f2, runge_kutta_4th, a2, b2, 0, 1, h=h2)
 # %%
 df2_1.to_csv(base_dir + "/data/ivp2_runge_kutta_3rd.csv", index=False)
 df2_2.to_csv(base_dir + "/data/ivp2_runge_kutta_4th.csv", index=False)
+
+# %%
+################ 以下试水专用 ##################
+a, b = -3, 1
+params = {
+    'alpha': (1/6, 2/3, 1/6),
+    'beta': (1/2, 1/2, 1.0, -1.0, 2.0)
+}
+t, y = runge_kutta_3rd(f1, a, b, 0, 1, 0.001, **params)

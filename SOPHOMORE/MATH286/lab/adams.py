@@ -2,6 +2,7 @@
 import pandas as pd
 import numpy as np
 import os
+from typing import Tuple, List
 from .euler import *
 from .runge_kutta import *
 
@@ -19,27 +20,27 @@ def analyse(f, method, a, b, t0, y0, h=(0.01, 0.005, 0.001)):
     pass
 
 # %%
-def lin_multistep(f, a, b, t0, y0, h, k=3,
-                  alpha=(1, 0, 0), beta=(0, 23/12, -4/3, 5/12),
-                  pre_method=runge_kutta_4th, threshold=1e-4, epochs=100) -> Tuple[List, List]:
+def lin_multistep(f, a, b, t0, y0, h, **kwargs) -> Tuple[List, List]:
     """
-
+    The general linear multi-step method
     :param f: the f function
     :param a: left bound
     :param b: right bound
     :param t0: initial t
     :param y0: initial y
     :param h: the step length (**can be negative to predict the left part**)
-    :param k: number of steps
-    :param alpha: the first set of params
-    :param beta: the second set of params
-    :param pre_method: the method to predict the points within the k steps
-    :param threshold: the threshold to control the iteration of implicit part
-    :param epochs: the upper bound of the epochs to iter to control the iteration of implicit part
+    :param kwargs: params to be determined
+                    default:
+                    k: number of steps, k=3
+                    alpha: the first set of params, alpha=(1, 0, 0)
+                    beta: the second set of params, beta=(0, 23/12, -4/3, 5/12)
+                    pre_method: the method to predict the points within the k steps, pre_method=runge_kutta_4th
+                    threshold: the threshold to control the iteration of implicit part, threshold=1e-4
+                    epochs: the upper bound of the epochs to iter to control the iteration of implicit part, epochs=100
     :return: list of numerical results of t and y
     """
 
-    def __update(t, y, f, h, k, alpha: Tuple, beta: Tuple, threshold=1e-4, epochs=100) -> float:
+    def __update(t: List, y: List, f, h: float, k: int, alpha: Tuple, beta: Tuple, threshold=1e-4, epochs=100) -> float:
         """
         Choose to whether update the y_{i+1} explicitly or implicitly
         :param t: the current t_i sequence (the t_{i+1} is to be predicted) (can be reversed to predict the left part)
@@ -71,6 +72,35 @@ def lin_multistep(f, a, b, t0, y0, h, k=3,
             return y_
 
     # NOTE: The check of the parameters are too sophisticated so just skip it
+
+    if 'k' in kwargs:
+        k = kwargs['k']
+        assert k > 0
+    else:
+        k = 3
+    if 'alpha' in kwargs:
+        alpha = kwargs['alpha']
+        assert len(alpha) == k
+    else:
+        alpha = (1, 0, 0)
+    if 'beta' in kwargs:
+        beta = kwargs['beta']
+        assert len(beta) == k+1
+    else:
+        beta = (0, 23/12, -4/3, 5/12)
+    if 'pre_method' in kwargs:
+        pre_method = kwargs['pre_method']
+    else:
+        pre_method = runge_kutta_4th
+    if 'threshold' in kwargs:
+        threshold = kwargs['threshold']
+    else:
+        threshold = 1e-4
+    if 'epochs' in kwargs:
+        epochs = kwargs['epochs']
+    else:
+        epochs = 100
+
     assert alpha and beta
     assert len(alpha) == k and len(beta) == k+1
 
@@ -115,25 +145,99 @@ def lin_multistep(f, a, b, t0, y0, h, k=3,
 
 
 # %%
-def adams_bashforth(f, a, b, t0, y0, h, k=4,
-                    alpha=(1, 0, 0, 0), beta=(0, 55/24, -59/24, 37/24, -9/24),
-                    threshold=1e-4, epochs=100):
-    return lin_multistep(f, a, b, t0, y0, h, k, alpha=alpha, beta=beta, threshold=threshold, epochs=epochs)
+def adams_bashforth(f, a, b, t0, y0, h, **kwargs) -> Tuple[List, List]:
+
+    if 'threshold' in kwargs:
+        threshold = kwargs['threshold']
+    else:
+        threshold = 1e-4
+    if 'epochs' in kwargs:
+        epochs = kwargs['epochs']
+    else:
+        epochs = 100
+
+    k = 4
+    alpha = (1, 0, 0, 0)
+    beta = (0, 55 / 24, -59 / 24, 37 / 24, -9 / 24)
+
+    params = {
+        'k': k,
+        'alpha': alpha,
+        'beta': beta,
+        'threshold': threshold,
+        'epochs': epochs,
+    }
+    return lin_multistep(f, a, b, t0, y0, h, **params)
 
 # %%
-def adams_monlton(f, a, b, t0, y0, h, k=3,
-                    alpha=(1, 0, 0), beta=(9/24, 19/24, -5/24, 1/24),
-                    threshold=1e-4, epochs=100):
-    return lin_multistep(f, a, b, t0, y0, h, k, alpha=alpha, beta=beta, threshold=threshold, epochs=epochs)
+def adams_monlton(f, a, b, t0, y0, h, **kwargs) -> Tuple[List, List]:
+
+    if 'threshold' in kwargs:
+        threshold = kwargs['threshold']
+    else:
+        threshold = 1e-4
+    if 'epochs' in kwargs:
+        epochs = kwargs['epochs']
+    else:
+        epochs = 100
+
+    k = 3
+    alpha = (1, 0, 0)
+    beta = (9/24, 19/24, -5/24, 1/24)
+
+    params = {
+        'k': k,
+        'alpha': alpha,
+        'beta': beta,
+        'threshold': threshold,
+        'epochs': epochs,
+    }
+    return lin_multistep(f, a, b, t0, y0, h, **params)
 
 # %%
-def simpson(f, a, b, t0, y0, h, k=3,
-                    alpha=(0, 1, 0), beta=(1/3, 4/3, 1/3, 0),
-                    threshold=1e-4, epochs=100):
-    return lin_multistep(f, a, b, t0, y0, h, k, alpha=alpha, beta=beta, threshold=threshold, epochs=epochs)
+def simpson(f, a, b, t0, y0, h, **kwargs) -> Tuple[List, List]:
+    if 'threshold' in kwargs:
+        threshold = kwargs['threshold']
+    else:
+        threshold = 1e-4
+    if 'epochs' in kwargs:
+        epochs = kwargs['epochs']
+    else:
+        epochs = 100
+
+    k = 3
+    alpha = (0, 1, 0)
+    beta = (1/3, 4/3, 1/3, 0)
+
+    params = {
+        'k': k,
+        'alpha': alpha,
+        'beta': beta,
+        'threshold': threshold,
+        'epochs': epochs,
+    }
+    return lin_multistep(f, a, b, t0, y0, h, **params)
 
 # %%
-def hamming(f, a, b, t0, y0, h, k=3,
-                    alpha=(9/8, 0, -1/8), beta=(3/8, 3/4, -3/8, 0),
-                    threshold=1e-4, epochs=100):
-    return lin_multistep(f, a, b, t0, y0, h, k, alpha=alpha, beta=beta, threshold=threshold, epochs=epochs)
+def hamming(f, a, b, t0, y0, h, **kwargs) -> Tuple[List, List]:
+    if 'threshold' in kwargs:
+        threshold = kwargs['threshold']
+    else:
+        threshold = 1e-4
+    if 'epochs' in kwargs:
+        epochs = kwargs['epochs']
+    else:
+        epochs = 100
+
+    k = 3
+    alpha = (9/8, 0, -1/8)
+    beta = (3/8, 3/4, -3/8, 0)
+
+    params = {
+        'k': k,
+        'alpha': alpha,
+        'beta': beta,
+        'threshold': threshold,
+        'epochs': epochs,
+    }
+    return lin_multistep(f, a, b, t0, y0, h, **params)

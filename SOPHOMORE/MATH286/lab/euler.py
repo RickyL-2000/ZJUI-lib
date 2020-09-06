@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import os
+from typing import List, Tuple
 
 # base_dir = os.getcwd() + "/SOPHOMORE/MATH286/lab"
 base_dir = os.getcwd()
@@ -15,7 +16,7 @@ def f2(t, y):
     return y*y*y + t*y*y + t*t*y + t*t*t
 
 # %%
-def analyse_step_len(f, method, a, b, t0, y0, h=(0.01, 0.005, 0.001)):
+def analyse_step_len(f, method, a, b, t0, y0, *h):
     """
     The main process to analyse a set of results with different step lengths
     :param f: the f function of the IVP
@@ -24,9 +25,13 @@ def analyse_step_len(f, method, a, b, t0, y0, h=(0.01, 0.005, 0.001)):
     :param b: right bound
     :param t0: initial t
     :param y0: initial y
-    :param h: a list of step lengths to be analysed
+    :param h: a list of step lengths to be analysed, h=(0.01, 0.005, 0.001)
     :return: a DataFrame of numerical results
     """
+
+    if not h:
+        h = (0.01, 0.005, 0.001)
+
     df = pd.DataFrame()
     space = h[0]
     df['t'] = np.linspace(a, b, round((b - a) / space) + 1)
@@ -203,6 +208,7 @@ def euler_improved(f, a, b, t0, y0, h) -> Tuple[List, List]:
 # %%
 # pd.set_option('display.max_rows', None)
 if __name__ == '__main__':
+    pd.set_option('display.max_rows', None)
     pass
 
 # %%
@@ -210,10 +216,10 @@ if __name__ == '__main__':
 a1 = -3.0
 b1 = 1.0
 h1 = (0.01, 0.005, 0.001)
-df1_1 = analyse_step_len(f1, euler_explicit, a1, b1, 0, 1, h=h1)
-df1_2 = analyse_step_len(f1, euler_implicit, a1, b1, 0, 1, h=h1)
-df1_3 = analyse_step_len(f1, euler_trapezium, a1, b1, 0, 1, h=h1)
-df1_4 = analyse_step_len(f1, euler_improved, a1, b1, 0, 1, h=h1)
+df1_1 = analyse_step_len(f1, euler_explicit, a1, b1, 0, 1, *h1)
+df1_2 = analyse_step_len(f1, euler_implicit, a1, b1, 0, 1, *h1)
+df1_3 = analyse_step_len(f1, euler_trapezium, a1, b1, 0, 1, *h1)
+df1_4 = analyse_step_len(f1, euler_improved, a1, b1, 0, 1, *h1)
 
 # %%
 df1_1.to_csv(base_dir + "/data/ivp1_euler_explicit.csv", index=False)
@@ -226,13 +232,26 @@ df1_4.to_csv(base_dir + "/data/ivp1_euler_improved.csv", index=False)
 a2 = -50.0
 b2 = 1.0
 h2 = (0.01, 0.005, 0.001)
-df2_1 = analyse_step_len(f2, euler_explicit, a2, b2, 0, 1, h=h2)
-df2_2 = analyse_step_len(f2, euler_implicit, a2, b2, 0, 1, h=h2)
-df2_3 = analyse_step_len(f2, euler_trapezium, a2, b2, 0, 1, h=h2)
-df2_4 = analyse_step_len(f2, euler_improved, a2, b2, 0, 1, h=h2)
+df2_1 = analyse_step_len(f2, euler_explicit, a2, b2, 0, 1, *h2)
+df2_2 = analyse_step_len(f2, euler_implicit, a2, b2, 0, 1, *h2)
+df2_3 = analyse_step_len(f2, euler_trapezium, a2, b2, 0, 1, *h2)
+df2_4 = analyse_step_len(f2, euler_improved, a2, b2, 0, 1, *h2)
 
 # %%
 df2_1.to_csv(base_dir + "/data/ivp2_euler_explicit.csv", index=False)
 df2_2.to_csv(base_dir + "/data/ivp2_euler_implicit.csv", index=False)
 df2_3.to_csv(base_dir + "/data/ivp2_euler_trapezium.csv", index=False)
 df2_4.to_csv(base_dir + "/data/ivp2_euler_improved.csv", index=False)
+
+# %%
+################ 以下为试水专用 ################
+def f3(t, y):
+    return y*y + 0.75*t*t + 0.5
+
+# %%
+a3, b3 = -10, 10
+h3 = (0.01, 0.005, 0.001)
+df3 = analyse_step_len(f3, euler_improved, a3, b3, 0, 1)
+
+# %%
+print(df3)
