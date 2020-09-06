@@ -40,8 +40,8 @@ def runge_kutta_3rd(f, a, b, t0, y0, h, **params) -> Tuple[List, List]:
     :param t0: initial t
     :param y0: initial y
     :param h: step length
-    :param params: params to be determined, should contain 'alpha' and 'beta' tuples
-                   default: kwargs['alpha'] = (1/6, 2/3, 1/6)
+    :param params: params to be determined, should contain 'alpha' and 'beta' tuples.
+                   default: kwargs['alpha'] = (1/6, 2/3, 1/6);
                             kwargs['beta'] = (1/2, 1/2, 1.0, -1.0, 2.0)
     :return: list of numerical results of t and y
     """
@@ -95,17 +95,18 @@ def runge_kutta_3rd(f, a, b, t0, y0, h, **params) -> Tuple[List, List]:
 # %%
 def runge_kutta_4th(f, a, b, t0, y0, h, **params) -> Tuple[List, List]:
     """
-        4-order-Runge Kutta method
-        :param f: the f function
-        :param a: left bound
-        :param b: right bound
-        :param t0: initial t
-        :param y0: initial y
-        :param h: step length
-        :param params: params to be determined, should contain 'alpha' and 'beta' tuples
-                       default: kwargs['alpha'] = (1/6, 1/3, 1/3, 1/6)
-                                kwargs['beta'] = (1/2, 1/2, 1/2, 0, 1/2, 1, 0, 0, 1)
-        :return: list of numerical results of t and y
+    4-order-Runge Kutta method
+
+    :param f: the f function
+    :param a: left bound
+    :param b: right bound
+    :param t0: initial t
+    :param y0: initial y
+    :param h: step length
+    :param params: params to be determined, should contain 'alpha' and 'beta' tuples.
+                   default: kwargs['alpha'] = (1/6, 1/3, 1/3, 1/6);
+                            kwargs['beta'] = (1/2, 1/2, 1/2, 0, 1/2, 1, 0, 0, 1)
+    :return: list of numerical results of t and y
     """
     # NOTE: The check of the parameters are too sophisticated so just skip it
 

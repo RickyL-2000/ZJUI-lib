@@ -23,26 +23,28 @@ def analyse(f, method, a, b, t0, y0, h=(0.01, 0.005, 0.001)):
 def lin_multistep(f, a, b, t0, y0, h, **kwargs) -> Tuple[List, List]:
     """
     The general linear multi-step method
+
     :param f: the f function
     :param a: left bound
     :param b: right bound
     :param t0: initial t
     :param y0: initial y
     :param h: the step length (**can be negative to predict the left part**)
-    :param kwargs: params to be determined
+    :param kwargs: params to be determined.
                     default:
-                    k: number of steps, k=3
-                    alpha: the first set of params, alpha=(1, 0, 0)
-                    beta: the second set of params, beta=(0, 23/12, -4/3, 5/12)
-                    pre_method: the method to predict the points within the k steps, pre_method=runge_kutta_4th
-                    threshold: the threshold to control the iteration of implicit part, threshold=1e-4
-                    epochs: the upper bound of the epochs to iter to control the iteration of implicit part, epochs=100
+                    k: number of steps, k=3;
+                    alpha: the first set of params, alpha=(1, 0, 0);
+                    beta: the second set of params, beta=(0, 23/12, -4/3, 5/12);
+                    pre_method: the method to predict the points within the k steps, pre_method=runge_kutta_4th;
+                    threshold: the threshold to control the iteration of implicit part, threshold=1e-4;
+                    epochs: the upper bound of the epochs to iter to control the iteration of implicit part, epochs=100;
     :return: list of numerical results of t and y
     """
 
     def __update(t: List, y: List, f, h: float, k: int, alpha: Tuple, beta: Tuple, threshold=1e-4, epochs=100) -> float:
         """
         Choose to whether update the y_{i+1} explicitly or implicitly
+
         :param t: the current t_i sequence (the t_{i+1} is to be predicted) (can be reversed to predict the left part)
         :param y: the current y_i sequence (the y_{i+1} is to be predicted) (can be reversed to predict the left part)
         :param h: the step length (**can be negative to predict the left part**)
@@ -137,7 +139,7 @@ def lin_multistep(f, a, b, t0, y0, h, **kwargs) -> Tuple[List, List]:
         y_ = __update(t_list, y_list, f, h, k, alpha, beta, threshold, epochs)  # positive h indicates right
         f_ = f(ti+h, y_)
         t_list.append(ti+h)
-        t_list.append(y_)
+        y_list.append(y_)
         f_list.append(f_)
         ti, yi = ti+h, y_
 

@@ -19,6 +19,7 @@ def f2(t, y):
 def analyse_step_len(f, method, a, b, t0, y0, *h):
     """
     The main process to analyse a set of results with different step lengths
+
     :param f: the f function of the IVP
     :param method: the numerical method
     :param a: left bound
@@ -45,6 +46,7 @@ def analyse_step_len(f, method, a, b, t0, y0, *h):
 def euler_explicit(f, a, b, t0, y0, h) -> Tuple[List, List]:
     """
     Explicit Euler Method
+
     :param f: the f function
     :param a: left bound
     :param b: right bound
@@ -81,6 +83,7 @@ def euler_explicit(f, a, b, t0, y0, h) -> Tuple[List, List]:
 def euler_implicit(f, a, b, t0, y0, h, threshold=1e-4, epochs=100) -> Tuple[List, List]:
     """
     Implicit (backward) Euler Method
+
     :param f: the f function
     :param a: left bound
     :param b: right bound
@@ -132,6 +135,7 @@ def euler_implicit(f, a, b, t0, y0, h, threshold=1e-4, epochs=100) -> Tuple[List
 def euler_trapezium(f, a, b, t0, y0, h, threshold=1e-4, epochs=50) -> Tuple[List, List]:
     """
     Implicit (backward) Euler Method
+
     :param f: the f function
     :param a: left bound
     :param b: right bound
@@ -181,6 +185,9 @@ def euler_trapezium(f, a, b, t0, y0, h, threshold=1e-4, epochs=50) -> Tuple[List
 
 # %%
 def euler_improved(f, a, b, t0, y0, h) -> Tuple[List, List]:
+    """
+    Improved Euler Method
+    """
     assert a <= t0 <= b
     t_list, y_list = [], []
     ti, yi = t0, y0
