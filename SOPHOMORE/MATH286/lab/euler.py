@@ -80,7 +80,7 @@ def euler_explicit(f, a, b, t0, y0, h) -> Tuple[np.ndarray, np.ndarray]:
     return np.array(t_list), np.array(y_list)
 
 # %%
-def euler_implicit(f, a, b, t0, y0, h, threshold=1e-4, epochs=100) -> Tuple[np.ndarray, np.ndarray]:
+def euler_implicit(f, a, b, t0, y0, h, threshold=1e-6, epochs=100) -> Tuple[np.ndarray, np.ndarray]:
     """
     Implicit (backward) Euler Method
 
@@ -132,7 +132,7 @@ def euler_implicit(f, a, b, t0, y0, h, threshold=1e-4, epochs=100) -> Tuple[np.n
     return np.array(t_list), np.array(y_list)
 
 # %%
-def euler_trapezium(f, a, b, t0, y0, h, threshold=1e-4, epochs=50) -> Tuple[np.ndarray, np.ndarray]:
+def euler_trapezium(f, a, b, t0, y0, h, threshold=1e-6, epochs=50) -> Tuple[np.ndarray, np.ndarray]:
     """
     Implicit (backward) Euler Method
 

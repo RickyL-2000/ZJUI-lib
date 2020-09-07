@@ -42,7 +42,7 @@ def lin_multistep(f, a, b, t0, y0, h, **kwargs) -> Tuple[np.ndarray, np.ndarray]
     """
 
     def __update(t_list: List, y_list: List, f_list: List, f, h: float, k: int, alpha: Tuple, beta: Tuple,
-                 threshold=1e-4, epochs=100) -> float:
+                 threshold=1e-6, epochs=100) -> float:
         """
         Choose to whether update the y_{i+1} explicitly or implicitly
 
@@ -98,7 +98,7 @@ def lin_multistep(f, a, b, t0, y0, h, **kwargs) -> Tuple[np.ndarray, np.ndarray]
     if 'threshold' in kwargs:
         threshold = kwargs['threshold']
     else:
-        threshold = 1e-4
+        threshold = 1e-6
     if 'epochs' in kwargs:
         epochs = kwargs['epochs']
     else:
@@ -178,7 +178,7 @@ def adams_monlton(f, a, b, t0, y0, h, **kwargs) -> Tuple[np.ndarray, np.ndarray]
     if 'threshold' in kwargs:
         threshold = kwargs['threshold']
     else:
-        threshold = 1e-4
+        threshold = 1e-10
     if 'epochs' in kwargs:
         epochs = kwargs['epochs']
     else:
