@@ -38,11 +38,17 @@ def analyse_step_len(f, method, a, b, t0, y0, *h, **params):
         h = (0.01, 0.005, 0.001)
 
     df = pd.DataFrame()
-    space = h[0]
+    space = h[-1]
     df['t'] = np.linspace(a, b, round((b - a) / space) + 1)
     for i in range(len(h)):
+        df['y with h=' + str(h[i])] = np.nan
         t, y = method(f, a, b, t0, y0, h[i], **params)
-        df['y with h=' + str(h[i])] = [y[j] for j in range(0, len(y), round(space / h[i]))]
+        # df['y with h=' + str(h[i])] = [y[j] for j in range(0, len(y), round(space / h[i]))]
+        l = [np.nan] * len(df)
+        for j in range(0, len(y)):
+            # df['y with h=' + str(h[i])].loc[round(j * h[i] / space)] = y[j]
+            l[round(j * h[i] / space)] = y[j]
+        df['y with h=' + str(h[i])] = l
 
     return df
 
