@@ -160,33 +160,33 @@ if __name__ == "__main__":
     }
     t, y = runge_kutta_3rd(f1, a, b, 0, 1, 0.001, **params)
 
-# %%
-a1 = -3.0
-b1 = 1.0
-h1 = (0.01, 0.005, 0.001)
-df1_1 = analyse_step_len(f1, runge_kutta_3rd, a1, b1, 0, 1, h=h1)
-df1_2 = analyse_step_len(f1, runge_kutta_4th, a1, b1, 0, 1, h=h1)
+    # %%
+    a1 = -3.0
+    b1 = 1.0
+    h1 = (0.01, 0.005, 0.001)
+    df1_1 = analyse_step_len(f1, runge_kutta_3rd, a1, b1, 0, 1, h=h1)
+    df1_2 = analyse_step_len(f1, runge_kutta_4th, a1, b1, 0, 1, h=h1)
 
-# %%
-df1_1.to_csv(base_dir + "/data/ivp1_runge_kutta_3rd.csv", index=False)
-df1_2.to_csv(base_dir + "/data/ivp1_runge_kutta_4th.csv", index=False)
+    # %%
+    df1_1.to_csv(base_dir + "/data/ivp1_runge_kutta_3rd.csv", index=False)
+    df1_2.to_csv(base_dir + "/data/ivp1_runge_kutta_4th.csv", index=False)
 
-# %%
-a2 = -50.0
-b2 = 1.0
-h2 = (0.01, 0.005, 0.001)
-df2_1 = analyse_step_len(f2, runge_kutta_3rd, a2, b2, 0, 1, h=h2)
-df2_2 = analyse_step_len(f2, runge_kutta_4th, a2, b2, 0, 1, h=h2)
+    # %%
+    a2 = -50.0
+    b2 = 1.0
+    h2 = (0.01, 0.005, 0.001)
+    df2_1 = analyse_step_len(f2, runge_kutta_3rd, a2, b2, 0, 1, h=h2)
+    df2_2 = analyse_step_len(f2, runge_kutta_4th, a2, b2, 0, 1, h=h2)
 
-# %%
-df2_1.to_csv(base_dir + "/data/ivp2_runge_kutta_3rd.csv", index=False)
-df2_2.to_csv(base_dir + "/data/ivp2_runge_kutta_4th.csv", index=False)
+    # %%
+    df2_1.to_csv(base_dir + "/data/ivp2_runge_kutta_3rd.csv", index=False)
+    df2_2.to_csv(base_dir + "/data/ivp2_runge_kutta_4th.csv", index=False)
 
 # %%
 ################ 以下试水专用 ##################
-a, b = -3, 1
-params = {
-    'alpha': (1/6, 2/3, 1/6),
-    'beta': (1/2, 1/2, 1.0, -1.0, 2.0)
-}
-t, y = runge_kutta_3rd(f1, a, b, 0, 1, 0.001, **params)
+# a, b = -3, 1
+# params = {
+#     'alpha': (1/6, 2/3, 1/6),
+#     'beta': (1/2, 1/2, 1.0, -1.0, 2.0)
+# }
+# t, y = runge_kutta_3rd(f1, a, b, 0, 1, 0.001, **params)

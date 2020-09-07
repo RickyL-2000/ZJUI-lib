@@ -218,47 +218,47 @@ if __name__ == '__main__':
     pd.set_option('display.max_rows', None)
     pass
 
-# %%
-# 确定 f1 的区间
-a1 = -3.0
-b1 = 1.0
-h1 = (0.01, 0.005, 0.001)
-df1_1 = analyse_step_len(f1, euler_explicit, a1, b1, 0, 1, *h1)
-df1_2 = analyse_step_len(f1, euler_implicit, a1, b1, 0, 1, *h1)
-df1_3 = analyse_step_len(f1, euler_trapezium, a1, b1, 0, 1, *h1)
-df1_4 = analyse_step_len(f1, euler_improved, a1, b1, 0, 1, *h1)
+    # %%
+    # 确定 f1 的区间
+    a1 = -3.0
+    b1 = 1.0
+    h1 = (0.01, 0.005, 0.001)
+    df1_1 = analyse_step_len(f1, euler_explicit, a1, b1, 0, 1, *h1)
+    df1_2 = analyse_step_len(f1, euler_implicit, a1, b1, 0, 1, *h1)
+    df1_3 = analyse_step_len(f1, euler_trapezium, a1, b1, 0, 1, *h1)
+    df1_4 = analyse_step_len(f1, euler_improved, a1, b1, 0, 1, *h1)
 
-# %%
-df1_1.to_csv(base_dir + "/data/ivp1_euler_explicit.csv", index=False)
-df1_2.to_csv(base_dir + "/data/ivp1_euler_implicit.csv", index=False)
-df1_3.to_csv(base_dir + "/data/ivp1_euler_trapezium.csv", index=False)
-df1_4.to_csv(base_dir + "/data/ivp1_euler_improved.csv", index=False)
+    # %%
+    df1_1.to_csv(base_dir + "/data/ivp1_euler_explicit.csv", index=False)
+    df1_2.to_csv(base_dir + "/data/ivp1_euler_implicit.csv", index=False)
+    df1_3.to_csv(base_dir + "/data/ivp1_euler_trapezium.csv", index=False)
+    df1_4.to_csv(base_dir + "/data/ivp1_euler_improved.csv", index=False)
 
-# %%
-# 确定 f2 的区间
-a2 = -50.0
-b2 = 1.0
-h2 = (0.01, 0.005, 0.001)
-df2_1 = analyse_step_len(f2, euler_explicit, a2, b2, 0, 1, *h2)
-df2_2 = analyse_step_len(f2, euler_implicit, a2, b2, 0, 1, *h2)
-df2_3 = analyse_step_len(f2, euler_trapezium, a2, b2, 0, 1, *h2)
-df2_4 = analyse_step_len(f2, euler_improved, a2, b2, 0, 1, *h2)
+    # %%
+    # 确定 f2 的区间
+    a2 = -50.0
+    b2 = 1.0
+    h2 = (0.01, 0.005, 0.001)
+    df2_1 = analyse_step_len(f2, euler_explicit, a2, b2, 0, 1, *h2)
+    df2_2 = analyse_step_len(f2, euler_implicit, a2, b2, 0, 1, *h2)
+    df2_3 = analyse_step_len(f2, euler_trapezium, a2, b2, 0, 1, *h2)
+    df2_4 = analyse_step_len(f2, euler_improved, a2, b2, 0, 1, *h2)
 
-# %%
-df2_1.to_csv(base_dir + "/data/ivp2_euler_explicit.csv", index=False)
-df2_2.to_csv(base_dir + "/data/ivp2_euler_implicit.csv", index=False)
-df2_3.to_csv(base_dir + "/data/ivp2_euler_trapezium.csv", index=False)
-df2_4.to_csv(base_dir + "/data/ivp2_euler_improved.csv", index=False)
+    # %%
+    df2_1.to_csv(base_dir + "/data/ivp2_euler_explicit.csv", index=False)
+    df2_2.to_csv(base_dir + "/data/ivp2_euler_implicit.csv", index=False)
+    df2_3.to_csv(base_dir + "/data/ivp2_euler_trapezium.csv", index=False)
+    df2_4.to_csv(base_dir + "/data/ivp2_euler_improved.csv", index=False)
 
 # %%
 ################ 以下为试水专用 ################
-def f3(t, y):
-    return y*y + 0.75*t*t + 0.5
-
-# %%
-a3, b3 = -10, 10
-h3 = (0.01, 0.005, 0.001)
-df3 = analyse_step_len(f3, euler_improved, a3, b3, 0, 1)
-
-# %%
-print(df3)
+# def f3(t, y):
+#     return y*y + 0.75*t*t + 0.5
+#
+# # %%
+# a3, b3 = -10, 10
+# h3 = (0.01, 0.005, 0.001)
+# df3 = analyse_step_len(f3, euler_improved, a3, b3, 0, 1)
+#
+# # %%
+# print(df3)
