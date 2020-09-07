@@ -31,7 +31,7 @@ def analyse_step_len(f, method, a, b, t0, y0, h=(0.01, 0.005, 0.001)):
     return df
 
 # %%
-def runge_kutta_3rd(f, a, b, t0, y0, h, **params) -> Tuple[List, List]:
+def runge_kutta_3rd(f, a, b, t0, y0, h, **params) -> Tuple[np.ndarray, np.ndarray]:
     """
     3-order-Runge Kutta method
     :param f: the f function
@@ -90,10 +90,10 @@ def runge_kutta_3rd(f, a, b, t0, y0, h, **params) -> Tuple[List, List]:
         y_list.append(y_)
         ti, yi = ti + h, y_
 
-    return t_list, y_list
+    return np.array(t_list), np.array(y_list)
 
 # %%
-def runge_kutta_4th(f, a, b, t0, y0, h, **params) -> Tuple[List, List]:
+def runge_kutta_4th(f, a, b, t0, y0, h, **params) -> Tuple[np.ndarray, np.ndarray]:
     """
     4-order-Runge Kutta method
 
@@ -148,7 +148,7 @@ def runge_kutta_4th(f, a, b, t0, y0, h, **params) -> Tuple[List, List]:
         y_list.append(y_)
         ti, yi = ti + h, y_
 
-    return t_list, y_list
+    return np.array(t_list), np.array(y_list)
 
 
 # %%

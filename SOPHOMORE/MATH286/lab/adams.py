@@ -20,7 +20,7 @@ def analyse(f, method, a, b, t0, y0, h=(0.01, 0.005, 0.001)):
     pass
 
 # %%
-def lin_multistep(f, a, b, t0, y0, h, **kwargs) -> Tuple[List, List]:
+def lin_multistep(f, a, b, t0, y0, h, **kwargs) -> Tuple[np.ndarray, np.ndarray]:
     """
     The general linear multi-step method
 
@@ -109,6 +109,8 @@ def lin_multistep(f, a, b, t0, y0, h, **kwargs) -> Tuple[List, List]:
 
     ############ left ############
     t_left, y_left = pre_method(f, max(t0 - (k-1) * h, a), t0, t0, y0, h)
+    t_left = t_left.tolist()
+    y_left = y_left.tolist()
     f_left = [f(ti, yi) for ti, yi in zip(t_left, y_left)]
     t_list, y_list, f_list = t_left, y_left, f_left     # with t0 included
 
@@ -142,11 +144,11 @@ def lin_multistep(f, a, b, t0, y0, h, **kwargs) -> Tuple[List, List]:
         f_list.append(f_)
         ti, yi = ti+h, y_
 
-    return t_list, y_list
+    return np.array(t_list), np.array(y_list)
 
 
 # %%
-def adams_bashforth(f, a, b, t0, y0, h, **kwargs) -> Tuple[List, List]:
+def adams_bashforth(f, a, b, t0, y0, h, **kwargs) -> Tuple[np.ndarray, np.ndarray]:
 
     if 'threshold' in kwargs:
         threshold = kwargs['threshold']
@@ -171,7 +173,7 @@ def adams_bashforth(f, a, b, t0, y0, h, **kwargs) -> Tuple[List, List]:
     return lin_multistep(f, a, b, t0, y0, h, **params)
 
 # %%
-def adams_monlton(f, a, b, t0, y0, h, **kwargs) -> Tuple[List, List]:
+def adams_monlton(f, a, b, t0, y0, h, **kwargs) -> Tuple[np.ndarray, np.ndarray]:
 
     if 'threshold' in kwargs:
         threshold = kwargs['threshold']
@@ -196,7 +198,7 @@ def adams_monlton(f, a, b, t0, y0, h, **kwargs) -> Tuple[List, List]:
     return lin_multistep(f, a, b, t0, y0, h, **params)
 
 # %%
-def simpson(f, a, b, t0, y0, h, **kwargs) -> Tuple[List, List]:
+def simpson(f, a, b, t0, y0, h, **kwargs) -> Tuple[np.ndarray, np.ndarray]:
     if 'threshold' in kwargs:
         threshold = kwargs['threshold']
     else:
@@ -220,7 +222,7 @@ def simpson(f, a, b, t0, y0, h, **kwargs) -> Tuple[List, List]:
     return lin_multistep(f, a, b, t0, y0, h, **params)
 
 # %%
-def hamming(f, a, b, t0, y0, h, **kwargs) -> Tuple[List, List]:
+def hamming(f, a, b, t0, y0, h, **kwargs) -> Tuple[np.ndarray, np.ndarray]:
     if 'threshold' in kwargs:
         threshold = kwargs['threshold']
     else:

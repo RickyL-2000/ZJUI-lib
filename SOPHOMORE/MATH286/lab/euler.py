@@ -43,7 +43,7 @@ def analyse_step_len(f, method, a, b, t0, y0, *h):
     return df
 
 # %%
-def euler_explicit(f, a, b, t0, y0, h) -> Tuple[List, List]:
+def euler_explicit(f, a, b, t0, y0, h) -> Tuple[np.ndarray, np.ndarray]:
     """
     Explicit Euler Method
 
@@ -77,10 +77,10 @@ def euler_explicit(f, a, b, t0, y0, h) -> Tuple[List, List]:
         t_list.append(ti+h), y_list.append(y_)
         ti, yi = ti+h, y_
 
-    return t_list, y_list
+    return np.array(t_list), np.array(y_list)
 
 # %%
-def euler_implicit(f, a, b, t0, y0, h, threshold=1e-4, epochs=100) -> Tuple[List, List]:
+def euler_implicit(f, a, b, t0, y0, h, threshold=1e-4, epochs=100) -> Tuple[np.ndarray, np.ndarray]:
     """
     Implicit (backward) Euler Method
 
@@ -129,10 +129,10 @@ def euler_implicit(f, a, b, t0, y0, h, threshold=1e-4, epochs=100) -> Tuple[List
         t_list.append(ti + h), y_list.append(y_)
         ti, yi = ti + h, y_
 
-    return t_list, y_list
+    return np.array(t_list), np.array(y_list)
 
 # %%
-def euler_trapezium(f, a, b, t0, y0, h, threshold=1e-4, epochs=50) -> Tuple[List, List]:
+def euler_trapezium(f, a, b, t0, y0, h, threshold=1e-4, epochs=50) -> Tuple[np.ndarray, np.ndarray]:
     """
     Implicit (backward) Euler Method
 
@@ -181,10 +181,10 @@ def euler_trapezium(f, a, b, t0, y0, h, threshold=1e-4, epochs=50) -> Tuple[List
         t_list.append(ti + h), y_list.append(y_)
         ti, yi = ti + h, y_
 
-    return t_list, y_list
+    return np.array(t_list), np.array(y_list)
 
 # %%
-def euler_improved(f, a, b, t0, y0, h) -> Tuple[List, List]:
+def euler_improved(f, a, b, t0, y0, h) -> Tuple[np.ndarray, np.ndarray]:
     """
     Improved Euler Method
     """
@@ -210,7 +210,7 @@ def euler_improved(f, a, b, t0, y0, h) -> Tuple[List, List]:
         t_list.append(ti+h), y_list.append(y_)
         ti, yi = ti+h, y_
 
-    return t_list, y_list
+    return np.array(t_list), np.array(y_list)
 
 # %%
 # pd.set_option('display.max_rows', None)
