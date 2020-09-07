@@ -4,10 +4,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 from typing import List, Tuple
-from .euler import euler_explicit, euler_implicit, euler_improved, euler_trapezium
-from .runge_kutta import runge_kutta_3rd, runge_kutta_4th
-from .adams import adams_monlton, adams_bashforth, simpson, hamming
+from SOPHOMORE.MATH286.lab.euler import euler_explicit, euler_implicit, euler_improved, euler_trapezium
+from SOPHOMORE.MATH286.lab.runge_kutta import runge_kutta_3rd, runge_kutta_4th
+from SOPHOMORE.MATH286.lab.adams import adams_monlton, adams_bashforth, simpson, hamming
 import time
+from memory_profiler import profile
 
 base_dir = os.getcwd()
 
@@ -59,3 +60,10 @@ def analyse_time(f, method, a, b, t0, y0, h, epochs=10, **params) -> float:
         t, y = method(f, a, b, t0, y0, h, **params)
     t_end = time.time() * 1000
     return (t_end - t_start) / epochs
+
+# %%
+@profile(precision=6)
+def analyse_memory(f, method, a, b, t0, y0, h, **params):
+    t, y = method(f, a, b, t0, y0, h, **params)
+
+
