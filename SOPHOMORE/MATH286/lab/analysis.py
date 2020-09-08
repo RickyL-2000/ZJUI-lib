@@ -58,7 +58,7 @@ def analyse_time(f, method, a, b, t0, y0, h, epochs=10, **params) -> float:
     :param method: the method to calc the time
     :param epochs: how many iterations
     :param params: the params for 'method'
-    :return: the average time computing the method
+    :return: the average time computing the method (in microseconds)
     """
     assert epochs > 0
     t_start = time.time() * 1000
