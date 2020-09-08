@@ -81,60 +81,24 @@ for i in range(2, 3):
 # %%
 """ 2.1 errors of different methods compare with each other """
 # %%
-h_hat = 0.001
-h = 0.0001
+h_hat = 0.001   # the step length of the ground truth
+h1 = 0.01
+h2 = 0.01
 a1, b1 = -2.0, 0.81
-a2, b2 = -14.0, 0.42
+# a2, b2 = -14.0, 0.42
+a2, b2 = -5.0, 0.42
 
-t_1_1, y_1_1 = euler_explicit(f1, a1, b1, 0, 1, h)
-t_1_1 = np.array([t_1_1[i] for i in range(0, len(t_1_1), round(h_hat / h))])
-y_1_1 = np.array([y_1_1[i] for i in range(0, len(y_1_1), round(h_hat / h))])
-t_1_2, y_1_2 = euler_implicit(f1, a1, b1, 0, 1, h)
-t_1_2 = np.array([t_1_2[i] for i in range(0, len(t_1_2), round(h_hat / h))])
-y_1_2 = np.array([y_1_2[i] for i in range(0, len(y_1_2), round(h_hat / h))])
-t_1_3, y_1_3 = euler_trapezium(f1, a1, b1, 0, 1, h)
-t_1_3 = np.array([t_1_3[i] for i in range(0, len(t_1_3), round(h_hat / h))])
-y_1_3 = np.array([y_1_3[i] for i in range(0, len(y_1_3), round(h_hat / h))])
-t_1_4, y_1_4 = euler_improved(f1, a1, b1, 0, 1, h)
-t_1_4 = np.array([t_1_4[i] for i in range(0, len(t_1_4), round(h_hat / h))])
-y_1_4 = np.array([y_1_4[i] for i in range(0, len(y_1_4), round(h_hat / h))])
-t_1_5, y_1_5 = runge_kutta_3rd(f1, a1, b1, 0, 1, h)
-t_1_5 = np.array([t_1_5[i] for i in range(0, len(t_1_5), round(h_hat / h))])
-y_1_5 = np.array([y_1_5[i] for i in range(0, len(y_1_5), round(h_hat / h))])
-t_1_6, y_1_6 = runge_kutta_4th(f1, a1, b1, 0, 1, h)
-t_1_6 = np.array([t_1_6[i] for i in range(0, len(t_1_6), round(h_hat / h))])
-y_1_6 = np.array([y_1_6[i] for i in range(0, len(y_1_6), round(h_hat / h))])
-t_1_7, y_1_7 = adams_monlton(f1, a1, b1, 0, 1, h)
-t_1_7 = np.array([t_1_7[i] for i in range(0, len(t_1_7), round(h_hat / h))])
-y_1_7 = np.array([y_1_7[i] for i in range(0, len(y_1_7), round(h_hat / h))])
-t_1_8, y_1_8 = adams_bashforth(f1, a1, b1, 0, 1, h)
-t_1_8 = np.array([t_1_8[i] for i in range(0, len(t_1_8), round(h_hat / h))])
-y_1_8 = np.array([y_1_8[i] for i in range(0, len(y_1_8), round(h_hat / h))])
+t_1_list = []
+y_1_list = []
+e_1_list = []
 
-t_2_1, y_2_1 = euler_explicit(f2, a2, b2, 0, 1, h)
-t_2_1 = np.array([t_2_1[i] for i in range(0, len(t_2_1), round(h_hat / h))])
-y_2_1 = np.array([y_2_1[i] for i in range(0, len(y_2_1), round(h_hat / h))])
-t_2_2, y_2_2 = euler_implicit(f2, a2, b2, 0, 1, h)
-t_2_2 = np.array([t_2_2[i] for i in range(0, len(t_2_2), round(h_hat / h))])
-y_2_2 = np.array([y_2_2[i] for i in range(0, len(y_2_2), round(h_hat / h))])
-t_2_3, y_2_3 = euler_trapezium(f2, a2, b2, 0, 1, h)
-t_2_3 = np.array([t_2_3[i] for i in range(0, len(t_2_3), round(h_hat / h))])
-y_2_3 = np.array([y_2_3[i] for i in range(0, len(y_2_3), round(h_hat / h))])
-t_2_4, y_2_4 = euler_improved(f2, a2, b2, 0, 1, h)
-t_2_4 = np.array([t_2_4[i] for i in range(0, len(t_2_4), round(h_hat / h))])
-y_2_4 = np.array([y_2_4[i] for i in range(0, len(y_2_4), round(h_hat / h))])
-t_2_5, y_2_5 = runge_kutta_3rd(f2, a2, b2, 0, 1, h)
-t_2_5 = np.array([t_2_5[i] for i in range(0, len(t_2_5), round(h_hat / h))])
-y_2_5 = np.array([y_2_5[i] for i in range(0, len(y_2_5), round(h_hat / h))])
-t_2_6, y_2_6 = runge_kutta_4th(f2, a2, b2, 0, 1, h)
-t_2_6 = np.array([t_2_6[i] for i in range(0, len(t_2_6), round(h_hat / h))])
-y_2_6 = np.array([y_2_6[i] for i in range(0, len(y_2_6), round(h_hat / h))])
-t_2_7, y_2_7 = adams_monlton(f2, a2, b2, 0, 1, h)
-t_2_7 = np.array([t_2_7[i] for i in range(0, len(t_2_7), round(h_hat / h))])
-y_2_7 = np.array([y_2_7[i] for i in range(0, len(y_2_7), round(h_hat / h))])
-t_2_8, y_2_8 = adams_bashforth(f2, a2, b2, 0, 1, h)
-t_2_8 = np.array([t_2_8[i] for i in range(0, len(t_2_8), round(h_hat / h))])
-y_2_8 = np.array([y_2_8[i] for i in range(0, len(y_2_8), round(h_hat / h))])
+t_2_list = []
+y_2_list = []
+e_2_list = []
+
+methods = [euler_explicit, euler_implicit, euler_trapezium, euler_improved,
+           runge_kutta_3rd, runge_kutta_4th,
+           adams_monlton, adams_bashforth]
 
 # %%
 df1 = df1_truth[(df1_truth['Var1'] >= a1) & (df1_truth['Var1'] <= b1)]
@@ -143,54 +107,74 @@ t1, y1 = df1['Var1'].values, df1['Var2'].values
 t2, y2 = df2['Var1'].values, df2['Var2'].values
 
 # %%
-e_1_1 = np.power((abs(y_1_1 - y1)), 1/3)
-e_1_2 = np.power((abs(y_1_2 - y1)), 1/3)
-e_1_3 = np.power((abs(y_1_3 - y1)), 1/3)
-e_1_4 = np.power((abs(y_1_4 - y1)), 1/3)
-e_1_5 = np.power((abs(y_1_5 - y1)), 1/3)
-e_1_6 = np.power((abs(y_1_6 - y1)), 1/3)
-e_1_7 = np.power((abs(y_1_7 - y1)), 1/3)
-e_1_8 = np.power((abs(y_1_8 - y1)), 1/3)
+# ivp1
+for i, method in enumerate(methods):
+    if h1 <= h_hat:
+        t_list, y_list = method(f1, a1, b1, 0, 1, h1)
+        t_list = np.array([t_list[j] for j in range(0, len(t_list), round(h_hat / h1))])
+        y_list = np.array([y_list[j] for j in range(0, len(y_list), round(h_hat / h1))])
+        t_1_list.append(t_list)
+        y_1_list.append(y_list)
 
-e_2_1 = np.power(signal.medfilt(abs(y_2_1 - y2), 101), 1/3)
-e_2_2 = np.power(signal.medfilt(abs(y_2_2 - y2), 101), 1/3)
-e_2_3 = np.power(signal.medfilt(abs(y_2_3 - y2), 101), 1/3)
-e_2_4 = np.power(signal.medfilt(abs(y_2_4 - y2), 101), 1/3)
-e_2_5 = np.power(signal.medfilt(abs(y_2_5 - y2), 101), 1/3)
-e_2_6 = np.power(signal.medfilt(abs(y_2_6 - y2), 101), 1/3)
-e_2_7 = np.power(signal.medfilt(abs(y_2_7 - y2), 101), 1/3)
-e_2_8 = np.power(signal.medfilt(abs(y_2_8 - y2), 101), 1/3)
+        e_list = np.power(abs(y_list - y1), 1 / 3)
+        e_1_list.append(e_list)
+    else:
+        t_list, y_list = method(f1, a1, b1, 0, 1, h1)
+        t_1_list.append(t_list)
+        y_1_list.append(y_list)
+
+        y1_tmp = np.array([y1[j] for j in range(0, len(y1), round(h1 / h_hat))])
+        e_list = np.power(abs(y_list - y1_tmp), 1 / 3)
+        e_1_list.append(e_list)
 
 # %%
-plt.title("Processed Error = (y_hat - y)^(1/3) with h = 0.0001")
-# plt.plot(t_1_1, e_1_1, 'b', label='euler_explicit')
-## plt.plot(t_1_2, e_1_2, 'g', label='euler_implicit')
-## plt.plot(t_1_3, e_1_3, 'y', label='euler_trapezium')
-plt.plot(t_1_4, e_1_4, 'c', label='euler_improved')
-## plt.plot(t_1_5, e_1_5, 'w', label='runge_kutta_3rd')
-plt.plot(t_1_6, e_1_6, 'r', label='runge_kutta_4th')
-plt.plot(t_1_7, e_1_7, 'k', label='adams_monlton')
-# plt.plot(t_1_8, e_1_8, 'm', label='adams_bashforth')
+# ivp2
+for i, method in enumerate(methods):
+    if h2 <= h_hat:
+        t_list, y_list = method(f2, a2, b2, 0, 1, h2)
+        t_list = np.array([t_list[j] for j in range(0, len(t_list), round(h_hat / h2))])
+        y_list = np.array([y_list[j] for j in range(0, len(y_list), round(h_hat / h2))])
+        t_2_list.append(t_list)
+        y_2_list.append(y_list)
+
+        e_list = np.power(signal.medfilt(abs(y_2_list[i] - y2), 101), 1 / 4)
+        e_2_list.append(e_list)
+    else:
+        t_list, y_list = method(f2, a2, b2, 0, 1, h2)
+        t_2_list.append(t_list)
+        y_2_list.append(y_list)
+
+        y2_tmp = np.array([y2[j] for j in range(0, len(y2), round(h2 / h_hat))])
+        e_list = np.power(abs(y_list - y2_tmp), 1 / 4)
+        e_2_list.append(e_list)
+
+# %%
+# IVP1
+plt.title("IVP1 Processed Error = (y_hat - y)^(1/3) with h = {}".format(h1))
+plt.plot(t_1_list[0], e_1_list[0], 'b', label='euler_explicit')
+## plt.plot(t_1_list[1], e_1_list[1], 'g', label='euler_implicit')
+## plt.plot(t_1_list[2], e_1_list[2], 'y', label='euler_trapezium')
+plt.plot(t_1_list[3], e_1_list[3], 'c', label='euler_improved')
+## plt.plot(t_1_list[4], e_1_list[4], 'w', label='runge_kutta_3rd')
+plt.plot(t_1_list[5], e_1_list[5], 'r', label='runge_kutta_4th')
+plt.plot(t_1_list[6], e_1_list[6], 'k', label='adams_monlton')
+plt.plot(t_1_list[7], e_1_list[7], 'm', label='adams_bashforth')
 plt.legend()
 plt.show()
 
 # NOTE: the graphs of rk4 and adams_bf are approximately overlapped
 
 # %%
-plt.plot(t_1_6, e_1_6, 'r', label='runge_kutta_4th')
-plt.legend()
-plt.show()
-
-# %%
-plt.title("Processed Error = (y_hat - y)^(1/3) with h = 0.0001")
-# plt.plot(t_2_1, e_2_1, 'b', label='euler_explicit')
-## plt.plot(t_2_2, e_2_2, 'g', label='euler_implicit')
-## plt.plot(t_2_3, e_2_3, 'y', label='euler_trapezium')
-plt.plot(t_2_4, e_2_4, 'c', label='euler_improved')
-## plt.plot(t_2_5, e_2_5, 'w', label='runge_kutta_3rd')
-plt.plot(t_2_6, e_2_6, 'r', label='runge_kutta_4th')
-plt.plot(t_2_7, e_2_7, 'k', label='adams_monlton')
-# plt.plot(t_2_8, e_2_8, 'm', label='adams_bashforth')
+# IVP2
+plt.title("IVP2 Processed Error = (y_hat - y)^(1/4) with h = {}".format(h2))
+plt.plot(t_2_list[0], e_2_list[0], 'b', label='euler_explicit')
+## plt.plot(t_2_list[1], e_2_list[1], 'g', label='euler_implicit')
+## plt.plot(t_2_list[2], e_2_list[2], 'y', label='euler_trapezium')
+plt.plot(t_2_list[3], e_2_list[3], 'c', label='euler_improved')
+## plt.plot(t_2_list[4], e_2_list[4], 'w', label='runge_kutta_3rd')
+plt.plot(t_2_list[5], e_2_list[5], 'r', label='runge_kutta_4th')
+plt.plot(t_2_list[6], e_2_list[6], 'k', label='adams_monlton')
+plt.plot(t_2_list[7], e_2_list[7], 'm', label='adams_bashforth')
 plt.legend()
 plt.show()
 
@@ -231,3 +215,20 @@ for i, method in enumerate(methods):
     df_time_2[columns[i+1]] = tm_list
 
 df_time_2.to_csv(base_dir + '/data/time_analysis/ivp2_time_analysis.csv', index=False, float_format="%.8f")
+
+
+# %%
+""" try try water """
+fig = plt.figure()
+ax = plt.axes(projection='3d')
+plt.title("z = y^3 + t*y^2 + t^2*y + t^3")
+ax.set_xlabel('t')
+ax.set_ylabel('y')
+
+tt = np.arange(-20, 20, 0.1)
+yy = np.arange(-20, 20, 0.1)
+T, Y = np.meshgrid(tt, yy)
+Z = Y*Y*Y + T*Y*Y + T*T*Y + T*T*T
+
+ax.plot_surface(T, Y, Z, cmap='rainbow')
+plt.show()
