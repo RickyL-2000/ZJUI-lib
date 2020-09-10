@@ -22,12 +22,12 @@
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 \usepackage[numbers,sort&compress]{natbib} 
 \usepackage{float}	% used for fix the location of tables and graphics
-% \usepakage{subfig}  % mult pitc in the same line
+\usepackage{subfigure}  % multi-pictures in the same line
 \newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}
 \newcommand{\topcaption}{%
 	\setlength{\abovecaptionskip}{0pt}%
 	\setlength{\belowcaptionskip}{10pt}%
-	\caption}   % 表格上标题修改
+	\caption}
 
 %_____________________________________________
 
@@ -70,7 +70,7 @@
 	The Trapezium Euler’s Method approximate the original curve with a tangent line of slope ${1/over2}(f(t_n )+f(t_(n+1)))$. The formula is in the form:
 	
 	\begin{equation}\label{eq.1}
-		y_{n+1} = y_n + {h \over 2}(f(t_n )+f(t_(n+1))), \enspace n = 0,1,2,...
+		y_{n+1} = y_n + {h\over2}(f(t_n )+f(t_(n+1))), \enspace n = 0,1,2,...
 	\end{equation}
 	
 	The Improved Euler’s Method combines the Forward Euler’s Method and the Trapezium Euler Method. The formula is in the form:
@@ -166,7 +166,7 @@
 	
 	% 	%_____________________________________________
 	
-	\section{Numerical Solution}
+	\section{Methods}
 	
 	\subsection{Problem 1}
 	
@@ -177,6 +177,8 @@
 	\end{equation}
 	
 	\subsubsection{Domain}
+	
+	First we need to state the ODE113() in MATLAB with a stepsize h=0.0001 as the accurate solution when comparing the error of each method.
 	
 	To acquire a maximal solution of this problem, an relatively accurate domain should be computed. The estimation of the boundaries can be done both in analytical and numerical way. A pure analytical way can be Taylor Series, which yet is not the point of this report.
 	
@@ -227,7 +229,7 @@
 				0.01                           & -\infty               & \infty           \\
 				0.005                          & -\infty               & \infty           \\
 				0.001                          & -\infty               & \infty           \\
-				0.0005                         & -1657.12353516        & 1177.6400201     \\
+				0.0005                         & -1657.12353516        & 1177.64002010    \\
 				0.0002                         & -1523.43140641        & 1142.81318658     \\
 				0.0001                         & -1518.10313846         & 1141.29183391   \\ \bottomrule
 			\end{tabular}%
@@ -236,14 +238,14 @@
 		\label{tab:adams-monlton-domain-1}
 	\end{table}
 	
-	It's obvious that $t$ and $y$ have the same sign, plus the monotonicity and $|y| > |t|$ near the border, we can have such relationship: $y^2 < y^2 + ty + t^2 < 3y^2$. Therefore we obtain two solvable ODEs $y' = f_1(t, y) = y^2$ and $y' = f_2(t, y) = 3y^2$ to locate the border accurately. By solving these two ODEs we obtain:
+	It's obvious that $t$ and $y$ have the same sign, plus the monotonicity and $|y| > |t|$ near the boundary, we can have such relationship: $y^2 < y^2 + ty + t^2 < 3y^2$. Therefore we obtain two solvable ODEs $y' = f_1(t, y) = y^2$ and $y' = f_2(t, y) = 3y^2$ to locate the boundary accurately. By solving these two ODEs we obtain:
 	
 	\begin{align}
 		\Phi_1(t) &= -\frac{1}{t + C_1} \\
 		\Phi_2(t) &= -\frac{1}{3t + C_2}
 	\end{align}
 	
-	For the left boundary, we substitude the initial problem with $y(-2.120) = -1518.10313846$ from the results of \autoref{tab:adams-monlton-domain} and obtain $C_1 = 2.12065871$ and $C_2 = 6.36065871$, which turns out that the left bound should be restricted between $-2.12065871$ and $-2.12021957$, i.e., $-2.12065871 < a_1 < -2.12021957$.
+	For the left boundary, we substitude the initial problem with $y(-2.120) = -1518.10313846$ from the results of \autoref{tab:adams-monlton-domain-1} and obtain $C_1 = 2.12065871$ and $C_2 = 6.36065871$, which turns out that the left bound should be restricted between $-2.12065871$ and $-2.12021957$, i.e., $-2.12065871 < a_1 < -2.12021957$.
 	
 	For the right boundary, similarly, we take the initial problem as $y(0.858) = 1141.29183391$ and obtain $C_1 = -0.85887620$ and $C_2 = -2.57487620$, which turns out that the right boundary should locate between $0.85829206$ and $0.85887620$, i.e., $0.85829206 < b_1 < 0.85887620$. 
 	
@@ -262,7 +264,7 @@
 	%______________________________________________
 	
 	%% TODO: The beginning of error analysis?
-	!!!!!!NOTE: Now the domain part is over, should start the error(?) part. \\
+	When t is a point not close to the vertical asymptote, at h=0.0001, all methods have very small error. (see Appendix) When the value of t is near vertical asymptote, for all methods, even at small h, their error is much larger. Therefore, it is hard to compare which methods have smaller error just looking through percentage errors near vertical asymptote. \\
 	
 	We can estimate that there might be two vertical asymptotes, $a_1$, $b_1$. Since the slope of the vector tends to be infinity near $t=-2$ and $t=1$, so we can have a try: let $a_1$ very close to -2 and $b_1$ very close to 1 to find accurate vertical asymptotes.
 	
@@ -293,14 +295,6 @@
 	
 	When $h=0.01$, vertical asymptotes are not stable. As $h$ is decreasing, $a_1$, $b_1$ gradually reach to a stable value. When $h=0.0001$, the value of $a_1$, $b_1$ calculated by these four methods is absolutely close. Digitally, we can solve that $a_1=-2.1212$, $b_1=0.8594$.
 	
-	To be more vivid, we can basically draw $y=f(t)$ as \autoref{fig:ivp1_sol}.
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=8cm]{img/ivp1_sol.png}
-		\caption{\label{fig:ivp1_sol} The Solution of Problem 1}
-	\end{figure}
-	
 	%_____________________________________________
 	
 	\subsubsection{The Runge-Kutta Method}
@@ -313,7 +307,7 @@
 			\begin{tabular}{@{}ccccc@{}}
 				\toprule
 				& \multicolumn{2}{c}{\textbf{RK 3rd}} & \multicolumn{2}{c}{\textbf{RK 4th}} \\ \midrule
-				\textbf{h} & \textbf{a1}      & \textbf{b1}      & \textbf{a2}      & \textbf{b2}      \\
+				\textbf{h} & \textbf{a1}      & \textbf{b1}      & \textbf{a1}      & \textbf{b1}      \\
 				0.01       & -2.15            & 0.89             & -2.14            & 0.88             \\
 				0.005      & -2.135           & 0.875            & -2.13            & 0.87             \\
 				0.001      & -2.124           & 0.862            & -2.123           & 0.861            \\
@@ -338,7 +332,7 @@
 			\begin{tabular}{@{}ccccc@{}}
 				\toprule
 				& \multicolumn{2}{c}{\textbf{Adams-Bashforth}} & \multicolumn{2}{c}{\textbf{Adams-Monlton}} \\ \midrule
-				\textbf{h} & \textbf{a1}           & \textbf{b1}          & \textbf{a2}          & \textbf{b2}         \\
+				\textbf{h} & \textbf{a1}           & \textbf{b1}          & \textbf{a1}          & \textbf{b1}         \\
 				\hline
 				0.01       & -2.21                 & 0.95                 & -2.12                & 0.85                \\
 				0.005      & -2.17                 & 0.905                & -2.1201              & 0.855               \\
@@ -353,20 +347,30 @@
 	\end{table}
 	
 	%_____________________________________________
+	\subsubsection{Solution}
+	
+	Combining the solution graphs using different methods, the solution graph is as \autoref{fig:ivp1_sol}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=8cm]{img/ivp1_sol.png}
+		\caption{\label{fig:ivp1_sol} The Solution of Problem 1}
+	\end{figure}
+	
+	
+	
 	
 	%_____________________________________________
 	
 	\subsection{Problem 2}
-	
-	% FIXME
-	% For problem 2, we define the accurate solution as the result computed by ode113( ) function in MATLAB with step $h = 0.001$ for further comparison. The value t is considered as stable location when the change of t value is less than 0.001 by one order step h reduction. When the change of y value is less than 0.0001 by one order step h reduction, we regard the solution as stable.
-	% $y' = y^3 + ty^2 + yt^3 + t^3$
 	
 	For problem 2, we are supposed to compute the solution of such a first-order nonlinear ODE: 
 	
 	\begin{equation} \label{eq:ode2}
 		y' = y^3 + ty^2 + t^2y + t^3 \tag{ODE2}
 	\end{equation}
+	
+	% $y' = y^3 + ty^2 + yt^3 + t^3$
 	
 	\subsubsection{Domain}
 	
@@ -380,7 +384,7 @@
 	
 	\begin{table}[H]
 		\centering
-		\resizebox{350}{!}{%
+		\resizebox{350pt}{!}{%
 			\begin{tabular}{@{}llllllllll@{}}
 				\toprule
 				\multicolumn{1}{c}{\textbf{t}} & \multicolumn{1}{c}{-50}     & \multicolumn{1}{c}{-45}        & \multicolumn{1}{c}{-40}        & \multicolumn{1}{c}{-35}        & \multicolumn{1}{c}{-30}         & \multicolumn{1}{c}{-25}         \\
@@ -393,7 +397,9 @@
 		\label{tab:IVP2_y}
 	\end{table}
 	
-	This qualitative tendency is proved as follows. Although \autoref{eq:ode2} is not an autonomous system, a "phase space" with $t$ as a parameter can still be constructed, as shown in the left-hand side in \autoref{fig:ivp2_phase}. The graph illustrates that the graph of $y' = f(y)$ has only one zero-crossing at $(-t, 0)$, and points near the line $y \equiv -t$ tend to go away from it (the blue arrows show the tendency), meaning this line is asymptotically unstable. In other words, if we go from $t = 0$ to $t = -\infty$, the sign of the derivative $y' = \frac{dy}{dt}$ should change, i.e. the graph becomes the right-hand side of \autoref{fig:ivp2_phase}, and the line $y \equiv -t$ now becomes an "asymptote".
+	This qualitative tendency is proved as follows. Although \autoref{eq:ode2} is not an autonomous system, a "phase space" with $t$ as a parameter can still be constructed, as shown in the left-hand side in \autoref{fig:ivp2_phase}. The graph illustrates that the graph of $y' = f(y)$ has only one zero-crossing at $(-t, 0)$, and points near the line $y \equiv -t$ tend to go away from it (the blue arrows show the tendency), meaning this line is asymptotically unstable. In other words, if we go from $t = 0$ to $t = -\infty$, the sign of the derivative $y' = \frac{dy}{dt}$ should change, i.e. the graph becomes the right-hand side of \autoref{fig:ivp2_phase}, and the line $y \equiv -t$ now becomes an "asymptote". \\
+	
+	In addition, the solution $\Phi(t)$ with $t \rightarrow -\infty$ will approach to this "asymbptote" from below, i.e., $\Phi(t) < -t$ with $t < \alpha$, where $\alpha$ is the point where the solution curve coincide with the line $y \equiv -t$. It is because $f_2(t, y)$ can be factorized as $y' = (y + t)(y^2 + t^2)$, making it obvious that the derivative of $\Phi(t)$ is negative if $\Phi(t) < -t$, positive if $\Phi(t) > -t$ and zero if $\Phi(t) = -t$. Therefore, the solution curve with $t < \alpha$ is restricted below the line $y \equiv -t$ because $\Phi(t)' < 0$. $t = \alpha$ is a turning point with $\Phi(\alpha)' = 0$ where the curve rises above $y \equiv -t$ since it should go through the initial condition $y(0) = 1$.
 	
 	\begin{figure}[H]
 		\subfigure 
@@ -417,20 +423,22 @@
 	
 	Thus, the ODE does not have vertical asymptote on the left side. \\
 	
-	For the right vertical asymptote, we use four Euler methods to estimate. The $t$ value where $y$ values first return inf from computation is considered as the approximate location of the vertical asymptote under that condition. Same as problem 1, a table can be constructed as \autoref{tab:IVP2_yinf}.
+	For the right vertical asymptote, we use four Euler methods to estimate. The value t is considered as stable location when the change of t value is less than 0.001 by one order step h reduction. The $t$ value where $y$ values first return inf from computation is considered as the approximate location of the vertical asymptote under that condition. Same as problem 1, a table can be constructed as \autoref{tab:IVP2_yinf}.
 	
 	\begin{table}[H]
 		\centering
 		\resizebox{400}{!}{%
 			\begin{tabular}{@{}llllllllll@{}}
 				\toprule
-				\textbf{}           & \textbf{Euler\_explicit} & \textbf{Euler\_implicit} & \textbf{Euler\_improved} & \textbf{Euler\_trapezium} \\ \midrule
+				\textbf{}           & \textbf{Euler\_explicit} & \textbf{Euler\_implicit} & \textbf{Euler\_improved} & \textbf{Euler\_trapezium} \\ 
+				\hline
 				\textbf{h = 0.01}   & 0.5                      & 0.4                      & 0.48                     & 0.43           \\
 				\textbf{h = 0.005}  & 0.495                    & 0.42                     & 0.46                     & 0.435          \\
 				\textbf{h = 0.001}  & 0.452                    & 0.436                    & 0.444                    & 0.44           \\ 
 				\textbf{h = 0.0005} & 0.446                    & 0.438                    & 0.442                    & 0.4405          \\
 				\textbf{h = 0.0002} & 0.4426                   & 0.4392                   & 0.4408                   & 0.4402         \\
-				\textbf{h = 0.0001} & 0.4413                   & 0.4396                   & 0.4403                   & 0.4401   \\  \bottomrule                                       
+				\textbf{h = 0.0001} & 0.4413                   & 0.4396                   & 0.4403                   & 0.4401   \\  
+				\bottomrule                                       
 			\end{tabular}%
 		}
 		\caption{Using Four Euler Methods to Compute the Nearest Value t Where y is INF }
@@ -444,15 +452,17 @@
 		\resizebox{300pt}{!}{%
 			\begin{tabular}{@{}lllllll@{}}
 				\toprule
-				h          & \textbf{0.01} & \textbf{0.005} & 0.001       & 0.0005      & 0.0002      & 0.0001     \\ \midrule
-				\textbf{y} & \infty  & \infty   & 25.62721138 & 23.60040387 & 23.43528374 & 23.4279037 \\ \bottomrule
+				\textbf{h}          & 0.01 & 0.005 & 0.001       & 0.0005      & 0.0002      & 0.0001     \\ 
+				\hline
+				\textbf{y} & \infty  & \infty   & 25.62721138 & 23.60040387 & 23.43528374 & 23.4279037 \\ 
+				\bottomrule
 			\end{tabular}%
 		}
 		\caption{y of the results of the Adams-Monlton method when t = 0.439}
 		\label{tab:adams-monlton-domain-2}
 	\end{table}
 	
-	However, analytical approaches similar to problem 1 can still be adopted to acquire more accuracy. To illustrate the details and relationship between $t$ and $y$ we use the Adams-Monlton method at $t = 0.439$ again. Obviously, near the right border $t$ and $y$ are both positive and $y > t$, therefore, we can obtain such an relationship: $y^3 < y^3 + ty^2 +t^2y +t^3 < 4y^3$, which consists of two solvable ODEs $y' = f_1(t, y) = y^2$ and $y' = f_2(t, y) = 4y^3$. By solving them we obtain:
+	However, analytical approaches similar to problem 1 can still be adopted to acquire more accuracy. To illustrate the details and relationship between $t$ and $y$ we use the Adams-Monlton method at $t = 0.439$ again. Obviously, near the right border $t$ and $y$ are both positive and $y > t$, therefore, we can obtain such an relationship: $y^3 < y^3 + ty^2 +t^2y +t^3 < 4y^3$, which consists of two solvable ODEs $y' = f_1(t, y) = y^3$ and $y' = f_2(t, y) = 4y^3$. By solving them we obtain:
 	
 	\begin{align}
 		\Phi_1(t) &= \frac{1}{\sqrt{2}\sqrt{C_1 - t}} \\
@@ -474,8 +484,9 @@
 	
 	%_____________________________________________
 	
-	\subsubsection{Tthe Euler Method}
+	\subsubsection{The Euler Method}
 	
+	We define the accurate solution as the result computed by ode113() function in MATLAB with step $h = 0.00001$ for further comparison in the following process. 
 	
 	We solve the ODE with four different Euler methods, and compute its values with different step h and at $t = 0.25$, $t = 0.30$, $t = 0.35$, $t = 0.40$, which close to its right vertical asymptote.
 	
@@ -510,7 +521,7 @@
 		\label{tab:IVP2_Euler1}
 	\end{table}
 	
-	Data from the table shows that the solution computed by Improved Euler method is stable when step $h = 0.0005$. Comparing the y values computed by the same method shows that smaller step h leads to higher degree of accuracy. Therefore, for the other three Euler methods, the solutions could reach the stable condition when it reach a step h which is less than 0.0001. 
+	Data from the table shows that the solution computed by Improved Euler method is stable when step $h = 0.0005$. Comparing the y values computed by the same method shows that smaller step h leads to higher degree of stability. Therefore, for the other three Euler methods, the solutions could reach the stable condition when it reach a step h which is less than 0.0001. 
 	
 	\subsubsection{The Runge-Kutta Method}
 	
@@ -538,11 +549,11 @@
 		\label{tab:IVP2_RK}
 	\end{table}
 	
-	The results at $t = 0.15$ to $0.35$ have been stable at 5th decimal places for 3rd order Runge-Kutta method and 7th decimal places for 4th order one when h is 0.005. It shows that with the same method and the same step h, the higher order computation has higher degree accuracy and stability. From the table we could find that the decrease of h also leads to a more stable solution in this method. 
+	The results at $t = 0.15$ to $0.35$ have been stable at 5th decimal places for 3rd order Runge-Kutta method and 7th decimal places for 4th order one when h is 0.005. It shows that with the same method and the same step h, the higher order computation has higher degree of stability. From the table we could find that the decrease of h also leads to a more stable solution in this method. 
 	
 	\subsubsection{Adams-Bashforth and Adams-Monlton Method}
 	
-	The y values determined by the Adams-Bashforth method and Adams-Monlton method are shown in the table below. Adams-Bashforth method reaches stability at 8th decimal places when $h = 0.0002$, and $h = 0.0005$ by Adams-Monlton method. Which shows that Adams-Bashforth method has higher stability and accuracy than Adams-Monlton in this problem. Compare the result with those from previous methods, it shows that both Adams-Bashforth and Adams-Monlton methods solve the problem better than other methods in stability and accuracy.
+	The y values determined by the Adams-Bashforth method and Adams-Monlton method are shown in the table below. Adams-Bashforth method reaches stability at 8th decimal places when $h = 0.0002$, and $h = 0.0005$ by Adams-Monlton method. Which shows that Adams-Bashforth method has higher stability than Adams-Monlton in this problem. Compare the result with those from previous methods, it shows that both Adams-Bashforth and Adams-Monlton methods solve the problem better than other methods in stability.
 	
 	\begin{table}[H]
 		\centering
@@ -566,32 +577,43 @@
 		\label{tab:IVP2_AD}
 	\end{table}
 	
-	\subsubsection{Error Analysis}
+	\subsubsection{solution}
+	Combining the solution graphs using different methods, the solution graph is as
+	According to results from the the The accurate solution of problem 2 is shown below.
 	
-	According to the previous result analysis with different methods, Adams-Bashforth method has the highest degree stability. In order to compare the accuracy of each methods, we compare the stable solution with the accurate one solved by ode113() function in MATLAB and calculate their percentage error difference. The result is shown below.
-	
-	\begin{table}[H]
+	\begin{figure}[H]
 		\centering
-		\resizebox{\textwidth}{!}{%
-			\begin{tabular}{@{}lllllllcccccc@{}}
-				\toprule
-				\textbf{}                      & \multicolumn{3}{c}{\textbf{t = -25}}                                                                                                  & \multicolumn{3}{c}{\textbf{t = 0.35}}                                                                                               \\ \midrule
-				\textbf{} & \textbf{y\_stable} & \textbf{y\_ode113()} & \textbf{percentage error} & \textbf{y\_stable} & \textbf{y\_ode113()} & \textbf{percentage error}             \\
-				\hline
-				\textbf{Euler Explicit}        & 24.99919992                                        & 25.01208677                                          & -0.0515225\%                                   & 2.21648159                                         & 2.21136738                                           & 0.2312690\%             \\
-				\textbf{Euler Implicit}        & 24.99919992                                        & 25.01208677                                          & -0.0515225\%                                   & 2.21648159                                         & 2.21136738                                           & 0.2312690\%                           \\ 
-				\textbf{Euler Improved}        & 24.99919992                                        & 25.01208677                                          & -0.0515225\%                                   & 2.21797968                                         & 2.21136738                                           & 0.2990140\%                          \\
-				\textbf{Euler Trapezium}       & 24.99919992                                        & 25.01208677                                          & -0.0515225\%                                   & 2.21648159                                         & 2.21136738                                           & 0.2312690\%                  \\
-				\textbf{RK 3rd}                & 24.99919992                                        & 25.01208677                                          & -0.0515225\%                                   & 2.21797993                                         & 2.21136738                                           & 0.2990253\%                            \\
-				\textbf{RK 4th}                & 24.99919992                                        & 25.01208677                                          & -0.0515225\%                                   & 2.21797993                                         & 2.21136738                                           & 0.2990253\%                         \\
-				\textbf{Adams Monlton}         & 24.99919992                                        & 25.01208677                                          & -0.0515225\%                                   & 2.21797984                                         & 2.21136738                                           & 0.2990212\%                               \\
-				\textbf{Adams Bashforth}       & 24.99919992                                        & 25.01208677                                          & -0.0515225\%                                   & 2.21797993                                         & 2.21136738                                           & 0.2990253\%                               \\
-				\bottomrule
-			\end{tabular}%
-		}
-		\caption{percentage error between stable solution and accurate solution at t = -25 and t = 0.35 with h = 0.0001}
-		\label{tab:IVP2_error}
-	\end{table}
+		\includegraphics[width=6cm]{img/IVP_2.png}
+		\caption{\label{IVP_2} The slope field of $f(t, y)$ of Problem 2}
+	\end{figure}
+	
+	%    FIXME OR LEAVEMEALONE
+	%    \subsubsection{Error Analysis}
+	
+	%    According to the previous result analysis with different methods, Adams-Bashforth method has the highest degree stability among eight methods. For further understanding in the accuracy of the methods, we consider the results computed by each methods with h = 0.001 as stable solutions. We compare the stable solution with the accurate one solved by ode113() function in MATLAB by calculating their average absolute percentage error difference in the domain $[-25,0.44]$. The result is shown below.
+	
+	%\begin{table}[H]
+	%\centering
+	%\resizebox{\textwidth}{!}{%
+	%\begin{tabular}{@{}lllllllcccccc@{}}
+	%\toprule
+	%\textbf{}                      & \multicolumn{3}{c}{\textbf{t = -25}}                                   %                                                               & \multicolumn{3}{c}{\textbf{t = 0.35}}  %                                                                                             \\ \midrule
+	%\textbf{} & \textbf{y\_stable} & \textbf{y\_ode113()} & \textbf{percentage error} & \textbf{y\_stable} & %\textbf{y\_ode113()} & \textbf{percentage error}             \\
+	%\hline
+	%\textbf{Euler Explicit}        & 24.99919992                                        & 25.01208677       %                                   & -0.0515225\%                                   & 2.21648159        %                                 & 2.21136738                                           & 0.2312690\%   %         \\
+	%\textbf{Euler Implicit}        & 24.99919992                                        & 25.01208677       %                                   & -0.0515225\%                                   & 2.21648159        %                                 & 2.21136738                                           & 0.2312690\%    %                       \\ 
+	%\textbf{Euler Improved}        & 24.99919992                                        & 25.01208677       %                                   & -0.0515225\%                                   & 2.21797968        %                                 & 2.21136738                                           & 0.2990140\%   %                       \\
+	%\textbf{Euler Trapezium}       & 24.99919992                                        & 25.01208677       %                                   & -0.0515225\%                                   & 2.21648159        %                                 & 2.21136738                                           & 0.2312690\%   %               \\
+	%\textbf{RK 3rd}                & 24.99919992                                        & 25.01208677       %                                   & -0.0515225\%                                   & 2.21797993        %                                 & 2.21136738                                           & 0.2990253\%   %                         \\
+	%\textbf{RK 4th}                & 24.99919992                                        & 25.01208677       %                                   & -0.0515225\%                                   & 2.21797993        %                                 & 2.21136738                                           & 0.2990253\%   %                      \\
+	%\textbf{Adams Monlton}         & 24.99919992                                        & 25.01208677       %                                   & -0.0515225\%                                   & 2.21797984        %                                 & 2.21136738                                           & 0.2990212\%   %                            \\
+	%\textbf{Adams Bashforth}       & 24.99919992                                        & 25.01208677       %                                   & -0.0515225\%                                   & 2.21797993        %                                 & 2.21136738                                           & 0.2990253\%   %                            \\
+	%\bottomrule
+	%\end{tabular}%
+	%}
+	%\caption{percentage error of stable solution and accurate solution at t = -25 and t = 0.35 with h = %0.0001}
+	%\label{tab:IVP2_error}
+	%\end{table}
 	%FIXME
 	%The \autoref{tab:IVP2_error} 
 	
@@ -606,7 +628,10 @@
 	However, the global truncation error of each method is different because of the formula inside. 
 	
 	
-	The second conclusion is the accuracy comparison of different methods. From the error comparison graphs of IVP1, IVP2 below , we can get that the Adams-Moulton method is the most accurate and the Euler Method has the largest error. The errors of improved Euler method, Euler trapezium method and Runge-Kutta method are quite similar. 
+	The second conclusion is the accuracy comparison of different methods. The the error comparison graphs of IVP1, IVP2 are to be made. Since the largest error and smallest error differs largely, we take the errors to the root three times or four times to better compare in one graph. 
+	From the first graph of IVP1 below, we can get that the error of Euler explicit method is the  largest. With a h=0.01, the errors of the other four methods are quite similar. 
+	For IVP2, the error of Euler explicit method is the largest as well. The Euler improved method has the second largest error. Other methods have quite similar errors.
+	All in all, the Adams-Moulton method is the most accurate and the Euler Method has the largest error. The errors of improved Euler method, Euler trapezium method and Runge-Kutta method are quite similar. 
 	
 	
 	%two graphs in same line  
@@ -648,13 +673,13 @@
 		\resizebox{\textwidth}{!}{%
 			\begin{tabular}{@{}ccccccccc@{}}
 				\toprule
-				\textbf{} & \textbf{Euler\_exp} & \textbf{Eul\_imp} & \textbf{Eul\_trapezium} & \textbf{Eul\_imp} & \textbf{Rungekutta\_3rd} & \textbf{RK\_4th} & \textbf{Adams\_Monlt} & \textbf{Adm\_bashfth} \\ \midrule
-				0.01      & 0.19939             & 3.893579          & 3.191479                & 0.398877          & 0.498486                 & 0.797803         & 22.0448               & 1.196753              \\
-				0.005     & 0.399097            & 6.683203          & 6.183374                & 0.797827          & 1.097021                 & 1.495996         & 43.68333              & 2.393555              \\
-				0.001     & 1.996265            & 29.11707          & 30.41863                & 4.089111          & 5.485376                 & 7.830151         & 197.6515              & 14.06235              \\
-				0.0005    & 3.889575            & 54.87087          & 54.06863                & 8.577002          & 10.97065                 & 15.75786         & 406.0816              & 29.12207              \\
-				0.0002    & 10.27258            & 143.0175          & 132.258                 & 19.64763          & 27.33054                 & 40.19226         & 955.9132              & 63.23076              \\
-				0.0001    & 24.43809            & 290.3356          & 232.6368                & 38.99563          & 56.57815                 & 85.29304         & 1956.909              & 143.8662              \\ \bottomrule
+				\textbf{h} & \textbf{Euler\_explicit} & \textbf{Eul\_implicit} & \textbf{Eur\_trape} & \textbf{Eul\_imprd} & \textbf{RK\_3rd} & \textbf{RK\_4th} & \textbf{Adams\_monlt} & \textbf{Adms\_bashforth} \\ \midrule
+				0.01       & 0.199389648              & 3.893579102            & 3.191479492           & 0.398876953           & 0.498486328      & 0.797802734      & 22.0447998            & 1.19675293               \\
+				0.005      & 0.39909668               & 6.683203125            & 6.183374023           & 0.797827148           & 1.097021484      & 1.495996094      & 43.6833252            & 2.393554688              \\
+				0.001      & 1.996264648              & 29.11706543            & 30.41862793           & 4.089111328           & 5.485375977      & 7.830151367      & 197.6515381           & 14.06235352              \\
+				0.0005     & 3.889575195              & 54.87087402            & 54.06862793           & 8.577001953           & 10.9706543       & 15.75786133      & 406.0815674           & 29.12207031              \\
+				0.0002     & 10.27258301              & 143.0174561            & 132.257959            & 19.64763184           & 27.33054199      & 40.19226074      & 955.9131592           & 63.23076172              \\
+				0.0001     & 24.43808594              & 290.3356445            & 232.636792            & 38.99562988           & 56.57814941      & 85.29304199      & 1956.909473           & 143.8662109              \\ \bottomrule
 			\end{tabular}%
 		}
 		\caption{Time Consuming  with different h in IVP1}
@@ -666,15 +691,15 @@
 	\begin{table}[H]
 		\centering
 		\resizebox{\textwidth}{!}{%
-			\begin{tabular}{@{}cccccccc@{}}
+			\begin{tabular}{@{}ccccccccc@{}}
 				\toprule
-				\textbf{Eul\_exp} & \textbf{Eul\_imp} & \textbf{Eul\_trape} & \textbf{Eul\_imp} & \textbf{RK\_3rd} & \textbf{RK\_4th} & \textbf{Adams\_monlt} & \textbf{Adams\_bashfth} \\ \midrule
-				0.01              & 1.19260254        & 48.57026367         & 43.97243652       & 2.78720703       & 3.49047852       & 5.28737793            & 315.6517334             \\
-				0.005             & 2.59301758        & 59.17590332         & 48.36687012       & 5.88430176       & 7.67946777       & 10.57209473           & 443.2843994             \\
-				0.001             & 12.9652832        & 30.43623047         & 33.61003418       & 30.71765137      & 41.64165039      & 54.85251465           & 493.8230713             \\
-				0.0005            & 28.42741699       & 54.05429687         & 67.07429199       & 61.84191895      & 77.99611816      & 109.7824219           & 806.3147949             \\
-				0.0002            & 75.06044922       & 140.6254883         & 178.127832        & 160.380542       & 198.1198486      & 261.8647461           & 1660.448975             \\
-				0.0001            & 162.1139404       & 289.7324219         & 379.6040283       & 339.4297119      & 399.6322754      & 538.4823975           & 3068.49563              \\ \bottomrule
+				\textbf{h} & \textbf{Euler\_explicit} & \textbf{Eul\_implicit} & \textbf{Eul\_trape} & \textbf{Eul\_improved} & \textbf{RK\_3rd} & \textbf{RK\_4th} & \textbf{Adams\_monlt} & \textbf{Adams\_bashforth} \\ \midrule
+				0.01       & 1.19260254            & 48.57026367              & 43.97243652           & 2.78720703               & 3.49047852       & 5.28737793       & 315.6517334           & 6.38789062                \\
+				0.005      & 2.59301758            & 59.17590332              & 48.36687012           & 5.88430176               & 7.67946777       & 10.57209473      & 443.2843994           & 13.06520996               \\
+				0.001      & 12.9652832            & 30.43623047              & 33.61003418           & 30.71765137              & 41.64165039      & 54.85251465      & 493.8230713           & 66.11806641               \\
+				0.0005     & 28.42741699           & 54.05429687              & 67.07429199           & 61.84191895              & 77.99611816      & 109.7824219      & 806.3147949           & 132.3153076               \\
+				0.0002     & 75.06044922           & 140.6254883              & 178.127832            & 160.380542               & 198.1198486      & 261.8647461      & 1660.448975           & 337.3976074               \\
+				0.0001     & 162.1139404           & 289.7324219              & 379.6040283           & 339.4297119              & 399.6322754      & 538.4823975      & 3068.49563            & 685.1721191               \\ \bottomrule
 			\end{tabular}%
 		}
 		\caption{Time Consuming  with different h in IVP2}
@@ -708,6 +733,9 @@
 	
 	%插入文献
 	CN DOTA, BEST DOTA!\upcite{Menard2002Applied,Peduzzi1996A,Compton2002HABITAT}
+	
+	
+	
 	
 	%_____________________________________________
 	

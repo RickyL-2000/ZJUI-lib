@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.4.9)  10 SEP 2020 00:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.4.9)  10 SEP 2020 18:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -640,17 +640,28 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \float@box=\box40
 \@float@everytoks=\toks41
 \@floatcapt=\box41
-) (./template_Article.aux
-
-LaTeX Warning: Label `eq.1' multiply defined.
-
-
-LaTeX Warning: Label `eq.4' multiply defined.
-
-
-LaTeX Warning: Label `eq.7' multiply defined.
-
 )
+(d:/texlive/2019/texmf-dist/tex/latex/subfigure/subfigure.sty
+Package: subfigure 2002/03/15 v2.1.5 subfigure package
+\subfigtopskip=\skip52
+\subfigcapskip=\skip53
+\subfigcaptopadj=\dimen188
+\subfigbottomskip=\skip54
+\subfigcapmargin=\dimen189
+\subfiglabelskip=\skip55
+\c@subfigure=\count147
+\c@lofdepth=\count148
+\c@subtable=\count149
+\c@lotdepth=\count150
+
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+(d:/texlive/2019/texmf-dist/tex/latex/subfigure/subfigure.cfg)
+\subfig@top=\skip56
+\subfig@bottom=\skip57
+)
+(./template_Article.aux)
 \openout1 = `template_Article.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
@@ -706,16 +717,16 @@ File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 
 (d:/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count147
-\scratchdimen=\dimen188
+\scratchcounter=\count151
+\scratchdimen=\dimen190
 \scratchbox=\box42
-\nofMPsegments=\count148
-\nofMParguments=\count149
+\nofMPsegments=\count152
+\nofMParguments=\count153
 \everyMPshowfont=\toks42
-\MPscratchCnt=\count150
-\MPscratchDim=\dimen189
-\MPnumerator=\count151
-\makeMPintoPDFobject=\count152
+\MPscratchCnt=\count154
+\MPscratchDim=\dimen191
+\MPnumerator=\count155
+\makeMPintoPDFobject=\count156
 \everyMPtoPDFconversion=\toks43
 ) (d:/texlive/2019/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -749,7 +760,7 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (d:/texlive/2019/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count153
+\c@section@level=\count157
 )
 LaTeX Info: Redefining \ref on input line 43.
 LaTeX Info: Redefining \pageref on input line 43.
@@ -771,16 +782,32 @@ Package amsmath Warning: Foreign command \over;
 [1
 
 {d:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<img/slope_field1.png, id=135, 642.4pt x 481.8pt>
+
+LaTeX Warning: Reference `fig:slope_field1' on page 2 undefined on input line 1
+85.
+
+<img/slope_field1.png, id=53, 642.4pt x 481.8pt>
 File: img/slope_field1.png Graphic file (type png)
 <use img/slope_field1.png>
-Package pdftex.def Info: img/slope_field1.png  used on input line 187.
+Package pdftex.def Info: img/slope_field1.png  used on input line 189.
 (pdftex.def)             Requested size: 170.71652pt x 128.03662pt.
- [2]
+[2]
+
+LaTeX Warning: Reference `fig:slope_field1' on page 3 undefined on input line 1
+93.
+
+
+LaTeX Warning: Reference `fig:slope_field1' on page 3 undefined on input line 1
+95.
+
+
+LaTeX Warning: Reference `tab:adams-monlton-domain-1' on page 3 undefined on in
+put line 220.
+
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.234 		}
+l.236 		}
          
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -788,7 +815,7 @@ you left one out. Proceed, with fingers crossed.
 ! Extra }, or forgotten $.
 <template> \unskip \hfil }
                           \hskip \tabcolsep \endtemplate 
-l.234 		}
+l.236 		}
          
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -799,7 +826,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.234 		}
+l.236 		}
          
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -807,7 +834,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.234 		}
+l.236 		}
          
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -818,7 +845,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.234 		}
+l.236 		}
          
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -826,7 +853,7 @@ you left one out. Proceed, with fingers crossed.
 ! Extra }, or forgotten $.
 <template> \unskip \hfil }
                           \endtemplate 
-l.234 		}
+l.236 		}
          
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -837,7 +864,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.234 		}
+l.236 		}
          
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -845,7 +872,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.234 		}
+l.236 		}
          
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -856,7 +883,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.234 		}
+l.236 		}
          
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -864,7 +891,7 @@ you left one out. Proceed, with fingers crossed.
 ! Extra }, or forgotten $.
 <template> \unskip \hfil }
                           \hskip \tabcolsep \endtemplate 
-l.234 		}
+l.236 		}
          
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -875,7 +902,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.234 		}
+l.236 		}
          
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -883,7 +910,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.234 		}
+l.236 		}
          
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -894,7 +921,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.234 		}
+l.236 		}
          
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -902,7 +929,7 @@ you left one out. Proceed, with fingers crossed.
 ! Extra }, or forgotten $.
 <template> \unskip \hfil }
                           \endtemplate 
-l.234 		}
+l.236 		}
          
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -913,7 +940,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.234 		}
+l.236 		}
          
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -921,7 +948,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.234 		}
+l.236 		}
          
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -932,7 +959,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.234 		}
+l.236 		}
          
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -940,7 +967,7 @@ you left one out. Proceed, with fingers crossed.
 ! Extra }, or forgotten $.
 <template> \unskip \hfil }
                           \hskip \tabcolsep \endtemplate 
-l.234 		}
+l.236 		}
          
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -951,7 +978,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.234 		}
+l.236 		}
          
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -959,7 +986,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.234 		}
+l.236 		}
          
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -970,7 +997,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.234 		}
+l.236 		}
          
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -978,7 +1005,7 @@ you left one out. Proceed, with fingers crossed.
 ! Extra }, or forgotten $.
 <template> \unskip \hfil }
                           \endtemplate 
-l.234 		}
+l.236 		}
          
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -989,7 +1016,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.234 		}
+l.236 		}
          
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -997,7 +1024,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.234 		}
+l.236 		}
          
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1009,39 +1036,39 @@ pdfTeX warning (ext4): destination with the same identifier (name{equation.2.10
 }) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.244 	\end{align}
+l.246 	\end{align}
                   
 
-LaTeX Warning: Reference `tab:adams-monlton-domain' on page 3 undefined on inpu
-t line 246.
+LaTeX Warning: Reference `tab:adams-monlton-domain-1' on page 3 undefined on in
+put line 248.
 
 [3pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) 
 has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.247 	
+l.249 	
        pdfTeX warning (ext4): destination with the same identifier (name{table.
 1}) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.247 	
+l.249 	
        pdfTeX warning (ext4): destination with the same identifier (name{table.
 2}) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.247 	
+l.249 	
         <./img/slope_field1.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 265--266
+Underfull \hbox (badness 10000) in paragraph at lines 267--268
 
  []
 
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    !
-l.285 		}
+l.287 		}
          
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -1050,98 +1077,94 @@ To recover gracefully from this error, it's best to
 delete the erroneous units; e.g., type `2' to delete
 two letters. (See Chapter 27 of The TeXbook.)
 
-<img/ivp1_sol.png, id=161, 475.7775pt x 385.44pt>
-File: img/ivp1_sol.png Graphic file (type png)
-<use img/ivp1_sol.png>
-Package pdftex.def Info: img/ivp1_sol.png  used on input line 300.
-(pdftex.def)             Requested size: 227.62204pt x 184.40332pt.
 [4pdfTeX warning (ext4): destination with the same identifier (name{table.3}) h
 as been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.328 	
+l.347 	\end{table}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{table.4}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.347 	\end{table}
+                  ]
+
+LaTeX Warning: Reference `fig:ivp1_sol' on page 5 undefined on input line 352.
+
+<img/ivp1_sol.png, id=89, 475.7775pt x 385.44pt>
+File: img/ivp1_sol.png Graphic file (type png)
+<use img/ivp1_sol.png>
+Package pdftex.def Info: img/ivp1_sol.png  used on input line 356.
+(pdftex.def)             Requested size: 227.62204pt x 184.40332pt.
+
+LaTeX Warning: Reference `fig:slope_field2' on page 5 undefined on input line 3
+77.
+
+
+LaTeX Warning: Reference `tab:IVP2_y' on page 5 undefined on input line 377.
+
+<img/slope_field2.png, id=90, 642.4pt x 481.8pt>
+File: img/slope_field2.png Graphic file (type png)
+<use img/slope_field2.png>
+Package pdftex.def Info: img/slope_field2.png  used on input line 381.
+(pdftex.def)             Requested size: 170.71652pt x 128.03662pt.
+[5pdfTeX warning (ext4): destination with the same identifier (name{table.5}) h
+as been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.384 	
        pdfTeX warning (ext4): destination with the same identifier (name{figure
 .2}) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.328 	
+l.384 	
         <./img/ivp1_sol.png>]
-<img/slope_field2.png, id=171, 642.4pt x 481.8pt>
-File: img/slope_field2.png Graphic file (type png)
-<use img/slope_field2.png>
-Package pdftex.def Info: img/slope_field2.png  used on input line 377.
-(pdftex.def)             Requested size: 170.71652pt x 128.03662pt.
 
-! Illegal unit of measure (pt inserted).
-<to be read again> 
-                   !
-l.391 		}
-         
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
+LaTeX Warning: Reference `eq:ode2' on page 6 undefined on input line 400.
 
-[5pdfTeX warning (ext4): destination with the same identifier (name{table.4}) h
-as been already used, duplicate ignored
 
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.395 	
-       pdfTeX warning (ext4): destination with the same identifier (name{table.
-5}) has been already used, duplicate ignored
+LaTeX Warning: Reference `fig:ivp2_phase' on page 6 undefined on input line 400
+.
 
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.395 	
-       pdfTeX warning (ext4): destination with the same identifier (name{figure
-.3}) has been already used, duplicate ignored
 
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.395 	
-        <./img/slope_field2.png (PNG copy)>]
-! Undefined control sequence.
-l.399 		\subfigure
-                  
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+LaTeX Warning: Reference `fig:ivp2_phase' on page 6 undefined on input line 400
+.
 
-<img/ivp2_phase_graph_1.png, id=186, 481.8pt x 361.35pt>
-File: img/ivp2_phase_graph_1.png Graphic file (type png)
-<use img/ivp2_phase_graph_1.png>
-Package pdftex.def Info: img/ivp2_phase_graph_1.png  used on input line 403.
-(pdftex.def)             Requested size: 170.71652pt x 128.03477pt.
-! Undefined control sequence.
-l.407 		\subfigure
-                  
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
-<img/ivp2_phase_graph_2.png, id=188, 481.8pt x 361.35pt>
-File: img/ivp2_phase_graph_2.png Graphic file (type png)
-<use img/ivp2_phase_graph_2.png>
-Package pdftex.def Info: img/ivp2_phase_graph_2.png  used on input line 411.
-(pdftex.def)             Requested size: 170.71652pt x 128.03477pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 418--419
+Underfull \hbox (badness 10000) in paragraph at lines 400--401
 
  []
 
+<img/ivp2_phase_graph_1.png, id=102, 481.8pt x 361.35pt>
+File: img/ivp2_phase_graph_1.png Graphic file (type png)
+<use img/ivp2_phase_graph_1.png>
+Package pdftex.def Info: img/ivp2_phase_graph_1.png  used on input line 412.
+(pdftex.def)             Requested size: 170.71652pt x 128.03477pt.
+<img/ivp2_phase_graph_2.png, id=104, 481.8pt x 361.35pt>
+File: img/ivp2_phase_graph_2.png Graphic file (type png)
+<use img/ivp2_phase_graph_2.png>
+Package pdftex.def Info: img/ivp2_phase_graph_2.png  used on input line 420.
+(pdftex.def)             Requested size: 170.71652pt x 128.03477pt.
+
+LaTeX Warning: Reference `eq:ode2' on page 6 undefined on input line 421.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 424--425
+
+ []
+
+
+LaTeX Warning: Reference `tab:IVP2_yinf' on page 6 undefined on input line 426.
+
+
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    !
-l.435 		}
+l.443 		}
          
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -1150,10 +1173,30 @@ To recover gracefully from this error, it's best to
 delete the erroneous units; e.g., type `2' to delete
 two letters. (See Chapter 27 of The TeXbook.)
 
+[6pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) 
+has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.447 	
+       pdfTeX warning (ext4): destination with the same identifier (name{table.
+6}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.447 	
+       pdfTeX warning (ext4): destination with the same identifier (name{figure
+.4}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.447 	
+        <./img/slope_field2.png (PNG copy)> <./img/ivp2_phase_graph_1.png> <./i
+mg/ivp2_phase_graph_2.png>]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.450 		}
+l.460 		}
          
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1161,7 +1204,7 @@ you left one out. Proceed, with fingers crossed.
 ! Extra }, or forgotten $.
 <template> \unskip \hfil }
                           \hskip \tabcolsep \endtemplate 
-l.450 		}
+l.460 		}
          
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -1172,7 +1215,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.450 		}
+l.460 		}
          
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1180,7 +1223,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.450 		}
+l.460 		}
          
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1191,7 +1234,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.450 		}
+l.460 		}
          
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1199,7 +1242,7 @@ you left one out. Proceed, with fingers crossed.
 ! Extra }, or forgotten $.
 <template> \unskip \hfil }
                           \hskip \tabcolsep \endtemplate 
-l.450 		}
+l.460 		}
          
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -1210,7 +1253,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.450 		}
+l.460 		}
          
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1218,7 +1261,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.450 		}
+l.460 		}
          
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1230,37 +1273,16 @@ pdfTeX warning (ext4): destination with the same identifier (name{equation.2.12
 }) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.460 	\end{align}
-                   [6pdfTeX warning (ext4): destination with the same identifie
-r (name{table.6}) has been already used, duplicate ignored
+l.470 	\end{align}
+                  
 
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.460 	\end{align}
-                  pdfTeX warning (ext4): destination with the same identifier (
-name{figure.4}) has been already used, duplicate ignored
+LaTeX Warning: Reference `tab:adams-monlton-domain-2' on page 7 undefined on in
+put line 472.
 
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.460 	\end{align}
-                  pdfTeX warning (ext4): destination with the same identifier (
-name{table.7}) has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.460 	\end{align}
-                  pdfTeX warning (ext4): destination with the same identifier (
-name{table.8}) has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.460 	\end{align}
-                   <./img/ivp2_phase_graph_1.png> <./img/ivp2_phase_graph_2.png
->]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.508 		}
+l.519 		}
          
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1268,7 +1290,7 @@ you left one out. Proceed, with fingers crossed.
 ! Extra }, or forgotten $.
 <template> \unskip \hfil }
                           \hskip \tabcolsep \endtemplate 
-l.508 		}
+l.519 		}
          
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -1279,7 +1301,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.508 		}
+l.519 		}
          
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1287,7 +1309,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.508 		}
+l.519 		}
          
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1295,107 +1317,96 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-[7pdfTeX warning (ext4): destination with the same identifier (name{table.9}) h
+[7pdfTeX warning (ext4): destination with the same identifier (name{table.7}) h
 as been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.543 	\subsubsection
-                     {Adams-Bashforth and Adams-Monlton Method}pdfTeX warning (
-ext4): destination with the same identifier (name{table.10}) has been already u
-sed, duplicate ignored
+l.523 	
+       pdfTeX warning (ext4): destination with the same identifier (name{table.
+8}) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.543 	\subsubsection
-                     {Adams-Bashforth and Adams-Monlton Method}]
-! Undefined control sequence.
-l.614 		\subfigure
-                  
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-<img/ivp1_error.png, id=209, 642.4pt x 481.8pt>
-File: img/ivp1_error.png Graphic file (type png)
-<use img/ivp1_error.png>
-Package pdftex.def Info: img/ivp1_error.png  used on input line 618.
-(pdftex.def)             Requested size: 142.26378pt x 106.69473pt.
-! Undefined control sequence.
-l.622 		\subfigure
-                  
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-<img/ivp2_error.png, id=210, 642.4pt x 481.8pt>
-File: img/ivp2_error.png Graphic file (type png)
-<use img/ivp2_error.png>
-Package pdftex.def Info: img/ivp2_error.png  used on input line 626.
-(pdftex.def)             Requested size: 142.26378pt x 106.69473pt.
-[8pdfTeX warning (ext4): destination with the same identifier (name{table.11}) 
+l.523 	
+       ]
+<img/IVP_2.png, id=125, 432.4155pt x 383.031pt>
+File: img/IVP_2.png Graphic file (type png)
+<use img/IVP_2.png>
+Package pdftex.def Info: img/IVP_2.png  used on input line 586.
+(pdftex.def)             Requested size: 170.71652pt x 151.21667pt.
+ [8pdfTeX warning (ext4): destination with the same identifier (name{table.9}) 
 has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.636 	
-       pdfTeX warning (ext4): destination with the same identifier (name{table.
-12}) has been already used, duplicate ignored
+l.588 	\end{figure}
+                   pdfTeX warning (ext4): destination with the same identifier 
+(name{table.10}) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.636 	
-       ] [9pdfTeX warning (ext4): destination with the same identifier (name{fi
-gure.5}) has been already used, duplicate ignored
+l.588 	\end{figure}
+                   pdfTeX warning (ext4): destination with the same identifier 
+(name{table.11}) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.701 	I
-        n a conclusion, every method has its own merit and demerit.	pdfTeX warn
-ing (ext4): destination with the same identifier (name{figure.6}) has been alre
-ady used, duplicate ignored
+l.588 	\end{figure}
+                   ]
+<img/ivp1_error.png, id=135, 642.4pt x 481.8pt>
+File: img/ivp1_error.png Graphic file (type png)
+<use img/ivp1_error.png>
+Package pdftex.def Info: img/ivp1_error.png  used on input line 646.
+(pdftex.def)             Requested size: 142.26378pt x 106.69473pt.
+<img/ivp2_error.png, id=136, 642.4pt x 481.8pt>
+File: img/ivp2_error.png Graphic file (type png)
+<use img/ivp2_error.png>
+Package pdftex.def Info: img/ivp2_error.png  used on input line 654.
+(pdftex.def)             Requested size: 142.26378pt x 106.69473pt.
+ [9pdfTeX warning (ext4): destination with the same identifier (name{figure.5})
+ has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.701 	I
-        n a conclusion, every method has its own merit and demerit.	pdfTeX warn
-ing (ext4): destination with the same identifier (name{figure.7}) has been alre
-ady used, duplicate ignored
+l.661 	
+       pdfTeX warning (ext4): destination with the same identifier (name{figure
+.7}) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.701 	I
-        n a conclusion, every method has its own merit and demerit.	pdfTeX warn
-ing (ext4): destination with the same identifier (name{table.13}) has been alre
-ady used, duplicate ignored
+l.661 	
+       pdfTeX warning (ext4): destination with the same identifier (name{figure
+.8}) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.701 	I
-        n a conclusion, every method has its own merit and demerit.	pdfTeX warn
-ing (ext4): destination with the same identifier (name{table.14}) has been alre
-ady used, duplicate ignored
+l.661 	
+       pdfTeX warning (ext4): destination with the same identifier (name{figure
+.8}) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.701 	I
-        n a conclusion, every method has its own merit and demerit.	 <./img/ivp
-1_error.png (PNG copy)> <./img/ivp2_error.png (PNG copy)>]
+l.661 	
+       pdfTeX warning (ext4): destination with the same identifier (name{figure
+.8}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.661 	
+        <./img/IVP_2.png> <./img/ivp1_error.png (PNG copy)> <./img/ivp2_error.p
+ng (PNG copy)>]
 
 Package natbib Warning: Citation `Menard2002Applied' on page 10 undefined on in
-put line 710.
+put line 735.
 
 
 Package natbib Warning: Citation `Peduzzi1996A' on page 10 undefined on input l
-ine 710.
+ine 735.
 
 
 Package natbib Warning: Citation `Compton2002HABITAT' on page 10 undefined on i
-nput line 710.
+nput line 735.
 
 (./template_Article.bbl
 
@@ -1405,31 +1416,49 @@ Package natbib Warning: Empty `thebibliography' environment on input line 24.
 
 Package natbib Warning: There were undefined citations.
 
-[10]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 718.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 718.
- (./template_Article.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 718.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 718.
-Package rerunfilecheck Info: File `template_Article.out' has not changed.
-(rerunfilecheck)             Checksum: 9596FF4A2A65555BEE84E650B7C3AE8B;1419.
+[10pdfTeX warning (ext4): destination with the same identifier (name{table.12})
+ has been already used, duplicate ignored
 
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.746 \end{document}
+                    pdfTeX warning (ext4): destination with the same identifier
+ (name{table.13}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.746 \end{document}
+                    ]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 746.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 746.
+ (./template_Article.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 746.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 746.
+
+
+Package rerunfilecheck Warning: File `template_Article.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `template_Article.out':
+(rerunfilecheck)             Before: D41D8CD98F00B204E9800998ECF8427E;0
+(rerunfilecheck)             After:  D913ADFA646B17429A28094CACE90186;1469.
 
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 718.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 746.
  ) 
 Here is how much of TeX's memory you used:
- 18590 strings out of 492623
- 340651 string characters out of 6133291
- 447379 words of memory out of 5000000
- 22072 multiletter control sequences out of 15000+600000
+ 18727 strings out of 492623
+ 342502 string characters out of 6133291
+ 451455 words of memory out of 5000000
+ 22198 multiletter control sequences out of 15000+600000
  15220 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,11n,81p,879b,352s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,11n,81p,879b,389s stack positions out of 5000i,500n,10000p,200000b,80000s
 {d:/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<d:/texl
 ive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><d:/texlive/2019/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/texlive/2019/texmf-dis
@@ -1445,10 +1474,10 @@ e1/public/cm-super/sfbx1728.pfb><d:/texlive/2019/texmf-dist/fonts/type1/public/
 cm-super/sfrm0700.pfb><d:/texlive/2019/texmf-dist/fonts/type1/public/cm-super/s
 frm1000.pfb><d:/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pf
 b>
-Output written on template_Article.pdf (10 pages, 593129 bytes).
+Output written on template_Article.pdf (10 pages, 618331 bytes).
 PDF statistics:
- 300 PDF objects out of 1000 (max. 8388607)
- 245 compressed objects within 3 object streams
- 69 named destinations out of 1000 (max. 500000)
- 312 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 230 PDF objects out of 1000 (max. 8388607)
+ 174 compressed objects within 2 object streams
+ 73 named destinations out of 1000 (max. 500000)
+ 149 words of extra memory for PDF output out of 10000 (max. 10000000)
 
