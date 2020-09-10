@@ -149,7 +149,7 @@ for i, method in enumerate(methods):
         e_2_list.append(e_list)
 
 # %%
-# IVP1
+# IVP1 error
 plt.title("IVP1 Processed Error = (y_hat - y)^(1/3) with h = {}".format(h1))
 plt.plot(t_1_list[0], e_1_list[0], 'b', label='euler_explicit')
 ## plt.plot(t_1_list[1], e_1_list[1], 'g', label='euler_implicit')
@@ -165,7 +165,7 @@ plt.show()
 # NOTE: the graphs of rk4 and adams_bf are approximately overlapped
 
 # %%
-# IVP2
+# IVP2 error
 plt.title("IVP2 Processed Error = (y_hat - y)^(1/4) with h = {}".format(h2))
 plt.plot(t_2_list[0], e_2_list[0], 'b', label='euler_explicit')
 ## plt.plot(t_2_list[1], e_2_list[1], 'g', label='euler_implicit')
