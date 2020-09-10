@@ -41,8 +41,10 @@ if __name__ == "__main__":
 
 # %%
 """ 0. load the ground truth """
-df1_truth = pd.read_csv(base_dir + '/data/ivp1_ground_truth.csv')
-df2_truth = pd.read_csv(base_dir + '/data/ivp2_ground_truth.csv')
+# df1_truth = pd.read_csv(base_dir + '/data/ivp1_ground_truth.csv')
+# df2_truth = pd.read_csv(base_dir + '/data/ivp2_ground_truth.csv')
+df1_truth = pd.read_csv(base_dir + '/data/ivp1_ground_truth_h5.csv')
+df2_truth = pd.read_csv(base_dir + '/data/ivp2_ground_truth_h5.csv')
 # t1, y1 = df1_truth['Var1'].values, df1_truth['Var2'].values
 # t2, y2 = df2_truth['Var1'].values, df2_truth['Var2'].values
 
@@ -81,7 +83,7 @@ for i in range(2, 3):
 # %%
 """ 2.1 errors of different methods compare with each other """
 # %%
-h_hat = 0.001   # the step length of the ground truth
+h_hat = 0.00001   # the step length of the ground truth
 h1 = 0.01
 h2 = 0.01
 a1, b1 = -2.0, 0.81
@@ -179,7 +181,243 @@ plt.legend()
 plt.show()
 
 # %%
-""" 2.2 the error of different h """
+""" the average error """
+# %%
+h_hat = 0.00001   # the step length of the ground truth
+h1 = 0.001
+h2 = 0.001
+a1, b1 = -2.12, 0.858
+# a2, b2 = -14.0, 0.42
+a2, b2 = -10.0, 0.439
+
+t_1_list = []
+y_1_list = []
+e_1_list = []
+
+t_2_list = []
+y_2_list = []
+e_2_list = []
+
+methods = [euler_explicit, euler_implicit, euler_trapezium, euler_improved,
+           runge_kutta_3rd, runge_kutta_4th,
+           adams_monlton, adams_bashforth]
+
+# %%
+df1 = df1_truth[(df1_truth['Var1'] >= a1) & (df1_truth['Var1'] <= b1)]
+df2 = df2_truth[(df2_truth['Var1'] >= a2) & (df2_truth['Var1'] <= b2)]
+t1, y1 = df1['Var1'].values, df1['Var2'].values
+t2, y2 = df2['Var1'].values, df2['Var2'].values
+
+# %%
+# ivp1
+for i, method in enumerate(methods):
+    if h1 <= h_hat:
+        t_list, y_list = method(f1, a1, b1, 0, 1, h1)
+        # t_list = np.array([t_list[j] for j in range(0, len(t_list), round(h_hat / h1))])
+        y_list = np.array([y_list[j] for j in range(0, len(y_list), round(h_hat / h1))])
+        # t_1_list.append(t_list)
+        # y_1_list.append(y_list)
+
+        e_list = abs(y_list - y1)
+        e_1_list.append(e_list)
+    else:
+        t_list, y_list = method(f1, a1, b1, 0, 1, h1)
+        # t_1_list.append(t_list)
+        y_1_list.append(y_list)
+
+        y1_tmp = np.array([y1[j] for j in range(0, len(y1), round(h1 / h_hat))])
+        e_list = abs(y_list - y1_tmp)
+        e_1_list.append(e_list)
+
+# %%
+avg_e_1_list = [e_list.mean() for e_list in e_1_list]
+print(avg_e_1_list)
+
+# %%
+# ivp2
+for i, method in enumerate(methods):
+    if h2 <= h_hat:
+        t_list, y_list = method(f2, a2, b2, 0, 1, h2)
+        # t_list = np.array([t_list[j] for j in range(0, len(t_list), round(h_hat / h2))])
+        y_list = np.array([y_list[j] for j in range(0, len(y_list), round(h_hat / h2))])
+        # t_2_list.append(t_list)
+        # y_2_list.append(y_list)
+
+        e_list = abs(y_2_list[i] - y2)
+        e_2_list.append(e_list)
+    else:
+        t_list, y_list = method(f2, a2, b2, 0, 1, h2)
+        # t_2_list.append(t_list)
+        y_2_list.append(y_list)
+
+        y2_tmp = np.array([y2[j] for j in range(0, len(y2), round(h2 / h_hat))])
+        e_list = abs(y_list - y2_tmp)
+        e_2_list.append(e_list)
+
+# %%
+avg_e_2_list = [e_list.mean() for e_list in e_2_list]
+print(avg_e_2_list)
+
+# %%
+""" 2.3 error vs h """
+h_hat = 0.00001   # the step length of the ground truth
+methods = [euler_explicit, euler_improved, runge_kutta_4th, adams_monlton]
+a1, b1 = -2.0, 0.81
+a2, b2 = -5.0, 0.42
+h1 = (0.01, 0.005, 0.001, 0.0005, 0.0002, 0.0001)
+h2 = (0.01, 0.005, 0.001, 0.0005, 0.0002, 0.0001)
+
+mh_t_1_list = []
+mh_y_1_list = []
+mh_e_1_list = []
+
+mh_t_2_list = []
+mh_y_2_list = []
+mh_e_2_list = []
+
+# %%
+df1 = df1_truth[(df1_truth['Var1'] >= a1) & (df1_truth['Var1'] <= b1)]
+df2 = df2_truth[(df2_truth['Var1'] >= a2) & (df2_truth['Var1'] <= b2)]
+t1, y1 = df1['Var1'].values, df1['Var2'].values
+t2, y2 = df2['Var1'].values, df2['Var2'].values
+
+# %%
+# ivp1
+for method in methods:
+    h_t_1_list = []
+    h_y_1_list = []
+    h_e_1_list = []
+    for h in h1:
+        if h <= h_hat:
+            t_list, y_list = method(f1, a1, b1, 0, 1, h)
+            t_list = np.array([t_list[j] for j in range(0, len(t_list), round(h_hat / h))])
+            y_list = np.array([y_list[j] for j in range(0, len(y_list), round(h_hat / h))])
+            h_t_1_list.append(t_list)
+            h_y_1_list.append(y_list)
+
+            e_list = np.power(abs(y_list - y1), 1 / 5)
+            h_e_1_list.append(e_list)
+        else:
+            t_list, y_list = method(f1, a1, b1, 0, 1, h)
+            h_t_1_list.append(t_list)
+            h_y_1_list.append(y_list)
+
+            y1_tmp = np.array([y1[j] for j in range(0, len(y1), round(h / h_hat))])
+            e_list = np.power(abs(y_list - y1_tmp), 1 / 5)
+            h_e_1_list.append(e_list)
+    mh_t_1_list.append(h_t_1_list)
+    mh_y_1_list.append(h_y_1_list)
+    mh_e_1_list.append(h_e_1_list)
+
+# %%
+# ivp2
+for method in methods:
+    h_t_2_list = []
+    h_y_2_list = []
+    h_e_2_list = []
+    for h in h1:
+        if h <= h_hat:
+            t_list, y_list = method(f2, a2, b2, 0, 1, h)
+            t_list = np.array([t_list[j] for j in range(0, len(t_list), round(h_hat / h))])
+            y_list = np.array([y_list[j] for j in range(0, len(y_list), round(h_hat / h))])
+            h_t_2_list.append(t_list)
+            h_y_2_list.append(y_list)
+
+            e_list = np.power(abs(y_list - y2), 1 / 5)
+            h_e_2_list.append(e_list)
+        else:
+            t_list, y_list = method(f2, a2, b2, 0, 1, h)
+            h_t_2_list.append(t_list)
+            h_y_2_list.append(y_list)
+
+            y2_tmp = np.array([y2[j] for j in range(0, len(y2), round(h / h_hat))])
+            e_list = np.power(abs(y_list - y2_tmp), 1 / 5)
+            h_e_2_list.append(e_list)
+    mh_t_2_list.append(h_t_2_list)
+    mh_y_2_list.append(h_y_2_list)
+    mh_e_2_list.append(h_e_2_list)
+
+# %%
+# ivp1 error vs h
+plt.title("IVP1 Processed Error = (y_hat - y)^(1/5) of Explicit Euler Method")
+plt.plot(mh_t_1_list[0][0], mh_e_1_list[0][0], 'b', label='h = {}'.format(h1[0]))
+plt.plot(mh_t_1_list[0][1], mh_e_1_list[0][1], 'c', label='h = {}'.format(h1[1]))
+plt.plot(mh_t_1_list[0][2], mh_e_1_list[0][2], 'r', label='h = {}'.format(h1[2]))
+plt.plot(mh_t_1_list[0][3], mh_e_1_list[0][3], 'k', label='h = {}'.format(h1[3]))
+plt.plot(mh_t_1_list[0][4], mh_e_1_list[0][4], 'm', label='h = {}'.format(h1[4]))
+plt.legend()
+plt.show()
+
+# %%
+plt.title("IVP1 Processed Error = (y_hat - y)^(1/5) of Improved Euler Method")
+plt.plot(mh_t_1_list[1][0], mh_e_1_list[1][0], 'b', label='h = {}'.format(h1[0]))
+plt.plot(mh_t_1_list[1][1], mh_e_1_list[1][1], 'c', label='h = {}'.format(h1[1]))
+plt.plot(mh_t_1_list[1][2], mh_e_1_list[1][2], 'r', label='h = {}'.format(h1[2]))
+plt.plot(mh_t_1_list[1][3], mh_e_1_list[1][3], 'k', label='h = {}'.format(h1[3]))
+plt.plot(mh_t_1_list[1][4], mh_e_1_list[1][4], 'm', label='h = {}'.format(h1[4]))
+plt.legend()
+plt.show()
+
+# %%
+plt.title("IVP1 Processed Error = (y_hat - y)^(1/5) of Runge-Kutta 4th Method")
+plt.plot(mh_t_1_list[2][0], mh_e_1_list[2][0], 'b', label='h = {}'.format(h1[0]))
+plt.plot(mh_t_1_list[2][1], mh_e_1_list[2][1], 'c', label='h = {}'.format(h1[1]))
+plt.plot(mh_t_1_list[2][2], mh_e_1_list[2][2], 'r', label='h = {}'.format(h1[2]))
+plt.plot(mh_t_1_list[2][3], mh_e_1_list[2][3], 'k', label='h = {}'.format(h1[3]))
+plt.plot(mh_t_1_list[2][4], mh_e_1_list[2][4], 'm', label='h = {}'.format(h1[4]))
+plt.legend()
+plt.show()
+
+# %%
+plt.title("IVP1 Processed Error = (y_hat - y)^(1/5) of Adams-Monlton Method")
+plt.plot(mh_t_1_list[3][0], mh_e_1_list[3][0], 'b', label='h = {}'.format(h1[0]))
+plt.plot(mh_t_1_list[3][1], mh_e_1_list[3][1], 'c', label='h = {}'.format(h1[1]))
+plt.plot(mh_t_1_list[3][2], mh_e_1_list[3][2], 'r', label='h = {}'.format(h1[2]))
+plt.plot(mh_t_1_list[3][3], mh_e_1_list[3][3], 'k', label='h = {}'.format(h1[3]))
+plt.plot(mh_t_1_list[3][4], mh_e_1_list[3][4], 'm', label='h = {}'.format(h1[4]))
+plt.legend()
+plt.show()
+
+# %%
+# ivp2 error vs h
+plt.title("IVP2 Processed Error = (y_hat - y)^(1/5) of Explicit Euler Method")
+plt.plot(mh_t_2_list[0][0], mh_e_2_list[0][0], 'b', label='h = {}'.format(h2[0]))
+plt.plot(mh_t_2_list[0][1], mh_e_2_list[0][1], 'c', label='h = {}'.format(h2[1]))
+plt.plot(mh_t_2_list[0][2], mh_e_2_list[0][2], 'r', label='h = {}'.format(h2[2]))
+plt.plot(mh_t_2_list[0][3], mh_e_2_list[0][3], 'k', label='h = {}'.format(h2[3]))
+plt.plot(mh_t_2_list[0][4], mh_e_2_list[0][4], 'm', label='h = {}'.format(h2[4]))
+plt.legend()
+plt.show()
+
+# %%
+plt.title("IVP2 Processed Error = (y_hat - y)^(1/5) of Improved Euler Method")
+plt.plot(mh_t_2_list[1][0], mh_e_2_list[1][0], 'b', label='h = {}'.format(h2[0]))
+plt.plot(mh_t_2_list[1][1], mh_e_2_list[1][1], 'c', label='h = {}'.format(h2[1]))
+plt.plot(mh_t_2_list[1][2], mh_e_2_list[1][2], 'r', label='h = {}'.format(h2[2]))
+plt.plot(mh_t_2_list[1][3], mh_e_2_list[1][3], 'k', label='h = {}'.format(h2[3]))
+plt.plot(mh_t_2_list[1][4], mh_e_2_list[1][4], 'm', label='h = {}'.format(h2[4]))
+plt.legend()
+plt.show()
+
+# %%
+plt.title("IVP2 Processed Error = (y_hat - y)^(1/5) of Runge-Kutta 4th Method")
+plt.plot(mh_t_2_list[2][0], mh_e_2_list[2][0], 'b', label='h = {}'.format(h2[0]))
+plt.plot(mh_t_2_list[2][1], mh_e_2_list[2][1], 'c', label='h = {}'.format(h2[1]))
+plt.plot(mh_t_2_list[2][2], mh_e_2_list[2][2], 'r', label='h = {}'.format(h2[2]))
+plt.plot(mh_t_2_list[2][3], mh_e_2_list[2][3], 'k', label='h = {}'.format(h2[3]))
+plt.plot(mh_t_2_list[2][4], mh_e_2_list[2][4], 'm', label='h = {}'.format(h2[4]))
+plt.legend()
+plt.show()
+
+# %%
+plt.title("IVP2 Processed Error = (y_hat - y)^(1/5) of Adams-Monlton Method")
+plt.plot(mh_t_2_list[3][0], mh_e_2_list[3][0], 'b', label='h = {}'.format(h2[0]))
+plt.plot(mh_t_2_list[3][1], mh_e_2_list[3][1], 'c', label='h = {}'.format(h2[1]))
+plt.plot(mh_t_2_list[3][2], mh_e_2_list[3][2], 'r', label='h = {}'.format(h2[2]))
+plt.plot(mh_t_2_list[3][3], mh_e_2_list[3][3], 'k', label='h = {}'.format(h2[3]))
+plt.plot(mh_t_2_list[3][4], mh_e_2_list[3][4], 'm', label='h = {}'.format(h2[4]))
+plt.legend()
+plt.show()
 
 # %%
 """ 3. time consuming analysis """
