@@ -236,7 +236,7 @@
     
     \subsection{Domain}
     
-    	\subsubsection{Problem 1: ($a_1$, $b_1$)}
+    \subsubsection{Problem 1: ($a_1$, $b_1$)}
     	
     	To acquire a maximal solution of this problem, an relatively accurate domain should be computed. The estimation of the boundaries can be done both in analytical and numerical way. A pure analytical way can be Taylor Series, which yet is not the point of this report.
 	
@@ -271,7 +271,7 @@
     \end{tabular}%
     }
     \caption{Determine t When y is Infinity}
-    \label{tab:ivp1_inf_1}
+    \label{tab:ivp1-inf-1}
     \end{table}
     
 	It seems that the left bound of the solution is around $a_1 = -2.12$ and the right around $b_1 = 0.85$. To be more accurate, some analytical approaches should be adopted. 
@@ -285,9 +285,9 @@
     \toprule
     \multicolumn{1}{l}{}           & \textbf{$t = -2.120$} & \textbf{$t = 0.858$} \\ \midrule
     \multicolumn{1}{l}{\textbf{$h$}} & \textbf{$y$}          & \textbf{$y$}         \\ \hline
-    0.01                           & -\infty               & \infty           \\
-    0.005                          & -\infty               & \infty           \\
-    0.001                          & -\infty               & \infty           \\
+    0.01                           & $-\infty$               & $\infty$           \\
+    0.005                          & $-\infty$               & $\infty$           \\
+    0.001                          & $-\infty$               & $\infty$           \\
     0.0005                         & -1657.12353516        & 1177.64002010    \\
     0.0002                         & -1523.43140641        & 1142.81318658     \\
     0.0001                         & -1518.10313846         & 1141.29183391   \\ \bottomrule
@@ -377,7 +377,7 @@
     
     \begin{table}[H]
     \centering
-    \resizebox{400}{!}{%
+    \resizebox{400pt}{!}{%
     \begin{tabular}{@{}llllllllll@{}}
     \toprule
     \textbf{}           & \textbf{Euler\_explicit} & \textbf{Euler\_implicit} & \textbf{Euler\_improved} & \textbf{Euler\_trapezium} \\ 
@@ -404,7 +404,7 @@
     \toprule
     \textbf{h}          & 0.01 & 0.005 & 0.001       & 0.0005      & 0.0002      & 0.0001     \\ 
     \hline
-    \textbf{y} & \infty  & \infty   & 25.62721138 & 23.60040387 & 23.43528374 & 23.4279037 \\ 
+    \textbf{y} & $\infty$  & $\infty$   & 25.62721138 & 23.60040387 & 23.43528374 & 23.4279037 \\ 
     \bottomrule
     \end{tabular}%
     }
