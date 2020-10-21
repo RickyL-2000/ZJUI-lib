@@ -12,6 +12,7 @@ def V_i(theta, x, y, z, Qi):
 
 # %%
 ################# x-y plane #################
+# no threading
 n = 1000
 h = 0.01
 x = np.linspace(-5, 5, int(5/h) + 1)
@@ -31,6 +32,8 @@ for i in range(int(5/h)+1):
 # %%
 import threading
 import time
+
+# %%
 def main_threaded(V, theta, x, y, n, h, max_threads=32):
 
     width = int(5/h) + 1
@@ -65,7 +68,7 @@ def main_threaded(V, theta, x, y, n, h, max_threads=32):
         time.sleep(1)
             
 # %%
-n = 1000
+n = 100
 h = 0.01
 x = np.linspace(-5, 5, int(5/h) + 1)
 y = np.linspace(-5, 5, int(5/h) + 1)
@@ -74,7 +77,10 @@ V_xy = np.zeros(shape=(int(5/h)+1, int(5/h)+1))
 main_threaded(V_xy, theta, x, y, n, h)
 
 # %%
-plt.contour(x, y, V_xy, 100)
+plt.contour(x, y, V_xy, 10)
+
+# %%
+V_xy *= epsilon
 
 # %%
 ################# x-z plane #################
