@@ -1,6 +1,4 @@
 {
-    "python.dataScience.jupyterServerURI": "local",
-    // Latex workshop 
     "latex-workshop.latex.recipes": [
         {
             "name": "xelatex",
@@ -72,4 +70,5 @@
             ]
         }
     ],
+    "jupyter.jupyterServerType": "local",
 }
