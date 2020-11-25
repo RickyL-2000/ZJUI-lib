@@ -72,9 +72,11 @@ for i in range(m):  # loop over each angle
         x[i,k] = x[i,j]
         y[i,k] = 0
     plt.plot(x[i,:],y[i,:],'k-')
-    plt.show()
+    # plt.show()
     plt.xlim(0,150)
     plt.ylim(0,105)
+
+plt.show()
 
 best_angle = list(max.keys())[0]
 print(list(max.keys())[0])

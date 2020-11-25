@@ -1,4 +1,6 @@
 .idea
+.pylint.d
+.vscode
 
 # reference
 JUNIOR/ECE314/ECE314_reference
