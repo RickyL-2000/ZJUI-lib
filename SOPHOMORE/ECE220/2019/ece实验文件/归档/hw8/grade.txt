@@ -1,9 +1,0 @@
-committed code: yes
-r1408 | tengjun.18@INTL | 2019-04-19 11:39:38 +0800 (五, 19 4月 2019) | 2 lines
-r1376 | tengjun.18@INTL | 2019-04-18 22:53:32 +0800 (四, 18 4月 2019) | 1 line
-submitted before deadline: -0
-code compiles: yes
-simulation of NAND is correct+6
-yes
-simulation of NOR is correct+6
-total grade: 12 / 12

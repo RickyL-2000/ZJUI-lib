@@ -1,4 +1,0 @@
-baz and junk's positions are correct: 50 / 50
-foo.txt is correct: 25 / 25
-bar.txt is correct: 25 / 25
-total grade: 100 / 100

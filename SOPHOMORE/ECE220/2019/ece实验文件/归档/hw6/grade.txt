@@ -1,6 +1,0 @@
-committed code: yes
-r1011 | tengjun.18@INTL | 2019-04-02 22:25:13 +0800 (二, 02 4月 2019) | 1 line
-submitted before deadline: -0
-code compiles: yes
-calculation of a, p, a_n, p_n are correct: +12
-total grade: 12 / 12

@@ -1,7 +1,0 @@
-r786 | tengjun.18@INTL | 2019-03-24 18:57:25 +0800 (日, 24 3月 2019) | 1 line
-r642 | tengjun.18@INTL | 2019-03-22 11:02:25 +0800 (五, 22 3月 2019) | 1 line
-submitted before deadline: -0
-code compiles: +1
-code only uses ~, &, |: +1
-code's output is correct: +4
-total grade: 6

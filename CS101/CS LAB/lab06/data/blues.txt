@@ -1,0 +1,415 @@
+#Delta Blues
+Cecil Augusta
+Mose Allison
+Tommy Bankhead
+John Henry Barbee
+Kid Bailey
+Robert Belfour
+Charley Booker
+Ishman Bracey
+Willie Brown
+R. L. Burnside
+Sam Carr
+Bo Carter
+James Cotton
+Arthur "Big Boy" Crudup
+Delta Blind Billy
+David Honeyboy Edwards
+Jessie Mae Hemphill
+King Solomon Hill
+John Lee Hooker
+Son House
+Howlin Wolf
+Elmore James
+Skip James
+Robert Johnson
+Tommy Johnson
+Junior Kimbrough
+Little Freddie King
+Robert Lockwood
+Willie Love
+Lead Belly
+Tommy McClennan
+Papa Charlie McCoy
+Mississippi Fred McDowell
+Mississippi John Hurt
+Sonny Boy Nelson
+Jack Owens
+Charley Patton
+Pinetop Perkins
+Doctor Ross
+Sonny Rhodes
+Johnny Shines
+J. D. Short
+Henry "Son" Sims
+Freddie Spruell
+Houston Stackhouse
+Johnny Temple
+James Thomas
+Elvie Thomas
+Muddy Waters
+Geeshie Wiley
+Big Joe Williams
+Sonny Boy Williamson
+Johnny Woods
+Elder Roma Wilson
+
+#Chicago Blues
+Alberta Adams
+Luther Allison
+Linsey Alexander
+Kokomo Arnold
+Bonny B.
+Chico Banks
+L. V. Banks
+George Barnes
+Barrelhouse Chuck
+Lefty Bates
+Carey Bell
+Joe Becker
+Lurrie Bell
+Buster Benton
+Scrapper Blackwell
+Blind Blake
+Mike Bloomfield
+Eddie Boyd
+Billy Branch
+John Brim
+Lonnie Brooks
+Ronnie Baker Brooks
+Big Bill Broonzy
+J. T. Brown
+George "Mojo" Buford
+Aron Burton
+George "Wild Child" Butler
+Paul Butterfield
+Eddie C. Campbell
+Karen Carroll
+Leonard Caston
+Good Rockin' Charles
+William Clarke
+Willie Clayton
+Eddy "The Chief" Clearwater
+Climax Blues Band
+Michael Coleman
+Albert Collins
+Lester Davenport
+Blind John Davis
+Jimmy Dawkins
+Bo Diddley
+Willie Dixon
+Lefty Dizz
+Johnny Drummer
+Little Arthur Duncan
+Champion Jack Dupree
+Billy Flynn
+Little Willy Foster
+Steve Freund
+"Baby Face" Leroy Foster
+Lacy Gibson
+Jazz Gillum
+Nick Gravenites
+Buddy Guy
+Phil Guy
+Harmonica Hinds
+Shakey Jake Harris
+Magic Sam
+Homesick James
+Earl Hooker
+Big Walter Horton
+Howlin' Wolf
+J. B. Hutto
+Chicago Slim
+Jimmy Johnson
+Luther "Guitar Junior" Johnson
+Luther "Snake Boy" Johnson
+L.V. Johnson
+Syl Johnson
+Floyd Jones
+Johnny "Yard Dog" Jones
+Little Johnny Jones
+Moody Jones
+Danny Kalb
+E. G. Kight
+Eddie King
+Big Daddy Kinsey
+Donald Kinsey
+Cub Koda
+Sam Lay
+Sammy Lawhorn
+Bonnie Lee
+J. B. Lenoir
+Hip Linkchain
+Little Charlie
+John Littlejohn
+Tony Llorens
+Willie Mabon
+Holle Thee Maxwell
+L. C. McKinley
+Liz Mandeville
+Big Maceo Merriweather
+Mississippi Heat
+Little Brother Montgomery
+Johnny B. Moore
+Nick Moss
+Matt "Guitar" Murphy
+Charlie Musselwhite
+Robert Nighthawk
+Andrew Odom
+Odie Payne
+Dion Payton
+Brewer Phillips
+Snooky Pryor
+A. C. Reed
+Jimmy Reed
+Tampa Red
+Louisiana Red
+Fenton Robinson
+Jimmy Rogers
+Freddie Roulette
+Otis Rush
+Marty Sammon
+Ken Saydak
+Son Seals
+Eddie Shaw
+Little Mack Simmons
+Sunnyland Slim
+Barkin' Bill Smith
+Byther Smith
+Little Smokey Smothers
+Otis "Big Smokey" Smothers
+Otis Spann
+Dave Specter
+Arthur "Big Boy" Spires
+Arbee Stidham
+Bob Stroger
+Studebaker John
+Sugar Blue
+Hubert Sumlin
+Eddie Taylor
+Hound Dog Taylor
+Koko Taylor
+Melvin Taylor
+Johnny "Big Moose" Walker
+Little Walter
+Washboard Sam
+Valerie Wellington
+Junior Wells
+Golden "Big" Wheeler
+Lil' Ed Williams
+Johnny Williams
+Big John Wrencher
+Jimmy Yancey
+Johnny "Man" Young
+Mighty Joe Young
+Zora Young
+
+#Piedmont Blues
+Pink Anderson
+Memphis Willie B.
+Etta Baker
+Ed Bell
+Gabriel Brown
+Barbecue Bob
+Carolina Slim
+John Cephas
+Phil Wiggins
+Cortelia Clark
+Jaybird Coleman
+Elizabeth Cotten
+Floyd Council
+Reverend Gary Davis
+Archie Edwards
+Blind Boy Fuller
+John Dee Holeman
+Frank Hovington
+Peg Leg Howell
+Bo Weavil Jackson
+John Jackson
+Luke Jordan
+Charley Lincoln
+Carl Martin
+Sara Martin
+Brownie McGhee
+William Moore
+Buddy Moss
+Blind Willie McTell
+Charlie Parr
+Drink Small
+Sonny Terry
+Curley Weaver
+Josh White
+Ralph Willis
+
+#Country Blues
+Alger "Texas" Alexander
+Howard "Louie Bluie" Armstrong
+DeFord Bailey
+Barbecue Bob
+Lucille Bogan
+Son Bonds
+Ishmon Bracey
+Bob Brozman
+Bumble Bee Slim
+Ida Cox
+James Crutchfield
+Little Buddy Doyle
+Sleepy John Estes
+Jesse Fuller
+Terry Garland
+Coot Grant
+Ramon Goose
+Hattie Hart
+Lightnin' Hopkins
+Melvin "Lil' Son" Jackson
+Papa Charlie Jackson
+Lonnie Johnson
+Richard Johnston
+Tutu Jones
+Lottie Kimbrough
+Furry Lewis
+Noah Lewis
+Eddie Mapp
+Memphis Jug Band
+Mississippi Sheiks
+Memphis Minnie
+Thomas Morris
+Hammie Nixon
+Charley Patton
+Peg Leg Sam
+Yank Rachell
+Walter Roland
+Dan Sane
+Irene Scruggs
+Alec Seward
+Frankie Lee Sims
+Laura Smith
+Victoria Spivey
+Frank Stokes
+Baby Tate
+Ramblin' Thomas
+Bessie Tucker
+Sippie Wallace
+Boogie Bill Webb
+Peetie Wheatstraw
+Wesley Wilson
+
+#Swamp Blues
+Clarence Edwards
+Guitar Gable
+Jerry "Boogie" McCain
+Katie Webster
+Kenny Neal
+Larry Garner
+Lazy Lester
+Lightnin' Slim
+Lonesome Sundown
+Marcia Ball
+Moses "Whispering" Smith
+Nathan Abshire
+Raful Neal
+Rockin' Sidney
+Silas Hogan
+Slim Harpo
+Smoky Babe
+Tab Benoit
+Tabby Thomas
+Tony Joe White
+
+#Gospel Blues
+Danny Brooks
+Thomas A. Dorsey
+Blind Roosevelt Graves
+Vera Hall
+Blind Lemon Jefferson
+Blind Willie Johnson
+Glenn Kaiser
+Booker T. Laury
+Darrell Mansfield
+Sister Gertrude Morgan
+Charlie Patton
+Washington Phillips
+D. C. Rice
+Robert Bradley
+Eugene Smith
+Blind Joe Taggart
+Sister Rosetta Tharpe
+Bukka White
+Six Cylinder Smith
+
+#West Coast Blues
+Dave Alexander
+Charlie Baty
+Freddie Brooks
+Juke Boy Bonner
+Charles Brown
+Roy Brown
+Buddy Collette
+Pee Wee Crayton
+Sugar Pie DeSanto
+Floyd Dixon
+Johnny Fuller
+Lowell Fulson
+Cecil Gant
+Lloyd Glenn
+Peppermint Harris
+Roy Hawkins
+Johnny Heartsman
+Duke Henderson
+Ivory Joe Hunter
+Etta James
+Little Willie Littlefield
+Robert Lowery
+J. J. Malone
+Percy Mayfield
+Jimmy McCracklin
+Big Jay McNeely
+Roy Milton
+Jimmy Nelson
+Johnny Otis
+Rod Piazza
+L. C. Robinson
+Haskell Robert Sadler
+George "Harmonica" Smith
+Lafayette Thomas
+Big Mama Thornton
+Luther Tucker
+Big Joe Turner
+Eddie Vinson
+Joe Louis Walker
+T-Bone Walker
+Junior Watson
+Johnny "Guitar" Watson
+
+#Piano Blues
+Albert Ammons
+Leroy Carr
+Ray Charles
+Charles "Cow Cow" Davenport
+Fats Domino
+Dr. John
+Henry Gray
+Lafayette Leake
+Meade "Lux" Lewis
+Professor Longhair
+Junior Mance
+Jay McShann
+Amos Milburn
+Buster Pickens
+Boogie Woogie Red
+Memphis Slim
+Pinetop Smith
+Willie "The Lion" Smith
+Roosevelt Sykes
+Henry Townsend
+Mose Vinson
+Kenny "Blues Boss" Wayne
+Silvan Zingg
+Jerry Lee Lewis
+Moon Mullican
+Merrill Moore
+Joe Pullum
+Piano Red
+Speckled Red
+Chuck Miller
+Bayless Rose
