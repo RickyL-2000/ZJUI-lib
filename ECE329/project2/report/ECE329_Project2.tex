@@ -1,0 +1,119 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+% \usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=2cm]{geometry}
+
+% %% for tabbing figures
+% \usepackage{cuted}%%\stripsep-3pt
+\usepackage{caption}
+\usepackage{grffile}	% handle multi suffix (.drawio.png)
+\usepackage{graphicx}
+\usepackage{subfigure}  % multi-pictures in the same line
+
+%% Sets row spaces
+\usepackage{setspace}
+\renewcommand{\baselinestretch}{1.0}
+
+%% packages for tables
+\usepackage{booktabs}
+
+%% packages for tables
+\usepackage{booktabs}
+
+%% packages for code
+\usepackage{xcolor}
+\usepackage{listings}
+\newcommand*{\listingautorefname}{Code}
+\lstset{
+	showstringspaces=false, %不显示中间的空格
+}
+\lstdefinestyle{lfonts}{
+	basicstyle = \normalsize\ttfamily,
+	stringstyle = \color{purple},
+	keywordstyle = \color{blue!60!black}\bfseries,
+	commentstyle = \color{olive}\scshape,
+}
+\lstdefinestyle{lnumbers}{
+	numbers = left,
+	numberstyle = \tiny,
+	numbersep = 1em,
+	firstnumber = 1,
+	stepnumber = 1,
+}
+\lstdefinestyle{llayout}{
+	breaklines = true,
+	tabsize = 2,
+	columns = flexible,
+}
+\lstdefinestyle{lgeometry}{
+	xleftmargin = 20pt,
+	xrightmargin = 0pt,
+	frame = tb,
+	framesep = \fboxsep,
+	framexleftmargin = 20pt,
+}
+\lstdefinestyle{lgeneral}{
+	style = lfonts,
+	style = lnumbers,
+	style = llayout,
+	style = lgeometry,
+}
+\lstdefinestyle{python}{
+	language = {Python},
+	style = lgeneral,
+}
+\lstdefinestyle{shell}{
+	language = {Shell},
+	style = lgeneral,
+}
+
+%% packages for pseudocode
+\usepackage{algorithm}
+\usepackage{algorithmicx}  
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+
+%% packages for appendix
+\usepackage[toc,page]{appendix}
+\newcommand*{\Appendixautorefname}{Appendix}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[numbers,sort&compress]{natbib} 
+\usepackage{float}	% used for fix the location of tables and graphics
+\usepackage{subfigure}  % multi-pictures in the same line
+\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}
+\newcommand{\topcaption}{%
+	\setlength{\abovecaptionskip}{0pt}%
+	\setlength{\belowcaptionskip}{10pt}%
+	\caption}
+
+\title{\textbf{ECE329 Project \#2 Report}}
+\author{Ruiqi Li, 3180111638}
+\date{\today}
+
+\begin{document}
+
+%% for pseudo code
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}  % Use Input in the format of Algorithm
+\renewcommand{\algorithmicensure}{\textbf{Output:}} % Use Output in the format of Algorithm
+\newcommand{\algorithmautorefname}{Algorithm} % for hyperref
+
+\maketitle
+
+\section{Problem 1}
+
+\textbf{(20 pts) Please derive the analytical solution of $v(z, t)$ and $i(v, t)$ assuming $v_s(t) = V_0 sin(\omega t)$ so that you do not need to worry about the transient effects. Please show your derivation. }
+
+    
+
+\end{document}
