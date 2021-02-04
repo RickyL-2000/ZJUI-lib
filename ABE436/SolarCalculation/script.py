@@ -55,4 +55,7 @@ print(gamma)
 # %%
 theta = get_theta(beta, get_gamma(phi, 90), 90)
 print(theta)
+
 # %%
+import matplotlib.pyplot plt
+
