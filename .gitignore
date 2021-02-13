@@ -18,3 +18,6 @@ ECE365/ref
 *.synctex.gz
 *.fls
 *.fdb_latexmk
+
+# big data set
+ECE365/lab3/Data/
