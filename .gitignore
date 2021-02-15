@@ -21,3 +21,6 @@ ECE365/ref
 
 # big data set
 ECE365/lab3/Data/
+
+# jupyter notebook
+.ipynb_checkpoints
