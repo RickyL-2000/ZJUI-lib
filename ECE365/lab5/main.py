@@ -24,7 +24,7 @@ class Question1(object):
         C_hat = data.T.dot(data) / N
         eigen_values, eigen_vectors = np.linalg.eigh(C_hat)
         s = eigen_values[::-1]
-        W = np.fliplr(eigen_vectors)
+        W = np.fliplr(eigen_vectors).T
         # Remember to check your data types
         return (W,s)
     
@@ -44,7 +44,7 @@ class Question1(object):
     
         return reduced_data
     
-    def pcareconstruct(self,pcadata, W, k):
+    def pcareconstruct(self, pcadata, W, k):
         """ Implements dimension reduction via PCA.
         
         Parameters:
