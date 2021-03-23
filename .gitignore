@@ -4,7 +4,9 @@
 
 # reference
 ECE314/ECE314_reference
-ECE365/ref
+ECE365/ML/ref
+ECE365/Genomics/ref
+ECE449/ref
 
 # personal
 *3180*.*
@@ -20,7 +22,16 @@ ECE365/ref
 *.fdb_latexmk
 
 # big data set
-ECE365/lab3/Data/
+ECE365/ML/lab2/zip.train
+ECE365/ML/lab2/zip.val
+ECE365/ML/lab3/Data
+ECE365/ML/lab4/zip.train
+ECE365/ML/lab4/zip.val
+ECE365/ML/lab5/zip.train
+ECE365/ML/lab5/zip.val
+ECE365/Genomics/lab1/ecoli.fastq
+ECE365/Genomics/lab1/ecoli_pac-bio.fasta
+ECE365/Genomics/lab2/saccha.fasta
 
 # jupyter notebook
 .ipynb_checkpoints
