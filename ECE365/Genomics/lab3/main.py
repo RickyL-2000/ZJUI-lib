@@ -71,6 +71,11 @@ class Lab3(object):
         Input - snp dataframe with target column and p_values calculated previously
         Output - list of 5 tuples, each with chromosome and position
         '''
-        #start code here
-        
+        # start code here
+        ret = []
+        col_names = snp_data.columns.tolist()[:-1]
+        idx = np.argsort(p_values)
+        for i in range(5):
+            ret.append(tuple(col_names[idx[i]].split(':')))
+        return ret
         #end code here
