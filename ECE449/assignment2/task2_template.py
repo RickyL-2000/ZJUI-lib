@@ -26,7 +26,11 @@ def get_DNN():
     #  Change the line below to your implementation    #
     ####################################################
 
-    net = nn.Sequential()
+    net = nn.Sequential(
+        nn.Linear(3, 2),
+        nn.ReLU(),
+        nn.Linear(2, 1)
+    )
     return net
 
 def train_torch(net, dataset_X, dataset_y, num_epochs, lr, batch_size):
@@ -64,8 +68,11 @@ def train_torch(net, dataset_X, dataset_y, num_epochs, lr, batch_size):
             #  parameters.                                     #
             ####################################################
             # Your implementation starts from here             #
-            
-
+            y_hat = net(X)
+            cost = loss(y_hat,  y)
+            trainer.zero_grad()
+            cost.backward()
+            trainer.step()
             # Your implmentation ends here                     #
             ####################################################
         if len(net) >= 2:
