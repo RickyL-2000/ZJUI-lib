@@ -27,6 +27,10 @@ class Residual(nn.Module):
         ####################################################
         #     add lines below in your implementation       #
         ####################################################
+        self.f = nn.Sequential(
+            nn.Conv2d(input_channels, num_channels, 3, stride=strides),
+            nn.BatchNorm2d(num_channels)
+        )
 
     def forward(self, X):
         ####################################################

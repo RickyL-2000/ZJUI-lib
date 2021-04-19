@@ -33,7 +33,18 @@ def get_lenet():
         ####################################################
         #     add lines below in your implementation       #
         ####################################################
-        
+        nn.Conv2d(1, 6, 5, padding=2),
+        nn.Sigmoid(),
+        nn.AvgPool2d(2, 2),
+        nn.Conv2d(6, 16, 5),
+        nn.Sigmoid(),
+        nn.AvgPool2d(2, 2),
+        nn.Flatten(),
+        nn.Linear(400, 120),
+        nn.Sigmoid(),
+        nn.Linear(120, 84),
+        nn.Sigmoid(),
+        nn.Linear(84, 10)
     )
     return net
 
@@ -94,6 +105,29 @@ def train_cnn(net, train_iter, test_iter, num_epochs, lr, device=try_gpu()):
     ####################################################
     #        YOUR IMPLEMENTATION HERE         [15pts]  #
     ####################################################
+    optimizer = torch.optim.SGD(net.parameters(), lr=lr)
+    loss_func = nn.CrossEntropyLoss()
+    if isinstance(net, torch.nn.Module):
+        net.to(device)
+        for params in net.parameters():
+            nn.init.normal_(params, mean=0, std=0.1)
+    for epoch in range(num_epochs):
+        net.train()
+        batch_idx = 0
+        for train_X, train_y in train_iter:
+            X = train_X.to(device)
+            y = train_y.to(device)
+
+            y_hat = net(X)
+            loss = loss_func(y_hat, y)
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
+
+            if batch_idx % 50 == 0:
+                print("epoch: {} | batch: {} | cost: {}".format(epoch, batch_idx, loss.item()))
+            batch_idx += 1
+
     return 
 
 ##################################################################################################################
@@ -112,8 +146,8 @@ def load_data_fashion_mnist(batch_size, resize=None):
         root="./data", train=True, transform=trans, download=True)
     fashion_mnist_test = torchvision.datasets.FashionMNIST(
         root="./data", train=False, transform=trans, download=True)
-    return (data.DataLoader(fashion_mnist_train, batch_size, shuffle=True, num_workers=4),
-            data.DataLoader(fashion_mnist_test, batch_size, shuffle=False, num_workers=4))
+    return (data.DataLoader(fashion_mnist_train, batch_size, shuffle=True, num_workers=1),
+            data.DataLoader(fashion_mnist_test, batch_size, shuffle=False, num_workers=1))  # num_workers=4 gives errors
 
 def get_correct_lenet_shape_str():
     return """Reshape output shape: 	 torch.Size([1, 1, 28, 28])
