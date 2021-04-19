@@ -28,9 +28,17 @@ class Residual(nn.Module):
         #     add lines below in your implementation       #
         ####################################################
         self.f = nn.Sequential(
-            nn.Conv2d(input_channels, num_channels, 3, stride=strides),
+            nn.Conv2d(input_channels, num_channels, kernel_size=3, stride=strides, padding=1),
+            nn.BatchNorm2d(num_channels),
+            nn.ReLU(),
+            nn.Conv2d(num_channels, num_channels, kernel_size=3, stride=1, padding=1),
             nn.BatchNorm2d(num_channels)
         )
+        self.shortcut = nn.Sequential()
+        if use_1x1conv:
+            self.shortcut = nn.Sequential(
+                nn.Conv2d(input_channels, num_channels, kernel_size=1, stride=strides)
+            )
 
     def forward(self, X):
         ####################################################
@@ -39,7 +47,10 @@ class Residual(nn.Module):
         #  change the line below and add more code in your #
         #  implementation                                  #
         ####################################################
-        return F.relu(X)
+        out = self.f(X)
+        out = out + self.shortcut(X)
+        out = F.relu(out)
+        return out
 
 
 def resnet_block(input_channels, num_channels, num_residuals, first_block=False):
@@ -64,10 +75,10 @@ def get_resnet():
     #     write what b2-b5 should be, please only      #
     #     change the next 4 lines.                     #
     ####################################################
-    b2 = nn.Sequential()
-    b3 = nn.Sequential()
-    b4 = nn.Sequential()
-    b5 = nn.Sequential()
+    b2 = nn.Sequential(*resnet_block(64, 64, 2, first_block=True))
+    b3 = nn.Sequential(*resnet_block(64, 128, 2))
+    b4 = nn.Sequential(*resnet_block(128, 256, 2))
+    b5 = nn.Sequential(*resnet_block(256, 512, 2))
     net = nn.Sequential(
             ####################################################
             #        YOUR IMPLEMENTATION HERE         [2pts]   #
@@ -76,8 +87,10 @@ def get_resnet():
             #     implementation here to get the correct       #
             #     resnet-18 structure.                         #
             ####################################################
+            b1, b2, b3, b4, b5,
+            nn.AdaptiveAvgPool2d(1),
             nn.Flatten(),
-            nn.Linear(224*224, 10)
+            nn.Linear(512, 10)
     )
     return net
 

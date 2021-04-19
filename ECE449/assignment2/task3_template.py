@@ -105,6 +105,7 @@ def train_cnn(net, train_iter, test_iter, num_epochs, lr, device=try_gpu()):
     ####################################################
     #        YOUR IMPLEMENTATION HERE         [15pts]  #
     ####################################################
+    torch.backends.cudnn.benchmark = True   # or the cuDNN may have no conv algorithm
     optimizer = torch.optim.SGD(net.parameters(), lr=lr)
     loss_func = nn.CrossEntropyLoss()
     if isinstance(net, torch.nn.Module):
