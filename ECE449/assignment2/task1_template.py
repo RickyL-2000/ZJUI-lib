@@ -25,7 +25,7 @@ def relu(X):
     ####################################################
     #  Change the line below to your implementation    #
     ####################################################
-    ret = np.zeros(X.shape)
+    ret = (abs(X) + X) / 2
     return ret
 
 # define the partial derivative of relu function
@@ -37,47 +37,48 @@ def prelu(X):
     ####################################################
     #  Change the line below to your implementation    #
     ####################################################
-    ret = np.zeros(X.shape)
+    ret = 1 * (X > 0.0)
     return ret
 
 # define the forward propagation
 def DNNforward(X, W, K):
-    # X: dataset input features, numpy.ndarray
+    # X: dataset input features, numpy.ndarray of shape (B,3)
     # W: current weight matrix W, numpy.ndarray of shape (2,3)
     # K: current weight matrix K, numpy.ndarray of shape (2,)
     # return: (H, A, O)
-    # H: current hidden layer output value H, numpy.ndarray
-    # A: current activation layer output A, numpy.ndarray
-    # O: current DNN model output O, numpy.ndarray
+    # H: current hidden layer output value H, numpy.ndarray of shape (B,2)
+    # A: current activation layer output A, numpy.ndarray of shape (B,2)
+    # O: current DNN model output O, numpy.ndarray of shape (B)
     ####################################################
     #        YOUR IMPLEMENTATION HERE         [5pts]   #
     ####################################################
     #  Change the lines below to your implementation   #
     ####################################################
-    H = np.zeros((2,X.shape[0]))
-    A = np.zeros((2,X.shape[0]))
-    O = np.zeros(X.shape[0])
+    H = X.dot(W.T)
+    A = relu(H)
+    # O = A.dot(K.reshape(2,1))
+    O = K.dot(A.T).squeeze()
     return H, A, O
 
 # define the backward propagation
 def DNNbackward(X, y, W, K, H, A, O):
-    # X: dataset input features, numpy.ndarray
-    # y: dataset labels, numpy.ndarray
-    # W: current weight matrix W, numpy.ndarray
-    # K: current weight matrix K, numpy.ndarray
-    # H: current hidden layer output value H, numpy.ndarray
-    # A: current activation layer output A, numpy.ndarray
-    # O: current DNN model output O, numpy.ndarray
+    # X: dataset input features, numpy.ndarray (B, 3)
+    # y: dataset labels, numpy.ndarray (B)
+    # W: current weight matrix W, numpy.ndarray (2, 3)
+    # K: current weight matrix K, numpy.ndarray (2, )
+    # H: current hidden layer output value H, numpy.ndarray (B, 2)
+    # A: current activation layer output A, numpy.ndarray (B, 2)
+    # O: current DNN model output O, numpy.ndarray (B)
     # return: (pLpW, pLpK)
-    # pLpW: current gradient of Loss with respect to W
-    # pLpK: current gradient of Loss with respect to K
+    # pLpW: current gradient of Loss with respect to W (2, 3)
+    # pLpK: current gradient of Loss with respect to K (2)
     ####################################################
     #        YOUR IMPLEMENTATION HERE         [5pts]   #
     ####################################################
     #  Change the lines below to your implementation   #
     ####################################################
-    pLpW = np.zeros(W.shape)
-    pLpK = np.zeros(K.shape)
+    pLpW = (np.diag(K).dot(prelu(H).T) * (O - y)).dot(X) / X.shape[0]
+    pLpK = np.sum(A.T * (O - y), axis=1) / X.shape[0]
     return pLpW, pLpK
 
 # gradient decent function in batches
@@ -110,8 +111,9 @@ def train(X, y, W, K, lr, num_epochs=10, batch_size=10, print_loss=False):
             #  partial derivatives and updating W and K below  #
             ####################################################
             # Your implementation starts from here             #
-            
-
+            pLpW, pLpK = DNNbackward(X[start_idx:end_idx], y[start_idx:end_idx], W, K, H, A, O)
+            W -= pLpW * lr
+            K -= pLpK * lr
             # Your implmentation ends here                     #
             ####################################################
         W_list.append(W)
