@@ -19,7 +19,11 @@ def bag_of_words(text):
     :returns: a Counter for a single document
     :rtype: Counter
     '''
-    return Counter(text.strip().split())
+    cnt = Counter()
+    text = text.split()
+    for word in text:
+        cnt[word]+=1
+    return cnt
 
 # deliverable 1.2
 def aggregate_counts(bags_of_words):
@@ -32,10 +36,8 @@ def aggregate_counts(bags_of_words):
     '''
 
     # YOUR CODE GOES HERE
-    ret = Counter()
-    for bag in bags_of_words:
-        ret += bag
-    return ret
+    cnt = sum(bags_of_words, Counter())
+    return cnt
 
 # deliverable 1.3
 def compute_oov(bow1, bow2):
@@ -47,7 +49,7 @@ def compute_oov(bow1, bow2):
     :returns: the set of words in bow1, but not in bow2
     :rtype: set
     '''
-    return set(bow1) - set(bow2)
+    return set(bow1).difference(set(bow2))
 
 # deliverable 1.4
 def prune_vocabulary(training_counts, target_data, min_counts):
@@ -60,24 +62,21 @@ def prune_vocabulary(training_counts, target_data, min_counts):
     :returns: list of words in pruned vocabulary
     :rtype: list of Counters, set
     '''
-    vocab = set()
-    for word in list(training_counts):
-        if training_counts[word] >= min_counts:
-            vocab.add(word)
-    new_target = []
-    for target in target_data:
-        new_target.append(Counter())
-        for word in list(target):
-            if word in vocab:
-                new_target[-1][word] = target[word]
-    
-    return new_target, vocab
+    v = []
+    for key,value in training_counts.items():
+        if (value>=min_counts):
+            v.append(key)
+    ans = []
+    for x in target_data:
+        ans.append({key:value for key,value in x.items() if key in v})
+    return ans, v
+    raise NotImplementedError
 
 ### helper code
 
 def read_data(filename,label='Era',preprocessor=bag_of_words):
     df = pd.read_csv(filename)
-    return df[label].values, [preprocessor(string) for string in df['Lyrics'].values]
+    return df[label].values,[preprocessor(string) for string in df['Lyrics'].values]
 
 def oov_rate(bow1,bow2):
     return len(compute_oov(bow1,bow2)) / len(bow1.keys())
@@ -97,17 +96,17 @@ def make_feature_vector(base_features,label):
     '''
     take a counter of base features and a label; return a dict of features, corresponding to f(x,y)
 
-    :param base_features: dictionary of base features
+    :param base_features: counter of base features
     :param label: label string
     :returns: dict of features, f(x,y)
     :rtype: dict
 
     '''
-    ret = {}
-    for feature in base_features:
-        ret[(label, feature)] = base_features[feature]
-    ret[(label, OFFSET)] = 1
-    return ret
+    feature = {}
+    for f in base_features:
+        feature[(label, f)] = base_features[f]
+    feature[(label, OFFSET)] = 1
+    return feature
 
 # deliverable 2.2
 def predict(base_features,weights,labels):
@@ -120,14 +119,12 @@ def predict(base_features,weights,labels):
     :returns: top scoring label, scores of all labels
     :rtype: string, dict
     '''
-    scores = {}
+    res = {}
     for label in labels:
         feature_vector = make_feature_vector(base_features, label)
-        score = 0.0
-        for feature in feature_vector:
-            score += weights[feature] * feature_vector[feature]
-        scores[label] = score
-    return argmax(scores), scores
+        scores = [weights[feature]*feature_vector[feature] for feature in feature_vector if feature in weights]
+        res[label] = sum(scores)
+    return argmax(res), res
 
 def predict_all(x,weights,labels):
     '''
@@ -139,10 +136,10 @@ def predict_all(x,weights,labels):
     :rtype: numpy array
 
     '''
-    ret = []
-    for base_feature in x:
-        ret.append(predict(base_feature, weights, labels)[0])
-    return np.array(ret)
+    res = []
+    for cur in x:
+        res.append(predict(cur, weights, labels)[0])
+    return np.array(res)
 
 theta_hand = defaultdict(float,
                          {('2000s','money'):0.1,
@@ -172,12 +169,11 @@ def get_corpus_counts(x,y,label):
     get_corpus_counts(x,y,label) = {'aa': 1, 'bb': 3, 'cc': 5, 'dd': 3}
 
     """
-    ret = Counter()
+    cnt = Counter()
     for i in range(len(y)):
-        if y[i] == label:
-            # ret += x[i]
-            ret.update(x[i])
-    return defaultdict(int, ret)
+        if (y[i] == label):
+            cnt.update(x[i])
+    return cnt
 
 # deliverable 3.2
 def estimate_pxy(x,y,label,smoothing,vocab):
@@ -193,13 +189,11 @@ def estimate_pxy(x,y,label,smoothing,vocab):
     :rtype: defaultdict
 
     '''
-    corpus_counts = get_corpus_counts(x, y, label)
-    ret = {}
-    denom = sum(list(corpus_counts.values())) + smoothing * len(vocab)
-    for word in vocab:
-        ret[word] = np.log((corpus_counts[word] + smoothing) / denom)
-    return defaultdict(float, ret)
-
+    corpus_count = get_corpus_counts(x, y, label)
+    res = {}
+    for x in vocab:
+        res[x] = np.log((corpus_count[x]+smoothing) / (sum(list(corpus_count.values()))+smoothing*len(vocab)))
+    return defaultdict(float, res)
 # deliverable 3.3
 def estimate_nb(x,y,smoothing):
     """estimate a naive bayes model
@@ -213,21 +207,17 @@ def estimate_nb(x,y,smoothing):
     Hint: See predict() for the exact return type information.
 
     """
-    min_counts = 10
-    training_counts = aggregate_counts([Counter(feature) for feature in x])
-    vocab = []
-    for word in list(training_counts):
-        if training_counts[word] >= min_counts:
-            vocab.append(word)
-    ret = {}
-    labels = list(set(y))
-    for label in labels:
-        corpus_counts = get_corpus_counts(x, y, label)
-        denom = sum(list(corpus_counts.values())) + smoothing * len(vocab)
+    x_ = [Counter(_) for _ in x]
+    cnt = aggregate_counts(x_)
+    vocab = [key for key, value in cnt.items() if value>=10]
+    res = {}
+    y_list = set(y)
+    for label in y_list:
+        corpus_count = get_corpus_counts(x, y, label)
         for word in vocab:
-            ret[(label, word)] = np.log((corpus_counts[word] + smoothing) / denom)
-        ret[(label, OFFSET)] = np.log(len(y[y==label]) / len(y))
-    return defaultdict(float, ret)
+            res[(label, word)] = np.log((corpus_count[word]+smoothing) / (sum(list(corpus_count.values()))+smoothing*len(vocab)))
+        res[(label, OFFSET)] = np.log(len(y[label==y])/len(y))
+    return defaultdict(float, res)
 
 # deliverable 3.4
 def find_best_smoother(x_tr_pruned,y_tr,x_dv_pruned,y_dv,smoothers):
@@ -243,17 +233,16 @@ def find_best_smoother(x_tr_pruned,y_tr,x_dv_pruned,y_dv,smoothers):
     :rtype: 1) float, 2) dictionary
 
     '''
-    best = 0.0
-    ret = {}
-    labels = list(set(y_tr))
-    for smoother in smoothers:
-        clf = estimate_nb(x_tr_pruned, y_tr, smoother)
-        y_hat = predict_all(x_dv_pruned, clf, labels)
-        score = acc(y_hat, y_dv)
-        ret[smoother] = score
-        if score > best:
-            best = score
-    return best, ret
+    dic = {}
+    cur = 0
+    for x in smoothers:
+        para = estimate_nb(x_tr_pruned, y_tr, x)
+        score = acc(predict_all(x_dv_pruned,para,set(y_tr)), y_dv)
+        dic[x] = score
+        if (score>cur):
+            cur = score
+    return cur, dic
+    
 
 def acc(y_hat,y):
     return (y_hat == y).mean()
@@ -296,20 +285,23 @@ def make_numpy(bags_of_words, vocab):
     :returns: the bags of words as a 2D numpy array (length of bags_of_words by length of vocab)
     :rtype: numpy array
     '''
-    ret = np.zeros((len(bags_of_words), len(vocab)))
+    ans = np.zeros((len(bags_of_words), len(vocab)))
     vocab = sorted(vocab)
     for i in range(len(bags_of_words)):
         for j in range(len(vocab)):
             if (vocab[j] in bags_of_words[i]):
-                ret[i, j] = bags_of_words[i][vocab[j]]
-    return ret
+                ans[i][j] = bags_of_words[i][vocab[j]]
+    return ans
 
 # deliverable 4.2
 def better_model():
     # scikit_log_reg = LogisticRegression()   ## Tune parameters for this function.
     ### BEGIN SOLUTION
-    return LogisticRegression(C=0.001)
+    scikit_log_reg = LogisticRegression(C=0.001)
+    return scikit_log_reg
     ### END SOLUTION
+
+
 
 ######################### helper code
 def train_model(loss, model, X_tr_var, Y_tr_var,
@@ -379,14 +371,18 @@ def get_top_features_LR(scikit_log_reg, vocab,label_set,label,k):
     least_indicative_features = []
 
     ### BEGIN SOLUTION
-    label_idx = label_set.index(label)
+    index = 0
+    for i in range(len(label_set)):
+        if (label_set[i]==label):
+            index = i
+    para = scikit_log_reg.coef_
     vocab = sorted(vocab)
-    params = scikit_log_reg.coef_
-    all_features = []
-    for param, feature in sorted(zip(params[label_idx], vocab)):
-        all_features.append(feature)
-    return all_features[-k:], all_features[:k]
+    res = [x for y, x in sorted(zip(para[index],vocab))]
+    most_indicative_features = res[-k:]
+    least_indicative_features = res[:k]
+    return most_indicative_features, least_indicative_features
     ### END SOLUTION
+    raise NotImplementedError
 
 # deliverable 5.2
 def get_top_features_NB(theta_nb, label_set,label,k):
@@ -394,33 +390,36 @@ def get_top_features_NB(theta_nb, label_set,label,k):
     least_indicative_features = []
 
     ### BEGIN SOLUTION
-    params = {}
-    for feature in theta_nb.keys():
-        if feature[0] == label and feature[1] != OFFSET:
-            params[feature[1]] = theta_nb[feature]
-    params = sorted(params.items(), key=lambda x: x[1])
-    all_features = [feature for feature, score in params]
-    return all_features[-k:], all_features[:k]
+    coef = {}
+    for key in theta_nb.keys():
+        if (key[0]==label and key[1]!='**OFFSET**'):
+            coef[key[1]] = theta_nb[key]
+    res={key:value for key,value in sorted(coef.items(), key=lambda item: item[1])}
+    most_indicative_features = list(res.keys())[-k:]
+    least_indicative_features = list(res.keys())[:k]
+    return most_indicative_features, least_indicative_features
     ### END SOLUTION
+    raise NotImplementedError
 
 # deliverable 6
 def get_PRF(Y_hat_dv, Y_dv, label_set, label):
     precision = 0.0
     recall = 0.0
     f1 = 0.0
-
+    TP, FP, TN, FN = 0,0,0,0
     ### BEGIN SOLUTION
-    TP, FP, TN, FN = 0, 0, 0, 0
-    label_idx = label_set.index(label)
-    Y_dv = np.array(Y_dv)
-    Y_hat_dv = np.array(Y_hat_dv)
-    TP = sum((Y_dv == label_idx) & (Y_hat_dv == label_idx))
-    FP = sum((Y_dv != label_idx) & (Y_hat_dv == label_idx))
-    TN = sum((Y_dv != label_idx) & (Y_hat_dv != label_idx))
-    FN = sum((Y_dv == label_idx) & (Y_hat_dv != label_idx))
-    precision = TP / (TP + FP)
-    recall = TP / (TP + FN)
-    f1 = (2 * precision * recall) / (precision + recall)
+    index = 0
+    for i in range(len(label_set)):
+        if (label_set[i]==label):
+            index = i
+    for i in range(len(Y_dv)):
+        TP += (Y_dv[i]==index and Y_hat_dv[i]==index)
+        FP += (Y_dv[i]!=index and Y_hat_dv[i]==index)
+        TN += (Y_dv[i]!=index and Y_hat_dv[i]!=index)
+        FN += (Y_dv[i]==index and Y_hat_dv[i]!=index)
+    precision=TP/(TP+FP)
+    recall=TP/(TP+FN)
+    f1=(2*precision*recall)/(precision+recall)
     return precision, recall, f1
     ### END SOLUTION
-    
+    raise NotImplementedError
