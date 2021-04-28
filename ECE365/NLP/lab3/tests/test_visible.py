@@ -104,13 +104,13 @@ class TestStep(unittest.TestCase):
         self.assertEqual(int(lab3.get_perplexity(natr_lm, natr_test[:2500])), 5222)
         self.assertEqual(int(lab3.get_perplexity(natr_lm, food_test[:2500])), 5354)
 
-    @weight(40)
-    def test_d3_1_vary(self):
-        nltk.download('punkt')
-        food_corpus_tk = lab3.tokenize_corpus(self.food_corpus)
-        n_gram_orders = [2, 3]
-        train_corpus = food_corpus_tk[:int(0.8*len(food_corpus_tk))]
-        test_corpus = food_corpus_tk[int(0.8*len(food_corpus_tk)): int(0.85*len(food_corpus_tk))]
-        results = lab3.vary_ngram(train_corpus, test_corpus, n_gram_orders)
-        self.assertEqual(int(results[2]), 7387)
-        self.assertEqual(int(results[3]), 7428)
+    # @weight(40)
+    # def test_d3_1_vary(self):
+    #     nltk.download('punkt')
+    #     food_corpus_tk = lab3.tokenize_corpus(self.food_corpus)
+    #     n_gram_orders = [2, 3]
+    #     train_corpus = food_corpus_tk[:int(0.8*len(food_corpus_tk))]
+    #     test_corpus = food_corpus_tk[int(0.8*len(food_corpus_tk)): int(0.85*len(food_corpus_tk))]
+    #     results = lab3.vary_ngram(train_corpus, test_corpus, n_gram_orders)
+    #     self.assertEqual(int(results[2]), 7387)
+    #     self.assertEqual(int(results[3]), 7428)

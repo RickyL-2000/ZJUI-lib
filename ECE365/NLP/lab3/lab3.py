@@ -18,8 +18,9 @@ def tokenize_corpus(corpus):
 
     Hint: use nltk.tokenize.sent_tokenize, and nltk.tokenize.word_tokenize
     '''
-
-    raise NotImplementedError
+    sentences = sent_tokenize(corpus)
+    ret = [word_tokenize(sentence) for sentence in sentences]
+    return ret
 
 
 # deliverable 1.2
@@ -34,8 +35,7 @@ def pad_corpus(corpus):
 
     start_symbol = '<s>'
     end_symbol = '</s>'
-
-    raise NotImplementedError
+    return [[start_symbol] + sentence + [end_symbol] for sentence in corpus]
 
 
 # deliverable 1.3
@@ -48,9 +48,8 @@ def split_corpus(corpus):
     :returns: test subset of the corpus.
     :rtype: list of list of strings, list of list of strings
     '''
-
-    raise NotImplementedError
-
+    sep = int(0.8 * len(corpus))
+    return corpus[:sep], corpus[sep:]
 
 # deliverable 1.4
 def count_ngrams(corpus, n=3):
@@ -63,8 +62,18 @@ def count_ngrams(corpus, n=3):
     :returns: list of vocab words
     :rtype: dictionary (key: tuple, value: int), list of strings
     '''
-
-    raise NotImplementedError
+    count = {}
+    vocab = set()
+    for i in range(1, n+1):
+        for sentence in corpus:
+            for j in range(len(sentence) - i + 1):
+                if tuple(sentence[j: j+i]) in count:
+                    count[tuple(sentence[j: j+i])] += 1
+                else:
+                    count[tuple(sentence[j: j+i])] = 1
+            for word in sentence:
+                vocab.add(word)
+    return count, list(vocab)
 
 
 # deliverable 1.5
@@ -78,8 +87,8 @@ def estimate(counts, word, context):
     :returns: probability of the n-gram.
     :rtype: float.
     '''
+    return counts[tuple(context + word)] / counts[tuple(context)]
 
-    raise NotImplementedError
 
 # deliverable 2.1
 def get_perplexity(lm, test_data):
@@ -94,7 +103,7 @@ def get_perplexity(lm, test_data):
     Hint: use NLTK LM's method 'perplexity'.
     '''
 
-    raise NotImplementedError
+    return lm.perplexity(test_data)
 
 
 # deliverable 3.1
@@ -112,4 +121,11 @@ def vary_ngram(train_corpus, test_corpus, n_gram_orders):
     Hint: Follow the same LM training procedure as in the notebook in the end of Exercise 1.
     '''
 
-    raise NotImplementedError
+    test = sum([['<s>'] + x + ['</s>'] for x in test_corpus], [])
+    ret = {}
+    for order in n_gram_orders:
+        train, vocab = padded_everygram_pipeline(order, train_corpus)
+        lm = Laplace(order)
+        lm.fit(train, vocab)
+        ret[order] = lm.perplexity(test)
+    return ret
