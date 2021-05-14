@@ -1,0 +1,12 @@
+To run the jupyter notebook files, please do the following steps:
+
+1. Download and install anaconda on your computer. (You can use either user mode installation or admin(root) mode installation.)
+
+2. Launch anaconda prompt from you computer, and type the following command to create an environment named ece449_hws:
+	conda create -n ece449_hws python=3.7 matplotlib numpy scikit-learn scipy plotly
+
+3. Each time before you run the jupyter notebook files, remember to activate your environment by typing the following command in your anaconda prompt:
+	conda activate ece449_hws
+
+4. Now you should have a working environment that will run the jupyter notebook files in assignment 1. Get started with assignment 1 and have fun!
+	
